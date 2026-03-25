@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>純密室 Chun's Room</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -32,6 +33,15 @@
       text-align: center;
       margin-bottom: 50px;
       animation: fadeIn 2s ease;
+    }
+
+    /* 🔥 Logo效果 */
+    .logo {
+      width: 140px;
+      margin-bottom: 20px;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+      animation: glow 3s infinite alternate;
     }
 
     .title h1 {
@@ -79,7 +89,7 @@
     .door:hover {
       transform: translateY(-8px);
       border-color: rgba(255,255,255,0.35);
-      box-shadow: 0 0 30px rgba(255,255,255,0.08);
+      box-shadow: 0 0 30px rgba(255,255,255,0.15);
     }
 
     .door::before {
@@ -128,14 +138,13 @@
       font-size: 14px;
       color: rgba(255,255,255,0.45);
       letter-spacing: 2px;
-      text-align: center;
       animation: flicker 3s infinite;
     }
 
     .modal {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.82);
+      background: rgba(0,0,0,0.85);
       display: none;
       justify-content: center;
       align-items: center;
@@ -150,20 +159,6 @@
       border: 1px solid rgba(255,255,255,0.12);
       padding: 32px;
       box-shadow: 0 0 30px rgba(0,0,0,0.7);
-      animation: fadeIn 0.4s ease;
-    }
-
-    .modal-box h2 {
-      margin-top: 0;
-      margin-bottom: 16px;
-      letter-spacing: 3px;
-      font-size: 28px;
-    }
-
-    .modal-box p {
-      color: rgba(255,255,255,0.78);
-      line-height: 1.8;
-      margin-bottom: 12px;
     }
 
     .close-btn {
@@ -173,7 +168,6 @@
       color: white;
       border: 1px solid rgba(255,255,255,0.3);
       cursor: pointer;
-      transition: all 0.25s ease;
     }
 
     .close-btn:hover {
@@ -187,36 +181,29 @@
     }
 
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 0.45; }
-      20%, 24%, 55% { opacity: 0.18; }
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 0.2; }
     }
 
-    @media (max-width: 768px) {
-      .title h1 {
-        font-size: 30px;
-      }
-
-      .door {
-        width: 140px;
-        height: 250px;
-      }
+    @keyframes glow {
+      from { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+      to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
     }
   </style>
 </head>
+
 <body>
   <div class="overlay">
     <div class="title">
+
+      <!-- 🔥 Logo -->
+      <img src="純-白PNG.png" class="logo">
+
       <h1>純密室</h1>
       <p class="en">Chun's Room</p>
       <p class="tagline">有些門，不是為了被打開而存在。</p>
@@ -245,37 +232,11 @@
     <div class="hint">請選擇一扇門。</div>
   </div>
 
-  <div class="modal" id="modal">
-    <div class="modal-box">
-      <h2 id="modalTitle">房間</h2>
-      <p id="modalText"></p>
-      <button class="close-btn" onclick="closeModal()">關閉</button>
-    </div>
-  </div>
-
   <script>
-    function openDoor(door) {
-      const modal = document.getElementById("modal");
-      const modalTitle = document.getElementById("modalTitle");
-      const modalText = document.getElementById("modalText");
-
-      if (door === "door1") {
-        modalTitle.innerText = "101｜第一分店";
-        modalText.innerText = "這裡之後可以放第一間分店的主題、地址、照片與預約資訊。";
-      } else if (door === "door2") {
-        modalTitle.innerText = "102｜第二分店";
-        modalText.innerText = "這裡之後可以放第二間分店的主題、地址、照片與預約資訊。";
-      } else if (door === "door3") {
-        modalTitle.innerText = "103｜關於純密室";
-        modalText.innerText = "這裡可以放品牌故事、理念，或一段只屬於純密室的世界觀。";
-      }
-
-      modal.style.display = "flex";
-    }
-
-    function closeModal() {
-      document.getElementById("modal").style.display = "none";
+    function openDoor(name) {
+      alert("之後這裡會進入分店頁面 😏");
     }
   </script>
+
 </body>
 </html>
