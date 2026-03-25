@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>奶酪陷阱｜純密室 Chun's Room</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC","Microsoft JhengHei",sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 30%),
+        linear-gradient(to bottom, #050505 0%, #111 50%, #1a1a1a 100%);
+      color: white;
+      line-height: 1.9;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(10,10,10,0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 46px;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .brand p {
+      margin: 2px 0 0;
+      font-size: 12px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .back-btn {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 20px 24px;
+      display: grid;
+      grid-template-columns: minmax(280px, 380px) 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .poster {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .poster img {
+      width: 100%;
+      display: block;
+      border-radius: 14px;
+      background: black;
+      object-fit: contain;
+    }
+
+    .content h2 {
+      margin: 0 0 10px;
+      font-size: 42px;
+      letter-spacing: 2px;
+    }
+
+    .subtitle {
+      margin-bottom: 22px;
+      color: rgba(255,255,255,0.68);
+      font-size: 16px;
+    }
+
+    .story-box,
+    .info-box,
+    .notice-box,
+    .tips-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 22px;
+      margin-top: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+    }
+
+    .box-title {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .story-text {
+      color: rgba(255,255,255,0.82);
+      font-size: 16px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .meta-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 14px;
+      padding: 16px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .meta-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 8px;
+    }
+
+    .meta-value {
+      font-size: 17px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .notice-box ol,
+    .tips-box ul {
+      margin: 0;
+      padding-left: 22px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .bottom-action {
+      max-width: 1200px;
+      margin: 10px auto 60px;
+      padding: 0 20px;
+    }
+
+    .booking-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 28px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .booking-card h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    .booking-card p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .btn {
+      display: inline-block;
+      min-width: 220px;
+      text-align: center;
+      background: #ff2d6f;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+      transition: 0.25s ease;
+      box-shadow: 0 10px 24px rgba(255,45,111,0.2);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .content h2 {
+        font-size: 34px;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <img src="純-白PNG.png" alt="純密室 Logo">
+      <div>
+        <h1>純密室</h1>
+        <p>Chun's Room</p>
+      </div>
+    </div>
+    <a class="back-btn" href="zhongyuan.html">返回中原店</a>
+  </div>
+
+  <section class="hero">
+    <div class="poster">
+      <img src="奶酪.jpg" alt="奶酪陷阱">
+    </div>
+
+    <div class="content">
+      <h2>奶酪陷阱</h2>
+      <div class="subtitle">中原店｜入門款推薦</div>
+
+      <div class="story-box">
+        <div class="box-title">遊戲介紹</div>
+        <div class="story-text">
+          場景夢幻，情節可愛～<br>
+          適合新手挑戰 曖昧脫單<br>
+          我們將邀請各位鼠鼠朋友<br>
+          一起來參加夢幻<br>
+          「麵包包吃飽飽」的快樂之旅～
+        </div>
+      </div>
+
+      <div class="info-box">
+        <div class="box-title">遊戲資訊</div>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <div class="meta-label">價格</div>
+            <div class="meta-value">300 / 人</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">遊戲時間</div>
+            <div class="meta-value">40分鐘</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">人數限制</div>
+            <div class="meta-value">2～4人</div>
+          </div>
+        </div>
+        <div style="margin-top:12px; color: rgba(255,255,255,0.68);">
+          加前後講解時間大約為55分鐘
+        </div>
+      </div>
+
+      <div class="notice-box">
+        <div class="box-title">注意事項</div>
+        <ol>
+          <li>請於遊戲開場時間，提前5分鐘到場報到。</li>
+          <li>超過遊戲開場時間10分鐘，將會壓縮遊戲時間。</li>
+          <li>超過遊戲開場時間15分鐘，為顧及其他顧客權益，該場次將無條件取消。</li>
+        </ol>
+      </div>
+
+      <div class="tips-box">
+        <div class="box-title">推薦挑戰順序</div>
+        <ul>
+          <li>若非單日連刷的玩家，建議可以照難度依序挑戰，遊戲體驗會是最好的唷。</li>
+          <li>奶酪及暴走族都是入門款，接下來是懲戒，最難的是人格之戰。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="bottom-action">
+    <div class="booking-card">
+      <h3>準備好進入奶酪陷阱了嗎？</h3>
+      <p>確認好人數與時間後，就可以前往預約頁面。</p>
+      <a class="btn" href="https://chunsroom.simplybook.asia/v2/" target="_blank">立即預約</a>
+    </div>
+  </div>
+
+</body>
+</html>
