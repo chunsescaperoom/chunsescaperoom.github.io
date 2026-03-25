@@ -92,25 +92,32 @@
       gap: 26px;
     }
 
-    .card {
-      background: #121212;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      overflow: hidden;
-      transition: 0.3s;
-    }
+   .card {
+  background: #121212;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden; /* 防止放大溢出 */
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(255,255,255,0.2);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    }
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
 
-   .card img {
+.card:hover {
+  transform: translateY(-6px); /* 卡片浮起 */
+  border-color: rgba(255,255,255,0.2);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+.card img {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: contain;
   background: black;
+
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05); /* 圖片放大 */
 }
     .card-content {
       padding: 20px;
