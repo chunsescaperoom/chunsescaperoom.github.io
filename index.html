@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>Chuns Escape Room</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: "Noto Sans TC", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+#text {
+    opacity: 0;
+    transition: 2s;
+}
+
+button {
+    margin-top: 30px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background: white;
+    color: black;
+}
+</style>
+</head>
+
+<body>
+
+<div id="text">
+    <p>你是因為「那個傳聞」來的嗎？</p>
+    <p>這裡…不該被看到。</p>
+    <button onclick="enter()">進入</button>
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("text").style.opacity = 1;
+}, 1000);
+
+function enter(){
+    document.body.innerHTML = `
+        <h1>你確定嗎？</h1>
+        <button onclick="go()">我還是想看看</button>
+    `;
+}
+
+function go(){
+    document.body.innerHTML = `
+        <h1>……</h1>
+        <p>你已經進來了。</p>
+    `;
+}
+</script>
+
+</body>
+</html>
