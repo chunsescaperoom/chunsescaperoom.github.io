@@ -213,13 +213,13 @@
       <div class="door" onclick="openDoor('door1')">
         <div class="door-number">101</div>
         <div class="knob"></div>
-        <div class="door-label">第一分店</div>
+        <div class="door-label">中原店</div>
       </div>
 
       <div class="door" onclick="openDoor('door2')">
         <div class="door-number">102</div>
         <div class="knob"></div>
-        <div class="door-label">第二分店</div>
+        <div class="door-label">中壢連合店</div>
       </div>
 
       <div class="door" onclick="openDoor('door3')">
@@ -234,8 +234,14 @@
 
   <script>
     function openDoor(name) {
-      alert("之後這裡會進入分店頁面 😏");
-    }
+  if (name === "door1") {
+    window.location.href = "zhongyuan.html";
+  } else if (name === "door2") {
+    window.location.href = "zhongli.html";
+  } else {
+    window.location.href = "about.html";
+  }
+}
   </script>
 
 </body>
