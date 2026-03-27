@@ -381,18 +381,121 @@
     line-height: 1.6;
   }
 }
-    .intro-hint {
-  position: absolute;
-  bottom: 60px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.5);
-  letter-spacing: 2px;
-  animation: blink 1.5s infinite;
+   #intro-screen {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 1s ease;
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
+#intro-screen.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.intro-text {
+  color: white;
+  font-size: 32px;
+  letter-spacing: 4px;
+  text-align: center;
+  padding: 20px;
+  text-shadow:
+    0 0 10px rgba(255,255,255,0.25),
+    0 0 20px rgba(255,0,255,0.18);
+  animation: introGlow 1.8s ease-in-out infinite alternate;
+}
+
+.intro-text.glitch {
+  position: relative;
+}
+
+.intro-text.glitch::before,
+.intro-text.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro-text.glitch::before {
+  color: #00ffff;
+  transform: translate(-2px, 0);
+  opacity: 0.7;
+  animation: introGlitch 0.25s steps(2) 6;
+}
+
+.intro-text.glitch::after {
+  color: #ff00cc;
+  transform: translate(2px, 0);
+  opacity: 0.7;
+  animation: introGlitch 0.25s steps(2) 6 reverse;
+}
+
+.enter-btn {
+  opacity: 0;
+  pointer-events: none;
+  padding: 12px 30px;
+  border: 1px solid rgba(255,255,255,0.45);
+  background: rgba(255,255,255,0.04);
+  color: white;
+  border-radius: 999px;
+  font-size: 14px;
+  letter-spacing: 4px;
+  cursor: pointer;
+  text-shadow: 0 0 8px rgba(255,255,255,0.2);
+  box-shadow: 0 0 16px rgba(255,0,255,0.12);
+  transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.enter-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.enter-btn:hover {
+  background: rgba(255,255,255,0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255,0,255,0.22);
+}
+
+@keyframes introGlow {
+  from {
+    opacity: 0.75;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes introGlitch {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, -2px); }
+  100% { transform: translate(1px, 2px); }
+}
+
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: 22px;
+    letter-spacing: 2px;
+    line-height: 1.6;
+  }
+
+  .enter-btn {
+    font-size: 13px;
+    letter-spacing: 3px;
+    padding: 11px 24px;
+  }
 }
   </style>
 </head>
