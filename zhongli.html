@@ -664,9 +664,10 @@ window.addEventListener('load', () => {
   const enterBtn = document.getElementById('enter-btn');
 
   setTimeout(() => {
-    const secondLine = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
-    text.innerHTML = secondLine;
-    text.setAttribute('data-text', text.textContent);
+    const secondLine = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+
+text.innerHTML = secondLine;
+text.setAttribute('data-text', "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫接觸過的那群人。");
     text.classList.add('glitch');
 
     setTimeout(() => {
