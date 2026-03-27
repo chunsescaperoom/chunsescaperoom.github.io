@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>中壢連合店｜純密室 Chun's Room</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -17,6 +18,7 @@
         radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
         linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
       color: white;
+      overflow-x: hidden;
     }
 
     a {
@@ -103,6 +105,59 @@
       max-width: 720px;
       color: rgba(255,255,255,0.72);
       line-height: 1.8;
+    }
+
+    .lore-block {
+      max-width: 720px;
+      margin: 40px auto 60px;
+      padding: 30px;
+      line-height: 2;
+      font-size: 15px;
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid #ff00cc;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.08);
+    }
+
+    .lore-text {
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    .highlight {
+      color: #00ffff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.5);
+    }
+
+    .neon {
+      color: #ffd54f;
+      font-size: 20px;
+      text-shadow:
+        0 0 10px #ff00cc,
+        0 0 20px #ff00cc,
+        0 0 30px #ff00cc;
+    }
+
+    .info-block {
+      max-width: 720px;
+      margin: 0 auto 50px;
+      padding: 24px 30px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.78);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .info-block strong {
+      color: white;
+    }
+
+    .info-link {
+      color: #9fe8ff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.25);
+      word-break: break-all;
     }
 
     .container {
@@ -249,8 +304,8 @@
     }
 
     @media (hover: none) {
-      .card {
-        transform: translateY(0);
+      .card img {
+        transform: scale(1.02);
       }
     }
 
@@ -270,6 +325,13 @@
       .desc {
         font-size: 15px;
       }
+
+      .lore-block,
+      .info-block {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 24px 20px;
+      }
     }
   </style>
 </head>
@@ -287,9 +349,85 @@
   </div>
 
   <section class="hero">
-    <img class="hero-logo" src="chunsroom.png" alt="CHUN'S ROOM">
+    <img class="hero-logo" src="chunsroom.png" alt="中壢連合店 Logo">
     <h2>中壢連合店</h2>
     <p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
+  </section>
+
+  <section class="lore-block">
+    <p class="lore-text">
+      純編得了一種不中二會死的病<br>
+      ------------------------------<br><br>
+
+      傳說在中原夜市附近的協同街，<br>
+      有一群叫做中壢連合的暴走族。<br>
+      他們一天到晚招募新的成員，<br>
+      直到那個地方再也裝不下更多的人。<br><br>
+
+      <span class="highlight">這個名字，你或許在哪裡聽過。</span><br><br>
+
+      沒錯——<br>
+      那就是你在《我在暴走族的第一個夏祭》中，<br>
+      曾經短暫接觸過的那群人。<br><br>
+
+      他們的總長開始想要有更大的地盤，<br>
+      就這樣尋尋覓覓的，<br>
+      找到了龍和三街的一處地點，<br>
+      他有義氣，與衝勁，其他啥都沒有。<br><br>
+
+      雖然有眾多小弟小妹們，<br>
+      但他們比總長更加年輕更一無所有。<br><br>
+
+      總長：『從今天起，這就是我們的另一處地盤了！！！！』<br><br>
+
+      總長對著空蕩蕩的空間這樣吼著，<br>
+      幻想著地盤未來的樣子，<br>
+      但是現實讓他對於這個空間一籌莫展，<br>
+      正在此時……<br><br>
+
+      特攻隊長：「我想要有雲！！」<br><br>
+
+      總長：『蛤？』<br><br>
+
+      特攻隊長：「一個酷酷的有閃電的雲」<br><br>
+
+      突然那一瞬間，<br>
+      總長知道他們的地盤最適合怎樣的風格了！<br><br>
+
+      他聯絡起了他生命中第一個收的小弟，<br>
+      我們姑且叫他 “康” 吧，<br><br>
+
+      總長：『康！我的地盤需要你，我的地盤風格是，要科技又要落魄，重點是佈置起來要便宜！！我們是一群很酷但還沒闖出頭的暴走族，能不能給我Cyberpunk? 這個最適合我們的理念了？』<br><br>
+
+      康雖然不知道總長在說什麼，<br>
+      但依然使命必達！<br><br>
+
+      康：「大概就是......低階生活與高等科技的結合的概念對嗎？」<br><br>
+
+      總長：『對對對對！』<br><br>
+
+      康：「要省錢就需要很多手做喔？」<br><br>
+
+      總長：『做！都做！』<br><br>
+
+      於是一點瘋狂，一點中二，<br>
+      一些酷酷的東西，<br>
+      再加上一點長久的幻想。<br><br>
+
+      成為了現在的——<br><br>
+
+      <strong class="neon">純密室・中壢連合店</strong>
+    </p>
+  </section>
+
+  <section class="info-block">
+    <strong>聯絡電話：</strong>03-4163349<br>
+    <strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br>
+    <strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br>
+    <strong>預約網址：</strong>
+    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">https://chunsroom.simplybook.asia/</a><br>
+    <strong>設計：</strong>
+    <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
   </section>
 
   <main class="container">
