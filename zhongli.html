@@ -339,53 +339,6 @@
   inset: 0;
   background: #000;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  opacity: 1;
-  transition: opacity 1s ease;
-}
-
-#intro-screen.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.intro-text {
-  color: white;
-  font-size: 32px;
-  letter-spacing: 4px;
-  text-align: center;
-  padding: 20px;
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.25),
-    0 0 20px rgba(255,0,255,0.18);
-  animation: introGlow 1.8s ease-in-out infinite alternate;
-}
-
-@keyframes introGlow {
-  from {
-    opacity: 0.75;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .intro-text {
-    font-size: 22px;
-    letter-spacing: 2px;
-    line-height: 1.6;
-  }
-}
-   #intro-screen {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -401,21 +354,22 @@
 }
 
 .intro-text {
+  position: relative;
   color: white;
   font-size: 32px;
   letter-spacing: 4px;
   text-align: center;
   padding: 20px;
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.25),
-    0 0 20px rgba(255,0,255,0.18);
+  line-height: 1.8;
+  text-shadow: 0 0 10px rgba(255,255,255,0.25);
   animation: introGlow 1.8s ease-in-out infinite alternate;
 }
 
+/* 第二句啟動 glitch 後，把主文字本體藏掉 */
 .intro-text.glitch {
-  position: relative;
-  color: rgba(255,255,255,0.08);
+  color: transparent;
   text-shadow: none;
+  animation: none;
 }
 
 .intro-text.glitch::before,
@@ -423,20 +377,26 @@
   content: attr(data-text);
   position: absolute;
   inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 1.8;
+  white-space: normal;
   pointer-events: none;
 }
 
 .intro-text.glitch::before {
   color: #00ffff;
   transform: translate(-2px, 0);
-  opacity: 0.7;
+  opacity: 0.85;
   animation: introGlitch 0.25s steps(2) 6;
 }
 
 .intro-text.glitch::after {
   color: #ff00cc;
   transform: translate(2px, 0);
-  opacity: 0.7;
+  opacity: 0.85;
   animation: introGlitch 0.25s steps(2) 6 reverse;
 }
 
@@ -666,10 +626,11 @@ window.addEventListener('load', () => {
   const enterBtn = document.getElementById('enter-btn');
 
   setTimeout(() => {
-    const secondLine = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+    const secondLineHtml = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+    const secondLinePlain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫接觸過的那群人。";
 
-text.innerHTML = secondLine;
-text.setAttribute('data-text', "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫接觸過的那群人。");
+    text.innerHTML = secondLineHtml;
+    text.setAttribute('data-text', secondLinePlain);
     text.classList.add('glitch');
 
     setTimeout(() => {
@@ -686,6 +647,5 @@ text.setAttribute('data-text', "沒錯——那就是你在《我在暴走族的
   });
 });
 </script>
-
 </body>
 </html>
