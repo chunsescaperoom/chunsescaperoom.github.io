@@ -1,0 +1,11 @@
+/* ===== 全站通用字型 ===== */
+body {
+  margin: 0;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  color: white;
+}
+
+/* ===== 基本設定（可選） ===== */
+* {
+  box-sizing: border-box;
+}
