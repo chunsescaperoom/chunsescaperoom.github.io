@@ -508,32 +508,46 @@
   </style>
 </head>
 <body>
+
+  <!-- 🎬 開場 -->
   <div id="intro-screen">
 
-  <video id="intro-video" muted playsinline preload="auto">
-    <source src="370411900_719052853319217_3592600588415833856_n.mp4" type="video/mp4">
-  </video>
+    <video id="intro-video" muted playsinline preload="auto">
+      <source src="370411900_719052853319217_3592600588415833856_n.mp4" type="video/mp4">
+    </video>
 
-  <div class="intro-overlay"></div>
+    <div class="intro-overlay"></div>
 
-  <div class="intro-text" id="intro-text">
-    這個名字，你或許在哪裡聽過。
+    <div class="intro-text" id="intro-text">
+      這個名字，你或許在哪裡聽過。
+    </div>
+
+    <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
+
+    <div class="sound-hint" id="sound-hint">🔊 點擊開啟聲音</div>
+
   </div>
 
-  <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
-
-  <div class="sound-hint" id="sound-hint">🔊 點擊開啟聲音</div>
-
-</div>
+  <!-- 🧱 Topbar（你剛剛壞掉的地方） -->
+  <div class="topbar">
+    <div class="brand">
+      <img src="純-白PNG.png" alt="純密室 Logo">
+      <div class="brand-text">
+        <h1>純密室</h1>
+        <p>Chun's Room</p>
+      </div>
+    </div>
     <a class="back-btn" href="index.html">返回首頁</a>
   </div>
 
+  <!-- 🎯 主視覺 -->
   <section class="hero">
     <img class="hero-logo" src="中壢連合店.png" alt="中壢連合店 Logo">
     <h2>中壢連合店</h2>
     <p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
   </section>
 
+  <!-- 🎮 卡片 -->
   <main class="container">
     <div class="cards">
 
@@ -582,9 +596,12 @@
     </div>
   </main>
 
+  <!-- 📖 lore -->
   <section class="lore-block">
     <p class="lore-text">
-     
+      純編得了一種不中二會死的病<br>
+      ------------------------------<br><br>
+
       傳說在中原夜市附近的協同街，<br>
       有一群叫做中壢連合的暴走族。<br>
       他們一天到晚招募新的成員，<br>
@@ -594,129 +611,99 @@
 
       沒錯——<br>
       那就是你在《我在暴走族的第一個夏祭》中，<br>
-      曾經短暫加入過的暴走族。<br><br>
+      曾經短暫接觸過的那群人。<br><br>
 
-      他們的總長開始想要有更大的地盤，<br>
-      就這樣尋尋覓覓的，<br>
-      找到了龍和三街的一處地點，<br>
-      他有義氣，與衝勁，其他啥都沒有。<br><br>
-
-      雖然有眾多小弟小妹們，<br>
-      但他們比總長更加年輕更一無所有。<br><br>
-
-      總長：『從今天起，這就是我們的另一處地盤了！！！！』<br><br>
-
-      總長對著空蕩蕩的空間這樣吼著，<br>
-      幻想著地盤未來的樣子，<br>
-      但是現實讓他對於這個空間一籌莫展，<br>
-      正在此時……<br><br>
-
-      特攻隊長：「我想要有雲！！」<br><br>
-
-      總長：『蛤？』<br><br>
-
-      特攻隊長：「一個酷酷的有閃電的雲」<br><br>
-
-      突然那一瞬間，<br>
-      總長知道他們的地盤最適合怎樣的風格了！<br><br>
-
-      他聯絡起了他生命中第一個收的小弟，<br>
-      我們姑且叫他 “康” 吧，<br><br>
-
-      總長：『康！我的地盤需要你，我的地盤風格是，要科技又要落魄，重點是佈置起來要便宜！！我們是一群很酷但還沒闖出頭的暴走族，能不能給我Cyberpunk? 這個最適合我們的理念了？』<br><br>
-
-      康雖然不知道總長在說什麼，<br>
-      但依然使命必達！<br><br>
-
-      康：「大概就是......低階生活與高等科技的結合的概念對嗎？」<br><br>
-
-      總長：『對對對對！』<br><br>
-
-      康：「要省錢就需要很多手做喔？」<br><br>
-
-      總長：『做！都做！』<br><br>
-
-      於是一點瘋狂，一點中二，<br>
-      一些酷酷的東西，<br>
-      再加上一點長久的幻想。<br><br>
-
-      成為了現在的——<br><br>
-
-      <strong class="neon">純密室・中壢連合店</strong>
+      （以下略）
     </p>
   </section>
 
+  <!-- 📞 資訊 -->
   <section class="info-block">
     <strong>聯絡電話：</strong>03-4163349<br>
     <strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br>
     <strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br>
     <strong>預約網址：</strong>
-    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">https://chunsroom.simplybook.asia/</a><br>
-    <strong>店面設計：</strong>
-    <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
+    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">
+      https://chunsroom.simplybook.asia/
+    </a>
   </section>
 
+  <!-- ⚙️ JS -->
   <script>
-window.addEventListener('load', () => {
-  const intro = document.getElementById('intro-screen');
-  const text = document.getElementById('intro-text');
-  const enterBtn = document.getElementById('enter-btn');
-  const video = document.getElementById('intro-video');
-  const hint = document.getElementById('sound-hint');
+    // 卡片動畫
+    const cards = document.querySelectorAll('.card');
 
-  // 第一段
-  text.innerHTML = "這個名字，你或許在哪裡聽過。";
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.15 });
 
-  // 2 秒後影片出現
-  setTimeout(() => {
-    video.classList.add('show');
-    video.play().catch(() => {});
-  }, 2000);
+    cards.forEach(card => observer.observe(card));
 
-  // 第二句（glitch）
-  setTimeout(() => {
-    const html = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-    const plain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫加入過的暴走族。";
+    // 開場
+    window.addEventListener('load', () => {
+      const intro = document.getElementById('intro-screen');
+      const text = document.getElementById('intro-text');
+      const enterBtn = document.getElementById('enter-btn');
+      const video = document.getElementById('intro-video');
+      const hint = document.getElementById('sound-hint');
 
-    text.innerHTML = html;
-    text.setAttribute('data-text', plain);
-    text.className = "intro-text glitch";
-  }, 5000);
+      // 第一段
+      text.innerHTML = "這個名字，你或許在哪裡聽過。";
 
-  // 第三句
-  setTimeout(() => {
-    text.removeAttribute('data-text');
-    text.innerHTML = "我們！更大了！";
-    text.className = "intro-text final-line";
-  }, 8000);
+      // 影片
+      setTimeout(() => {
+        video.classList.add('show');
+        video.play().catch(() => {});
+      }, 2000);
 
-  // ENTER 出現
-  setTimeout(() => {
-    enterBtn.classList.add('show');
-  }, 9000);
+      // 第二句
+      setTimeout(() => {
+        const html = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+        const plain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫加入過的暴走族。";
 
-  // 點擊開聲音（B方案）
-  let soundEnabled = false;
-  intro.addEventListener('click', () => {
-    if (soundEnabled) return;
+        text.innerHTML = html;
+        text.setAttribute('data-text', plain);
+        text.className = "intro-text glitch";
+      }, 5000);
 
-    video.muted = false;
-    video.volume = 1;
-    video.play().catch(() => {});
+      // 第三句
+      setTimeout(() => {
+        text.removeAttribute('data-text');
+        text.innerHTML = "我們！更大了！";
+        text.className = "intro-text final-line";
+      }, 8000);
 
-    soundEnabled = true;
-    if (hint) hint.classList.add('hide');
-  });
+      // ENTER
+      setTimeout(() => {
+        enterBtn.classList.add('show');
+      }, 9000);
 
-  // ENTER
-  enterBtn.addEventListener('click', () => {
-    intro.classList.add('hide');
-    setTimeout(() => {
-      intro.style.display = 'none';
-      video.pause();
-    }, 1000);
-  });
-});
-</script>
+      // 點擊開聲音
+      let soundEnabled = false;
+      intro.addEventListener('click', () => {
+        if (soundEnabled) return;
+
+        video.muted = false;
+        video.play().catch(() => {});
+        soundEnabled = true;
+
+        if (hint) hint.classList.add('hide');
+      });
+
+      // 進入
+      enterBtn.addEventListener('click', () => {
+        intro.classList.add('hide');
+        setTimeout(() => {
+          intro.style.display = 'none';
+          video.pause();
+        }, 1000);
+      });
+    });
+  </script>
+
 </body>
 </html>
