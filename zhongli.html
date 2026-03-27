@@ -80,31 +80,34 @@
       color: black;
     }
 
-  .hero {
+  /* ===== 首頁主視覺 ===== */
+.hero {
   text-align: center;
-  padding: 80px 20px 40px; /* 上大 下小 */
+  padding: 80px 20px 40px;
 }
 
-   .hero-logo {
-  width: 220px;
-  margin-bottom: 24px;
-}
+/* Logo */
+.hero-logo {
+  width: 280px;          /* 放大 logo */
   max-width: 100%;
+  margin-bottom: 10px;   /* 拉近與標題距離 */
   filter:
     drop-shadow(0 0 8px rgba(255, 208, 0, 0.35))
     drop-shadow(0 0 18px rgba(255, 150, 0, 0.22));
 }
 
-    .hero h2 {
+/* 主標題（中壢連合店） */
+.hero h2 {
   font-size: 42px;
-  margin-bottom: 12px;
+  margin: 0 0 12px;      /* 移除上方預設間距 */
   letter-spacing: 4px;
 }
+
+/* 副標文字 */
 .hero p {
-  font-size: 14px;
-  opacity: 0.7;
+  font-size: 16px;
+  color: #ddd;
   letter-spacing: 2px;
-  margin: 0;
 }
     .lore-block {
       max-width: 720px;
