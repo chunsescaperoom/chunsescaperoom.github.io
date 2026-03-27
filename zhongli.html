@@ -372,9 +372,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 32px;
+  gap: 28px;
   z-index: 9999;
-  opacity: 1;
+  overflow: hidden;
   transition: opacity 1s ease;
 }
 
@@ -383,8 +383,37 @@
   pointer-events: none;
 }
 
+/* 🎬 影片 */
+#intro-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  filter: brightness(0.48) contrast(1.05);
+}
+
+#intro-video.show {
+  opacity: 0.42;
+}
+
+/* 遮罩 */
+.intro-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.42), rgba(0,0,0,0.72)),
+    radial-gradient(circle at center, rgba(0,0,0,0.08), rgba(0,0,0,0.45));
+  z-index: 1;
+}
+
+/* 文字 */
 .intro-text {
   position: relative;
+  z-index: 2;
+  max-width: 900px;
   color: white;
   font-size: 32px;
   letter-spacing: 4px;
@@ -392,14 +421,12 @@
   padding: 20px;
   line-height: 1.8;
   text-shadow: 0 0 10px rgba(255,255,255,0.25);
-  animation: introGlow 1.8s ease-in-out infinite alternate;
 }
 
-/* 第二句啟動 glitch 後，把主文字本體藏掉 */
+/* glitch */
 .intro-text.glitch {
   color: transparent;
   text-shadow: none;
-  animation: none;
 }
 
 .intro-text.glitch::before,
@@ -410,27 +437,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  line-height: 1.8;
-  white-space: normal;
-  pointer-events: none;
 }
 
 .intro-text.glitch::before {
   color: #00ffff;
   transform: translate(-2px, 0);
-  opacity: 0.85;
   animation: introGlitch 0.25s steps(2) 6;
 }
 
 .intro-text.glitch::after {
   color: #ff00cc;
   transform: translate(2px, 0);
-  opacity: 0.85;
   animation: introGlitch 0.25s steps(2) 6 reverse;
 }
 
+/* 第三句 */
+.intro-text.final-line {
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 6px;
+}
+
+/* ENTER */
 .enter-btn {
+  position: relative;
+  z-index: 2;
   opacity: 0;
   pointer-events: none;
   padding: 12px 30px;
@@ -441,79 +472,59 @@
   font-size: 14px;
   letter-spacing: 4px;
   cursor: pointer;
-  text-shadow: 0 0 8px rgba(255,255,255,0.2);
-  box-shadow: 0 0 16px rgba(255,0,255,0.12);
-  transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+  transition: 0.5s;
+  transform: translateY(8px);
 }
 
 .enter-btn.show {
   opacity: 1;
   pointer-events: auto;
+  transform: translateY(0);
 }
 
-.enter-btn:hover {
-  background: rgba(255,255,255,0.12);
-  transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(255,0,255,0.22);
+/* 🔊 聲音提示 */
+.sound-hint {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 3;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  opacity: 0.8;
 }
 
-@keyframes introGlow {
-  from {
-    opacity: 0.75;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.sound-hint.hide {
+  opacity: 0;
 }
 
+/* glitch 動畫 */
 @keyframes introGlitch {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2px, 1px); }
-  50% { transform: translate(2px, -1px); }
-  75% { transform: translate(-1px, -2px); }
-  100% { transform: translate(1px, 2px); }
-}
-
-@media (max-width: 768px) {
-  .intro-text {
-    font-size: 22px;
-    letter-spacing: 2px;
-    line-height: 1.6;
-  }
-
-  .enter-btn {
-    font-size: 13px;
-    letter-spacing: 3px;
-    padding: 11px 24px;
-  }
-}
-   .enter-btn,
-.coming .title,
-.sub-en,
-.brand-text p,
-.info-link {
-  font-family: 'Orbitron', sans-serif;
+  0% { transform: translate(0,0); }
+  25% { transform: translate(-2px,1px); }
+  50% { transform: translate(2px,-1px); }
+  75% { transform: translate(-1px,-2px); }
+  100% { transform: translate(1px,2px); }
 }
   </style>
 </head>
 <body>
   <div id="intro-screen">
-    <div class="intro-text" id="intro-text">
-      這個名字，你或許在哪裡聽過。
-    </div>
-    <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
+
+  <video id="intro-video" muted playsinline preload="auto">
+    <source src="370411900_719052853319217_3592600588415833856_n.mp4" type="video/mp4">
+  </video>
+
+  <div class="intro-overlay"></div>
+
+  <div class="intro-text" id="intro-text">
+    這個名字，你或許在哪裡聽過。
   </div>
 
-  <div class="topbar">
-    <div class="brand">
-      <img src="純-白PNG.png" alt="純密室 Logo">
-      <div class="brand-text">
-        <h1>純密室</h1>
-        <p>Chun's Room</p>
-      </div>
-    </div>
+  <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
+
+  <div class="sound-hint" id="sound-hint">🔊 點擊開啟聲音</div>
+
+</div>
     <a class="back-btn" href="index.html">返回首頁</a>
   </div>
 
@@ -646,46 +657,66 @@
   </section>
 
   <script>
-    const cards = document.querySelectorAll('.card');
+window.addEventListener('load', () => {
+  const intro = document.getElementById('intro-screen');
+  const text = document.getElementById('intro-text');
+  const enterBtn = document.getElementById('enter-btn');
+  const video = document.getElementById('intro-video');
+  const hint = document.getElementById('sound-hint');
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    }, { threshold: 0.15 });
+  // 第一段
+  text.innerHTML = "這個名字，你或許在哪裡聽過。";
 
-    cards.forEach(card => observer.observe(card));
+  // 2 秒後影片出現
+  setTimeout(() => {
+    video.classList.add('show');
+    video.play().catch(() => {});
+  }, 2000);
 
-    window.addEventListener('load', () => {
-      const intro = document.getElementById('intro-screen');
-      const text = document.getElementById('intro-text');
-      const enterBtn = document.getElementById('enter-btn');
+  // 第二句（glitch）
+  setTimeout(() => {
+    const html = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+    const plain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫加入過的暴走族。";
 
-      setTimeout(() => {
-        const secondLineHtml = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-        const secondLinePlain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫加入過的暴走族。";
+    text.innerHTML = html;
+    text.setAttribute('data-text', plain);
+    text.className = "intro-text glitch";
+  }, 5000);
 
-        text.innerHTML = secondLineHtml;
-        text.setAttribute('data-text', secondLinePlain);
-        text.classList.add('glitch');
+  // 第三句
+  setTimeout(() => {
+    text.removeAttribute('data-text');
+    text.innerHTML = "我們！更大了！";
+    text.className = "intro-text final-line";
+  }, 8000);
 
-        setTimeout(() => {
-          enterBtn.classList.add('show');
-        }, 700);
-      }, 4200);
+  // ENTER 出現
+  setTimeout(() => {
+    enterBtn.classList.add('show');
+  }, 9000);
 
-      enterBtn.addEventListener('click', () => {
-        intro.classList.add('hide');
+  // 點擊開聲音（B方案）
+  let soundEnabled = false;
+  intro.addEventListener('click', () => {
+    if (soundEnabled) return;
 
-        setTimeout(() => {
-          intro.style.display = 'none';
-        }, 1000);
-      });
-    });
-  </script>
+    video.muted = false;
+    video.volume = 1;
+    video.play().catch(() => {});
+
+    soundEnabled = true;
+    if (hint) hint.classList.add('hide');
+  });
+
+  // ENTER
+  enterBtn.addEventListener('click', () => {
+    intro.classList.add('hide');
+    setTimeout(() => {
+      intro.style.display = 'none';
+      video.pause();
+    }, 1000);
+  });
+});
+</script>
 </body>
 </html>
