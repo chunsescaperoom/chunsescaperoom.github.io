@@ -526,21 +526,43 @@
     </div>
   </main>
 
-  <script>
-    const cards = document.querySelectorAll('.card');
+ <script>
+const cards = document.querySelectorAll('.card');
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    }, { threshold: 0.15 });
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+}, { threshold: 0.15 });
 
-    cards.forEach(card => observer.observe(card));
-  </script>
+cards.forEach(card => observer.observe(card));
+
+
+// ⭐⭐⭐ 新增：雙句開場 ⭐⭐⭐
+window.addEventListener('load', () => {
+  const intro = document.getElementById('intro-screen');
+  const text = document.getElementById('intro-text');
+
+  // 第一段 → 第二段
+  setTimeout(() => {
+    text.innerHTML = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+  }, 1800);
+
+  // 開始淡出
+  setTimeout(() => {
+    intro.classList.add('hide');
+  }, 4200);
+
+  // 完全移除
+  setTimeout(() => {
+    intro.style.display = 'none';
+  }, 5200);
+});
+</script>
 
 </body>
 </html>
