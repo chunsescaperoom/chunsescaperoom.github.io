@@ -15,520 +15,535 @@
   <!-- 共用CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-  margin: 0;
-  background:
-    radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
-    radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
-    linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
-  color: white;
-  overflow-x: hidden;
-}
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
+      radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
+      linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
+    color: white;
+    overflow-x: hidden;
+  }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(8, 8, 12, 0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 18px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(8, 8, 12, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
 
-    .brand img {
-      width: 54px;
-      object-fit: contain;
-      filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.2));
-    }
+  .brand img {
+    width: 54px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.2));
+  }
 
-    .brand-text h1 {
-      margin: 0;
-      font-size: 22px;
-      letter-spacing: 2px;
-    }
+  .brand-text h1 {
+    margin: 0;
+    font-size: 22px;
+    letter-spacing: 2px;
+  }
 
-    .brand-text p {
-      margin: 4px 0 0;
-      font-size: 13px;
-      color: rgba(255,255,255,0.65);
-      letter-spacing: 1px;
-    }
+  .brand-text p {
+    margin: 4px 0 0;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 1px;
+  }
 
-    .back-btn {
-      color: white;
-      border: 1px solid rgba(255,255,255,0.18);
-      padding: 10px 18px;
-      border-radius: 999px;
-      transition: 0.25s ease;
-      background: rgba(255,255,255,0.02);
-    }
+  .back-btn {
+    color: white;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 10px 18px;
+    border-radius: 999px;
+    transition: 0.25s ease;
+    background: rgba(255,255,255,0.02);
+  }
 
-    .back-btn:hover {
-      background: white;
-      color: black;
-    }
+  .back-btn:hover {
+    background: white;
+    color: black;
+  }
 
   /* ===== 首頁主視覺 ===== */
-.hero {
-  text-align: center;
-  padding: 80px 20px 40px;
-}
+  .hero {
+    text-align: center;
+    padding: 80px 20px 40px;
+  }
 
-/* Logo */
-.hero-logo {
-  width: 280px;          /* 放大 logo */
-  max-width: 100%;
-  margin-bottom: 10px;   /* 拉近與標題距離 */
-  filter:
-    drop-shadow(0 0 8px rgba(255, 208, 0, 0.35))
-    drop-shadow(0 0 18px rgba(255, 150, 0, 0.22));
-}
+  .hero-logo {
+    width: 280px;
+    max-width: 100%;
+    margin-bottom: 10px;
+    filter:
+      drop-shadow(0 0 8px rgba(255, 208, 0, 0.35))
+      drop-shadow(0 0 18px rgba(255, 150, 0, 0.22));
+  }
 
-/* 主標題（中壢連合店） */
-.hero h2 {
-  font-size: 42px;
-  margin: 0 0 12px;      /* 移除上方預設間距 */
-  letter-spacing: 4px;
-}
+  .hero h2 {
+    font-size: 42px;
+    margin: 0 0 12px;
+    letter-spacing: 4px;
+  }
 
-/* 副標文字 */
-.hero p {
-  font-size: 16px;
-  color: #ddd;
-  letter-spacing: 2px;
-}
-    .lore-block {
-      max-width: 720px;
-      margin: 40px auto 60px;
-      padding: 30px;
-      line-height: 2;
-      font-size: 15px;
-      background: rgba(255,255,255,0.03);
-      border-left: 3px solid #ff00cc;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 30px rgba(255, 0, 255, 0.08);
+  .hero p {
+    font-size: 16px;
+    color: #ddd;
+    letter-spacing: 2px;
+  }
+
+  .lore-block {
+    max-width: 720px;
+    margin: 40px auto 60px;
+    padding: 30px;
+    line-height: 2;
+    font-size: 15px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid #ff00cc;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.08);
+  }
+
+  .lore-text {
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+  }
+
+  .highlight {
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0,255,255,0.5);
+  }
+
+  .neon {
+    color: #ffd54f;
+    font-size: 20px;
+    text-shadow:
+      0 0 10px #ff00cc,
+      0 0 20px #ff00cc,
+      0 0 30px #ff00cc;
+  }
+
+  .info-block {
+    max-width: 720px;
+    margin: 0 auto 50px;
+    padding: 24px 30px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    line-height: 1.9;
+    color: rgba(255,255,255,0.78);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+  }
+
+  .info-block strong {
+    color: white;
+  }
+
+  .info-link {
+    color: #9fe8ff;
+    text-shadow: 0 0 8px rgba(0,255,255,0.25);
+    word-break: break-all;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 70px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+    justify-content: center;
+    gap: 28px;
+  }
+
+  .card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card {
+    background: linear-gradient(180deg, rgba(25,25,35,0.92), rgba(14,14,18,0.96));
+    border: 1px solid rgba(182, 0, 255, 0.22);
+    border-radius: 22px;
+    padding: 24px;
+    min-height: 100%;
+    box-shadow:
+      0 12px 30px rgba(0,0,0,0.35),
+      0 0 0 1px rgba(0,255,255,0.03) inset;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .card.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .card:hover {
+    transform: translateY(-8px) scale(1.01);
+    border-color: rgba(255, 0, 255, 0.45);
+    box-shadow:
+      0 16px 40px rgba(0,0,0,0.45),
+      0 0 22px rgba(255, 0, 255, 0.18);
+  }
+
+  .card:active {
+    transform: scale(0.98);
+  }
+
+  .card-poster {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .card-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .card:hover .card-poster img {
+    transform: scale(1.05);
+  }
+
+  .title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: #ffd54f;
+    text-shadow: 0 0 10px rgba(255, 213, 79, 0.22);
+  }
+
+  .sub-en {
+    display: block;
+    margin-top: 6px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: #9fe8ff;
+    text-shadow: 0 0 8px rgba(0,255,255,0.25);
+  }
+
+  .desc {
+    line-height: 1.9;
+    color: rgba(255,255,255,0.82);
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: linear-gradient(45deg, #ff00cc, #5b5bff);
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 0 14px rgba(255,0,204,0.25);
+    transition: 0.25s ease;
+  }
+
+  .card:hover .btn {
+    transform: translateY(-1px);
+    box-shadow: 0 0 18px rgba(255,0,204,0.35);
+  }
+
+  .coming {
+    border-style: dashed;
+    border-color: rgba(0,255,255,0.2);
+    background: linear-gradient(180deg, rgba(20,20,28,0.9), rgba(10,10,14,0.96));
+  }
+
+  .glitch {
+    position: relative;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255,0,255,0.3);
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .glitch::before {
+    color: #00ffff;
+    z-index: -1;
+    animation: glitch 1.1s infinite;
+  }
+
+  .glitch::after {
+    color: #ff00cc;
+    z-index: -2;
+    animation: glitch 1.4s infinite;
+  }
+
+  @keyframes glitch {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, -2px); }
+    80% { transform: translate(1px, 2px); }
+    100% { transform: translate(0); }
+  }
+
+  .disabled {
+    background: #2d2d35;
+    color: #888;
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+
+  /* ===== 開場演出 ===== */
+  #intro-screen {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease;
+    padding: 24px;
+    overflow: hidden;
+  }
+
+  #intro-screen.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .intro-text {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    color: white;
+    font-size: 32px;
+    letter-spacing: 4px;
+    text-align: center;
+    padding: 20px;
+    line-height: 1.8;
+    text-shadow: 0 0 10px rgba(255,255,255,0.25);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .intro-text.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .intro-text.fade-out {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  .intro-text.final-line {
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 6px;
+    text-shadow:
+      0 0 10px rgba(255,255,255,0.22),
+      0 0 18px rgba(255,0,204,0.18);
+  }
+
+  .intro-video-wrap {
+    width: min(78vw, 820px);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    background: #000;
+    transform: translateY(12px);
+    transition: opacity 0.8s ease, max-height 0.8s ease, transform 0.8s ease;
+  }
+
+  .intro-video-wrap.show {
+    max-height: 70vh;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #intro-video {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    background: #000;
+  }
+
+  .enter-btn {
+    opacity: 0;
+    pointer-events: none;
+    padding: 12px 30px;
+    border: 1px solid rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.04);
+    color: white;
+    border-radius: 999px;
+    font-size: 14px;
+    letter-spacing: 4px;
+    cursor: pointer;
+    text-shadow: 0 0 8px rgba(255,255,255,0.2);
+    box-shadow: 0 0 16px rgba(255,0,255,0.12);
+    transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    transform: translateY(12px);
+  }
+
+  .enter-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .enter-btn:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(255,0,255,0.22);
+  }
+
+  .sound-hint {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 3;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.75);
+    text-shadow: 0 0 6px rgba(0,0,0,0.6);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+  }
+
+  .sound-hint.hide {
+    opacity: 0;
+  }
+
+  @media (hover: none) {
+    .card img {
+      transform: scale(1.02);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding-top: 50px;
     }
 
-    .lore-text {
-      color: rgba(255,255,255,0.8);
-      margin: 0;
+    .hero h2 {
+      font-size: 32px;
     }
 
-    .highlight {
-      color: #00ffff;
-      text-shadow: 0 0 8px rgba(0,255,255,0.5);
-    }
-
-    .neon {
-      color: #ffd54f;
-      font-size: 20px;
-      text-shadow:
-        0 0 10px #ff00cc,
-        0 0 20px #ff00cc,
-        0 0 30px #ff00cc;
-    }
-
-    .info-block {
-      max-width: 720px;
-      margin: 0 auto 50px;
-      padding: 24px 30px;
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      line-height: 1.9;
-      color: rgba(255,255,255,0.78);
-      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-    }
-
-    .info-block strong {
-      color: white;
-    }
-
-    .info-link {
-      color: #9fe8ff;
-      text-shadow: 0 0 8px rgba(0,255,255,0.25);
-      word-break: break-all;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px 20px 70px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
-      justify-content: center;
-      gap: 28px;
-    }
-
-    .card-link {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .card {
-      background: linear-gradient(180deg, rgba(25,25,35,0.92), rgba(14,14,18,0.96));
-      border: 1px solid rgba(182, 0, 255, 0.22);
-      border-radius: 22px;
-      padding: 24px;
-      min-height: 100%;
-      box-shadow:
-        0 12px 30px rgba(0,0,0,0.35),
-        0 0 0 1px rgba(0,255,255,0.03) inset;
-      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    .card.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .card:hover {
-      transform: translateY(-8px) scale(1.01);
-      border-color: rgba(255, 0, 255, 0.45);
-      box-shadow:
-        0 16px 40px rgba(0,0,0,0.45),
-        0 0 22px rgba(255, 0, 255, 0.18);
-    }
-
-    .card:active {
-      transform: scale(0.98);
-    }
-.card-poster {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: 16px;
-  margin-bottom: 16px;
-  background: #0a0a0a;
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.card-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.4s ease;
-}
-
-.card:hover .card-poster img {
-  transform: scale(1.05);
-}
     .title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 14px;
-      color: #ffd54f;
-      text-shadow: 0 0 10px rgba(255, 213, 79, 0.22);
-    }
-
-    .sub-en {
-      display: block;
-      margin-top: 6px;
-      font-size: 14px;
-      letter-spacing: 2px;
-      color: #9fe8ff;
-      text-shadow: 0 0 8px rgba(0,255,255,0.25);
+      font-size: 24px;
     }
 
     .desc {
-      line-height: 1.9;
-      color: rgba(255,255,255,0.82);
-      font-size: 16px;
-      margin-bottom: 18px;
+      font-size: 15px;
     }
 
-    .btn {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 12px 22px;
-      border-radius: 999px;
-      background: linear-gradient(45deg, #ff00cc, #5b5bff);
-      color: white;
-      font-weight: 700;
-      letter-spacing: 1px;
-      box-shadow: 0 0 14px rgba(255,0,204,0.25);
-      transition: 0.25s ease;
+    .lore-block,
+    .info-block {
+      margin-left: 16px;
+      margin-right: 16px;
+      padding: 24px 20px;
     }
 
-    .card:hover .btn {
-      transform: translateY(-1px);
-      box-shadow: 0 0 18px rgba(255,0,204,0.35);
+    .intro-text {
+      font-size: 22px;
+      letter-spacing: 2px;
+      line-height: 1.6;
+      max-width: 92%;
     }
 
-    .coming {
-      border-style: dashed;
-      border-color: rgba(0,255,255,0.2);
-      background: linear-gradient(180deg, rgba(20,20,28,0.9), rgba(10,10,14,0.96));
+    .intro-text.final-line {
+      font-size: 28px;
+      letter-spacing: 4px;
     }
 
-    .glitch {
-      position: relative;
-      color: #fff;
-      text-shadow: 0 0 10px rgba(255,0,255,0.3);
+    .intro-video-wrap {
+      width: 92vw;
     }
 
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      overflow: hidden;
-      pointer-events: none;
+    .enter-btn {
+      font-size: 13px;
+      letter-spacing: 3px;
+      padding: 11px 24px;
     }
+  }
 
-    .glitch::before {
-      color: #00ffff;
-      z-index: -1;
-      animation: glitch 1.1s infinite;
-    }
-
-    .glitch::after {
-      color: #ff00cc;
-      z-index: -2;
-      animation: glitch 1.4s infinite;
-    }
-
-    @keyframes glitch {
-      0% { transform: translate(0); }
-      20% { transform: translate(-2px, 1px); }
-      40% { transform: translate(2px, -1px); }
-      60% { transform: translate(-1px, -2px); }
-      80% { transform: translate(1px, 2px); }
-      100% { transform: translate(0); }
-    }
-
-    .disabled {
-      background: #2d2d35;
-      color: #888;
-      box-shadow: none;
-      cursor: not-allowed;
-    }
-
-    @media (hover: none) {
-      .card img {
-        transform: scale(1.02);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding-top: 50px;
-      }
-
-      .hero h2 {
-        font-size: 32px;
-      }
-
-      .title {
-        font-size: 24px;
-      }
-
-      .desc {
-        font-size: 15px;
-      }
-
-      .lore-block,
-      .info-block {
-        margin-left: 16px;
-        margin-right: 16px;
-        padding: 24px 20px;
-      }
-    }
-    #intro-screen {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-  z-index: 9999;
-  overflow: hidden;
-  transition: opacity 1s ease;
-}
-
-#intro-screen.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* 🎬 影片 */
-#intro-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease;
-  filter: brightness(0.48) contrast(1.05);
-}
-
-#intro-video.show {
-  opacity: 0.42;
-}
-
-/* 遮罩 */
-.intro-overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, rgba(0,0,0,0.42), rgba(0,0,0,0.72)),
-    radial-gradient(circle at center, rgba(0,0,0,0.08), rgba(0,0,0,0.45));
-  z-index: 1;
-}
-
-/* 文字 */
-.intro-text {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  color: white;
-  font-size: 32px;
-  letter-spacing: 4px;
-  text-align: center;
-  padding: 20px;
-  line-height: 1.8;
-  text-shadow: 0 0 10px rgba(255,255,255,0.25);
-}
-
-/* glitch */
-.intro-text.glitch {
-  color: transparent;
-  text-shadow: none;
-}
-
-.intro-text.glitch::before,
-.intro-text.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.intro-text.glitch::before {
-  color: #00ffff;
-  transform: translate(-2px, 0);
-  animation: introGlitch 0.25s steps(2) 6;
-}
-
-.intro-text.glitch::after {
-  color: #ff00cc;
-  transform: translate(2px, 0);
-  animation: introGlitch 0.25s steps(2) 6 reverse;
-}
-
-/* 第三句 */
-.intro-text.final-line {
-  font-size: 40px;
-  font-weight: 700;
-  letter-spacing: 6px;
-}
-
-/* ENTER */
-.enter-btn {
-  position: relative;
-  z-index: 2;
-  opacity: 0;
-  pointer-events: none;
-  padding: 12px 30px;
-  border: 1px solid rgba(255,255,255,0.45);
-  background: rgba(255,255,255,0.04);
-  color: white;
-  border-radius: 999px;
-  font-size: 14px;
-  letter-spacing: 4px;
-  cursor: pointer;
-  transition: 0.5s;
-  transform: translateY(8px);
-}
-
-.enter-btn.show {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-/* 🔊 聲音提示 */
-.sound-hint {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  z-index: 3;
-  font-size: 12px;
-  color: rgba(255,255,255,0.7);
-  opacity: 0.8;
-}
-
-.sound-hint.hide {
-  opacity: 0;
-}
-
-/* glitch 動畫 */
-@keyframes introGlitch {
-  0% { transform: translate(0,0); }
-  25% { transform: translate(-2px,1px); }
-  50% { transform: translate(2px,-1px); }
-  75% { transform: translate(-1px,-2px); }
-  100% { transform: translate(1px,2px); }
-}
-  </style>
+  .enter-btn,
+  .coming .title,
+  .sub-en,
+  .brand-text p,
+  .info-link {
+    font-family: 'Orbitron', sans-serif;
+  }
+</style>
 </head>
 <body>
-
-  <!-- 🎬 開場 -->
   <div id="intro-screen">
-
-    <video id="intro-video" muted playsinline preload="auto">
-      <source src="370411900_719052853319217_3592600588415833856_n.mp4" type="video/mp4">
-    </video>
-
-    <div class="intro-overlay"></div>
-
     <div class="intro-text" id="intro-text">
       這個名字，你或許在哪裡聽過。
+    </div>
+
+    <div class="intro-video-wrap" id="intro-video-wrap">
+      <video id="intro-video" muted playsinline preload="auto">
+        <source src="370411900_719052853319217_3592600588415833856_n.mp4" type="video/mp4">
+        你的瀏覽器不支援影片播放
+      </video>
     </div>
 
     <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
 
     <div class="sound-hint" id="sound-hint">🔊 點擊開啟聲音</div>
-
   </div>
 
-  <!-- 🧱 Topbar（你剛剛壞掉的地方） -->
   <div class="topbar">
     <div class="brand">
       <img src="純-白PNG.png" alt="純密室 Logo">
@@ -540,14 +555,12 @@
     <a class="back-btn" href="index.html">返回首頁</a>
   </div>
 
-  <!-- 🎯 主視覺 -->
   <section class="hero">
     <img class="hero-logo" src="中壢連合店.png" alt="中壢連合店 Logo">
     <h2>中壢連合店</h2>
     <p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
   </section>
 
-  <!-- 🎮 卡片 -->
   <main class="container">
     <div class="cards">
 
@@ -596,12 +609,8 @@
     </div>
   </main>
 
-  <!-- 📖 lore -->
   <section class="lore-block">
     <p class="lore-text">
-      純編得了一種不中二會死的病<br>
-      ------------------------------<br><br>
-
       傳說在中原夜市附近的協同街，<br>
       有一群叫做中壢連合的暴走族。<br>
       他們一天到晚招募新的成員，<br>
@@ -611,99 +620,158 @@
 
       沒錯——<br>
       那就是你在《我在暴走族的第一個夏祭》中，<br>
-      曾經短暫接觸過的那群人。<br><br>
+      曾經短暫加入過的暴走族。<br><br>
 
-      （以下略）
+      他們的總長開始想要有更大的地盤，<br>
+      就這樣尋尋覓覓的，<br>
+      找到了龍和三街的一處地點，<br>
+      他有義氣，與衝勁，其他啥都沒有。<br><br>
+
+      雖然有眾多小弟小妹們，<br>
+      但他們比總長更加年輕更一無所有。<br><br>
+
+      總長：『從今天起，這就是我們的另一處地盤了！！！！』<br><br>
+
+      總長對著空蕩蕩的空間這樣吼著，<br>
+      幻想著地盤未來的樣子，<br>
+      但是現實讓他對於這個空間一籌莫展，<br>
+      正在此時……<br><br>
+
+      特攻隊長：「我想要有雲！！」<br><br>
+
+      總長：『蛤？』<br><br>
+
+      特攻隊長：「一個酷酷的有閃電的雲」<br><br>
+
+      突然那一瞬間，<br>
+      總長知道他們的地盤最適合怎樣的風格了！<br><br>
+
+      他聯絡起了他生命中第一個收的小弟，<br>
+      我們姑且叫他 “康” 吧，<br><br>
+
+      總長：『康！我的地盤需要你，我的地盤風格是，要科技又要落魄，重點是佈置起來要便宜！！我們是一群很酷但還沒闖出頭的暴走族，能不能給我Cyberpunk? 這個最適合我們的理念了？』<br><br>
+
+      康雖然不知道總長在說什麼，<br>
+      但依然使命必達！<br><br>
+
+      康：「大概就是......低階生活與高等科技的結合的概念對嗎？」<br><br>
+
+      總長：『對對對對！』<br><br>
+
+      康：「要省錢就需要很多手做喔？」<br><br>
+
+      總長：『做！都做！』<br><br>
+
+      於是一點瘋狂，一點中二，<br>
+      一些酷酷的東西，<br>
+      再加上一點長久的幻想。<br><br>
+
+      成為了現在的——<br><br>
+
+      <strong class="neon">純密室・中壢連合店</strong>
     </p>
   </section>
 
-  <!-- 📞 資訊 -->
   <section class="info-block">
     <strong>聯絡電話：</strong>03-4163349<br>
     <strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br>
     <strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br>
     <strong>預約網址：</strong>
-    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">
-      https://chunsroom.simplybook.asia/
-    </a>
+    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">https://chunsroom.simplybook.asia/</a><br>
+    <strong>設計：</strong>
+    <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
   </section>
 
-  <!-- ⚙️ JS -->
   <script>
-    // 卡片動畫
     const cards = document.querySelectorAll('.card');
 
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
         }
       });
     }, { threshold: 0.15 });
 
     cards.forEach(card => observer.observe(card));
 
-    // 開場
     window.addEventListener('load', () => {
       const intro = document.getElementById('intro-screen');
       const text = document.getElementById('intro-text');
       const enterBtn = document.getElementById('enter-btn');
-      const video = document.getElementById('intro-video');
-      const hint = document.getElementById('sound-hint');
+      const introVideo = document.getElementById('intro-video');
+      const introVideoWrap = document.getElementById('intro-video-wrap');
+      const soundHint = document.getElementById('sound-hint');
 
-      // 第一段
-      text.innerHTML = "這個名字，你或許在哪裡聽過。";
+      let soundEnabled = false;
 
-      // 影片
+      // 第一句：淡入
       setTimeout(() => {
-        video.classList.add('show');
-        video.play().catch(() => {});
-      }, 2000);
+        text.classList.add('show');
+      }, 300);
 
-      // 第二句
+      // 第一句：消失
       setTimeout(() => {
-        const html = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-        const plain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫加入過的暴走族。";
+        text.classList.remove('show');
+        text.classList.add('fade-out');
+      }, 2600);
 
-        text.innerHTML = html;
-        text.setAttribute('data-text', plain);
-        text.className = "intro-text glitch";
-      }, 5000);
-
-      // 第三句
+      // 影片：出現並播放
       setTimeout(() => {
-        text.removeAttribute('data-text');
-        text.innerHTML = "我們！更大了！";
-        text.className = "intro-text final-line";
+        text.classList.remove('fade-out');
+        introVideoWrap.classList.add('show');
+        introVideo.play().catch(() => {});
+      }, 3400);
+
+      // 第二句：出現
+      setTimeout(() => {
+        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+        text.className = "intro-text show";
+      }, 5200);
+
+      // 第二句：消失
+      setTimeout(() => {
+        text.classList.remove('show');
+        text.classList.add('fade-out');
       }, 8000);
 
-      // ENTER
+      // 第三句：出現
+      setTimeout(() => {
+        text.innerHTML = "我們！更大了！";
+        text.className = "intro-text final-line show";
+      }, 8900);
+
+      // ENTER：浮出
       setTimeout(() => {
         enterBtn.classList.add('show');
-      }, 9000);
+      }, 9800);
 
       // 點擊開聲音
-      let soundEnabled = false;
       intro.addEventListener('click', () => {
         if (soundEnabled) return;
 
-        video.muted = false;
-        video.play().catch(() => {});
+        introVideo.muted = false;
+        introVideo.volume = 1;
+        introVideo.play().catch(() => {});
         soundEnabled = true;
 
-        if (hint) hint.classList.add('hide');
+        if (soundHint) {
+          soundHint.classList.add('hide');
+        }
       });
 
-      // 進入
+      // 點 ENTER 後關閉開場
       enterBtn.addEventListener('click', () => {
         intro.classList.add('hide');
+
         setTimeout(() => {
           intro.style.display = 'none';
-          video.pause();
+          introVideo.pause();
         }, 1000);
       });
     });
   </script>
-
 </body>
 </html>
