@@ -198,23 +198,7 @@
   opacity: 1;
   transform: translateY(0);
 }
-    <script>
-const cards = document.querySelectorAll('.card');
-
-cards.forEach((card, index) => {
-  card.style.transitionDelay = `${index * 0.1}s`;
-});
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    }
-  });
-}, { threshold: 0.2 });
-
-cards.forEach(card => observer.observe(card));
-</script>
+    
   </style>
 </head>
 
