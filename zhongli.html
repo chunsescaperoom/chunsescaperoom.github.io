@@ -658,22 +658,23 @@ const observer = new IntersectionObserver(entries => {
 
 cards.forEach(card => observer.observe(card));
 
-
-// ⭐⭐⭐ 新增：雙句開場 ⭐⭐⭐
 window.addEventListener('load', () => {
   const intro = document.getElementById('intro-screen');
   const text = document.getElementById('intro-text');
+  const enterBtn = document.getElementById('enter-btn');
 
-  let step = 1;
-
-  // 第一段 → 第二段
   setTimeout(() => {
-  text.innerHTML = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
-  step = 2;
-}, 3000);
+    const secondLine = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+    text.innerHTML = secondLine;
+    text.setAttribute('data-text', text.textContent);
+    text.classList.add('glitch');
 
-  // 點擊關閉
-  intro.addEventListener('click', () => {
+    setTimeout(() => {
+      enterBtn.classList.add('show');
+    }, 700);
+  }, 4200);
+
+  enterBtn.addEventListener('click', () => {
     intro.classList.add('hide');
 
     setTimeout(() => {
