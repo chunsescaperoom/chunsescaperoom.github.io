@@ -3,9 +3,16 @@ body {
   margin: 0;
   font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   color: white;
+
+  background:
+    radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
+    radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
+    linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
+
+  overflow-x: hidden;
 }
 
-/* ===== 基本設定（可選） ===== */
+/* ===== 基本設定 ===== */
 * {
   box-sizing: border-box;
 }
