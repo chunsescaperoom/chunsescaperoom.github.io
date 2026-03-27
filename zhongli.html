@@ -683,95 +683,108 @@
   </section>
 
   <script>
-    const cards = document.querySelectorAll('.card');
+  const cards = document.querySelectorAll('.card');
 
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    }, { threshold: 0.15 });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      } else {
+        entry.target.classList.remove('show');
+      }
+    });
+  }, { threshold: 0.15 });
 
-    cards.forEach(card => observer.observe(card));
+  cards.forEach(card => observer.observe(card));
 
-    window.addEventListener('load', () => {
-      const intro = document.getElementById('intro-screen');
-      const text = document.getElementById('intro-text');
-      const enterBtn = document.getElementById('enter-btn');
-      const introVideo = document.getElementById('intro-video');
-      const introVideoWrap = document.getElementById('intro-video-wrap');
-      const soundHint = document.getElementById('sound-hint');
+  window.addEventListener('load', () => {
+    const intro = document.getElementById('intro-screen');
+    const text = document.getElementById('intro-text');
+    const enterBtn = document.getElementById('enter-btn');
+    const introVideo = document.getElementById('intro-video');
+    const introVideoWrap = document.getElementById('intro-video-wrap');
+    const soundHint = document.getElementById('sound-hint');
 
-      let soundEnabled = false;
+    let soundEnabled = false;
+    let sequenceStarted = false;
 
-      // 第一句：淡入
-      setTimeout(() => {
-        text.classList.add('show');
-      }, 300);
+    // 第一句：淡入
+    setTimeout(() => {
+      text.classList.add('show');
+    }, 300);
 
-      // 第一句：消失
-      setTimeout(() => {
-        text.classList.remove('show');
-        text.classList.add('fade-out');
-      }, 2600);
+    // 第一句：消失
+    setTimeout(() => {
+      text.classList.remove('show');
+      text.classList.add('fade-out');
+    }, 2600);
 
-      // 影片：出現並播放
-      setTimeout(() => {
-        text.classList.remove('fade-out');
-        introVideoWrap.classList.add('show');
-        introVideo.play().catch(() => {});
-      }, 3400);
+    // 顯示影片並播放
+    setTimeout(() => {
+      text.classList.remove('fade-out');
+      introVideoWrap.classList.add('show');
+      introVideo.play().catch(() => {});
+    }, 3400);
+
+    // 影片播完後，開始後半段流程
+    function startAfterVideo() {
+      if (sequenceStarted) return;
+      sequenceStarted = true;
 
       // 第二句：出現
-      setTimeout(() => {
-        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-        text.className = "intro-text show";
-      }, 5200);
+      text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+      text.className = "intro-text show";
 
       // 第二句：消失
       setTimeout(() => {
         text.classList.remove('show');
         text.classList.add('fade-out');
-      }, 8000);
+      }, 2800);
 
       // 第三句：出現
       setTimeout(() => {
         text.innerHTML = "我們！更大了！";
         text.className = "intro-text final-line show";
-      }, 8900);
+      }, 3900);
 
       // ENTER：浮出
       setTimeout(() => {
         enterBtn.classList.add('show');
-      }, 9800);
+      }, 4900);
+    }
 
-      // 點擊開聲音
-      intro.addEventListener('click', () => {
-        if (soundEnabled) return;
+    // ✅ 影片播完才進下一段
+    introVideo.addEventListener('ended', startAfterVideo);
 
-        introVideo.muted = false;
-        introVideo.volume = 1;
-        introVideo.play().catch(() => {});
-        soundEnabled = true;
-
-        if (soundHint) {
-          soundHint.classList.add('hide');
-        }
-      });
-
-      // 點 ENTER 後關閉開場
-      enterBtn.addEventListener('click', () => {
-        intro.classList.add('hide');
-
-        setTimeout(() => {
-          intro.style.display = 'none';
-          introVideo.pause();
-        }, 1000);
-      });
+    // 如果影片因為 loop / 其他原因沒觸發 ended，可手動保底
+    introVideo.addEventListener('error', () => {
+      startAfterVideo();
     });
-  </script>
+
+    // 點擊開聲音
+    intro.addEventListener('click', () => {
+      if (soundEnabled) return;
+
+      introVideo.muted = false;
+      introVideo.volume = 1;
+      introVideo.play().catch(() => {});
+      soundEnabled = true;
+
+      if (soundHint) {
+        soundHint.classList.add('hide');
+      }
+    });
+
+    // 點 ENTER 後關閉開場
+    enterBtn.addEventListener('click', () => {
+      intro.classList.add('hide');
+
+      setTimeout(() => {
+        intro.style.display = 'none';
+        introVideo.pause();
+      }, 1000);
+    });
+  });
+</script>
 </body>
 </html>
