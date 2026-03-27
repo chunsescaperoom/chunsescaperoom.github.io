@@ -462,12 +462,13 @@
   </style>
 </head>
 <body>
-<div id="intro-screen">
-  <div class="intro-text" id="intro-text">
-    這個名字，你或許在哪裡聽過。
+  <div id="intro-screen">
+    <div class="intro-text" id="intro-text">
+      這個名字，你或許在哪裡聽過。
+    </div>
+    <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
   </div>
-  <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
-</div>
+
   <div class="topbar">
     <div class="brand">
       <img src="純-白PNG.png" alt="純密室 Logo">
@@ -484,6 +485,54 @@
     <h2>中壢連合店</h2>
     <p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
   </section>
+
+  <main class="container">
+    <div class="cards">
+
+      <a class="card-link" href="zhanli.html">
+        <div class="card">
+          <div class="card-poster">
+            <img src="戰慄品直版.png" alt="戰慄品海報">
+          </div>
+
+          <div class="title">
+            戰慄品
+            <span class="sub-en">OVER MY DEAD BODY</span>
+          </div>
+
+          <div class="desc">
+            哈夫伊貝夏村流傳著關於幽靈的傳說，<br>
+            渾身是血、面目全非的女孩，<br>
+            束縛在那罕無人煙的廢墟之中，<br>
+            聽說見過女孩者，或傷或瘋、不得解脫。<br><br>
+
+            你們是羅罕國退役的軍人，有勇有謀，<br>
+            誓要親手破解傳說惡咒，<br>
+            誰知話音剛落，你們便失去所有......
+          </div>
+
+          <div class="btn">進入遊戲</div>
+        </div>
+      </a>
+
+      <div class="card coming">
+        <div class="title glitch" data-text="COMING SOON">
+          COMING SOON
+          <span class="sub-en">NEW MISSION LOADING...</span>
+        </div>
+
+        <div class="desc">
+          系統載入中……<br>
+          未知任務即將解鎖。<br><br>
+          訊號不穩，資料殘缺。<br>
+          下一個故事，尚未對外公開。
+        </div>
+
+        <div class="btn disabled">尚未開放</div>
+      </div>
+
+    </div>
+  </main>
 
   <section class="lore-block">
     <p class="lore-text">
@@ -561,91 +610,47 @@
     <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
   </section>
 
-  <main class="container">
-    <div class="cards">
+  <script>
+    const cards = document.querySelectorAll('.card');
 
-      <a class="card-link" href="zhanli.html">
-        <div class="card">
-          <div class="title">
-            戰慄品
-            <span class="sub-en">OVER MY DEAD BODY</span>
-          </div>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    }, { threshold: 0.15 });
 
-          <div class="desc">
-            哈夫伊貝夏村流傳著關於幽靈的傳說，<br>
-            渾身是血、面目全非的女孩，<br>
-            束縛在那罕無人煙的廢墟之中，<br>
-            聽說見過女孩者，或傷或瘋、不得解脫。<br><br>
+    cards.forEach(card => observer.observe(card));
 
-            你們是羅罕國退役的軍人，有勇有謀，<br>
-            誓要親手破解傳說惡咒，<br>
-            誰知話音剛落，你們便失去所有......
-          </div>
+    window.addEventListener('load', () => {
+      const intro = document.getElementById('intro-screen');
+      const text = document.getElementById('intro-text');
+      const enterBtn = document.getElementById('enter-btn');
 
-          <div class="btn">進入遊戲</div>
-        </div>
-      </a>
+      setTimeout(() => {
+        const secondLineHtml = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
+        const secondLinePlain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫接觸過的那群人。";
 
-      <div class="card coming">
-        <div class="title glitch" data-text="COMING SOON">
-          COMING SOON
-          <span class="sub-en">NEW MISSION LOADING...</span>
-        </div>
+        text.innerHTML = secondLineHtml;
+        text.setAttribute('data-text', secondLinePlain);
+        text.classList.add('glitch');
 
-        <div class="desc">
-          系統載入中……<br>
-          未知任務即將解鎖。<br><br>
-          訊號不穩，資料殘缺。<br>
-          下一個故事，尚未對外公開。
-        </div>
+        setTimeout(() => {
+          enterBtn.classList.add('show');
+        }, 700);
+      }, 4200);
 
-        <div class="btn disabled">尚未開放</div>
-      </div>
+      enterBtn.addEventListener('click', () => {
+        intro.classList.add('hide');
 
-    </div>
-  </main>
-
- <script>
-const cards = document.querySelectorAll('.card');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show');
-    }
-  });
-}, { threshold: 0.15 });
-
-cards.forEach(card => observer.observe(card));
-
-window.addEventListener('load', () => {
-  const intro = document.getElementById('intro-screen');
-  const text = document.getElementById('intro-text');
-  const enterBtn = document.getElementById('enter-btn');
-
-  setTimeout(() => {
-    const secondLineHtml = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫接觸過的那群人。";
-    const secondLinePlain = "沒錯——那就是你在《我在暴走族的第一個夏祭》中，曾短暫接觸過的那群人。";
-
-    text.innerHTML = secondLineHtml;
-    text.setAttribute('data-text', secondLinePlain);
-    text.classList.add('glitch');
-
-    setTimeout(() => {
-      enterBtn.classList.add('show');
-    }, 700);
-  }, 4200);
-
-  enterBtn.addEventListener('click', () => {
-    intro.classList.add('hide');
-
-    setTimeout(() => {
-      intro.style.display = 'none';
-    }, 1000);
-  });
-});
-</script>
+        setTimeout(() => {
+          intro.style.display = 'none';
+        }, 1000);
+      });
+    });
+  </script>
 </body>
 </html>
