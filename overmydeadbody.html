@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>戰慄品｜OVER MY DEAD BODY</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
+        radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
+        linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 12, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.2));
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .back-btn {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .back-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .hero-banner {
+      position: relative;
+      width: 100%;
+      min-height: 48vh;
+      max-height: 680px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .hero-banner img {
+      width: 100%;
+      height: 100%;
+      min-height: 48vh;
+      max-height: 680px;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.75);
+    }
+
+    .hero-banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.72)),
+        radial-gradient(circle at center, rgba(255,0,204,0.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      left: 50%;
+      bottom: 38px;
+      transform: translateX(-50%);
+      width: min(1100px, calc(100% - 32px));
+      z-index: 2;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #9fe8ff;
+      font-size: 13px;
+      letter-spacing: 2px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 0;
+      font-size: clamp(36px, 6vw, 64px);
+      line-height: 1.05;
+      letter-spacing: 4px;
+      text-shadow: 0 0 14px rgba(255,255,255,0.14);
+    }
+
+    .hero-subtitle {
+      margin-top: 10px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #9fe8ff;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    .page-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 34px 20px 80px;
+    }
+
+    .summary-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      margin-top: 8px;
+      margin-bottom: 30px;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.22);
+    }
+
+    .panel-title {
+      margin: 0 0 14px;
+      font-size: 22px;
+      letter-spacing: 1px;
+      color: #ffd54f;
+    }
+
+    .story-text {
+      color: rgba(255,255,255,0.84);
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .meta-item {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .meta-label {
+      font-size: 13px;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .meta-value {
+      font-size: 18px;
+      color: white;
+      font-weight: 700;
+    }
+
+    .meta-note {
+      margin-top: 14px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .notice-stack {
+      display: grid;
+      gap: 20px;
+    }
+
+    .notice-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 24px 26px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.18);
+    }
+
+    .notice-box h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: #ffd54f;
+      letter-spacing: 1px;
+    }
+
+    .notice-box p,
+    .notice-box li {
+      color: rgba(255,255,255,0.82);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .notice-box ul,
+    .notice-box ol {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    .bullet-space li + li,
+    .number-space li + li {
+      margin-top: 10px;
+    }
+
+    .highlight-line {
+      color: #9fe8ff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.25);
+    }
+
+    .strong-line {
+      color: #ffd54f;
+      font-weight: 700;
+    }
+
+    .cta-box {
+      margin-top: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 30px 26px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+    }
+
+    .cta-box h3 {
+      margin: 0 0 10px;
+      font-size: 28px;
+      letter-spacing: 2px;
+    }
+
+    .cta-box p {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.9;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      transition: 0.25s ease;
+    }
+
+    .cta-btn.primary {
+      background: linear-gradient(45deg, #ff00cc, #5b5bff);
+      color: white;
+      box-shadow: 0 0 16px rgba(255,0,204,0.22);
+    }
+
+    .cta-btn.secondary {
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.02);
+      color: white;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .fb-link {
+      color: #9fe8ff;
+      word-break: break-all;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .summary-card {
+        grid-template-columns: 1fr;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-overlay {
+        bottom: 24px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .topbar {
+        padding: 16px 18px;
+      }
+
+      .hero-banner {
+        min-height: 34vh;
+      }
+
+      .hero-banner img {
+        min-height: 34vh;
+      }
+
+      .hero-title {
+        letter-spacing: 2px;
+      }
+
+      .panel,
+      .notice-box,
+      .cta-box {
+        padding: 22px 20px;
+      }
+
+      .story-text {
+        font-size: 15px;
+      }
+
+      .cta-box h3 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="brand">
+      <img src="純-白PNG.png" alt="純密室 Logo">
+      <div class="brand-text">
+        <h1>純密室</h1>
+        <p>Chun's Room</p>
+      </div>
+    </div>
+    <a class="back-btn" href="zhongli.html">返回中壢連合店</a>
+  </div>
+
+  <section class="hero-banner">
+    <img src="戰慄品紀念票券-1.png" alt="戰慄品橫式海報">
+    <div class="hero-overlay">
+      <div class="hero-kicker">Zhongli Union Mission</div>
+      <h1 class="hero-title">戰慄品</h1>
+      <div class="hero-subtitle">OVER MY DEAD BODY</div>
+    </div>
+  </section>
+
+  <main class="page-wrap">
+    <section class="summary-card">
+      <div class="panel">
+        <h2 class="panel-title">遊戲介紹</h2>
+        <div class="story-text">
+          哈夫伊貝夏村流傳著關於幽靈的傳說，<br>
+          渾身是血、面目全非的女孩，<br>
+          束縛在那罕無人煙的廢墟之中，<br>
+          聽說見過女孩者，或傷或瘋、不得解脫。<br><br>
+
+          你們是羅罕國退役的軍人，有勇有謀，<br>
+          誓要親手破解傳說惡咒，<br>
+          誰知話音剛落，你們便失去所有......
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2 class="panel-title">遊戲資訊</h2>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <div class="meta-label">價格</div>
+            <div class="meta-value">700 / 人</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">人數限制</div>
+            <div class="meta-value">4～6 人</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">遊戲時間</div>
+            <div class="meta-value">70 分鐘</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">總體停留時間</div>
+            <div class="meta-value">100 分鐘</div>
+          </div>
+        </div>
+
+        <div class="meta-note">
+          <div class="strong-line">✔ 預約以場次為單位，只需先支付包場訂金 500 元</div>
+          <div>✔ 遊玩人數不足 4 人及超過 6 人將導致遊戲無法進行</div>
+          <div>* 未能成團不退訂金</div>
+          <br>
+          <div class="highlight-line">✔ 因人力關係，預約平日麻煩私訊粉絲專頁，由專人為您做安排</div>
+          <div class="fb-link">https://www.facebook.com/chunsescaperoom</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice-stack">
+      <div class="notice-box">
+        <h3>參與限制</h3>
+        <ul class="bullet-space">
+          <li>十歲以下人員須經監護人／家長同意，始得參與《戰慄品》密室脫逃。</li>
+          <li>有下列疾病、症狀之人員，嚴禁參加，如：心臟病、高血壓、飲酒、宿醉、孕婦、幽閉恐懼、夜盲症等相關症狀。</li>
+        </ul>
+      </div>
+
+      <div class="notice-box">
+        <h3>注意事項｜遲到規範</h3>
+        <ol class="number-space">
+          <li>請於遊戲預約時間，提前 10 分鐘到場報到，遊玩人數到齊，始算報到完成。</li>
+          <li>超過遊戲預約時間 10 分鐘，將會壓縮遊戲時間。</li>
+          <li>超過遊戲預約時間 15 分鐘，為顧及其他顧客權益，該場次將無條件取消，恕不退費。</li>
+        </ol>
+      </div>
+
+      <div class="notice-box">
+        <h3>預約注意事項</h3>
+        <ul class="bullet-space">
+          <li>線上預約後，須於系統指定時間內完成付款交易。</li>
+          <li>預約成功信件將發送到您的信箱，收到成功信件即代表訂單成立。</li>
+          <li>如在信箱（促銷內容、垃圾郵件）中未收到成功信件，代表付款失敗未完成預約，請重新預訂。</li>
+        </ul>
+      </div>
+
+      <div class="notice-box">
+        <h3>更改場次</h3>
+        <ol class="number-space">
+          <li>請於營業時間直接來電告知，服務人員將按下列規定協助更改作業。</li>
+          <li>開場前 24 小時以上來電，可協助更改日期及場次。</li>
+          <li>開場前 2 小時以上、不足 24 小時來電，可依當日預約狀況協助更換當日場次，恕無法更換其他日期場次。</li>
+          <li>開場前不足 2 小時來電，恕無法更改場次。</li>
+          <li>若遊戲當日逢颱風或地震等不可抗拒因素（以當地縣市政府發佈狀況為準），純密室會保留訂金，並於下個營業日協助更改遊戲日期及場次。</li>
+          <li>非營業時間告知，皆以下個營業日計算及辦理。</li>
+        </ol>
+      </div>
+
+      <div class="notice-box">
+        <h3>訂單取消</h3>
+        <ol class="number-space">
+          <li>請於營業時間直接來電告知場次相關資料及取消原因，服務人員將按下列規定協助辦理。</li>
+          <li>出發日 5 天前（不含出發日）通知取消，退回全額款項；若當初選 ATM 付款，會再扣除手續費 50 元。</li>
+          <li>出發日 0～4 天前不接受取消更改，並不予退回款項。</li>
+          <li>範例：出發日為 1/6，則 1/1 算出發日 5 天前。</li>
+          <li>若因颱風或地震等不可抗拒因素（以當地縣市政府發佈狀況為準），純密室會保留訂金並於下個營業日協助更改遊戲日期及場次。</li>
+          <li>非營業時間告知，皆以下個營業日計算及辦理。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="cta-box">
+      <h3>準備好直面傳說了嗎？</h3>
+      <p>
+        平日預約請先私訊粉絲專頁，由專人協助安排。<br>
+        更多最新訊息也請至 FB 粉絲頁搜尋「純密室」。
+      </p>
+
+      <div class="cta-actions">
+        <a class="cta-btn primary" href="https://www.facebook.com/chunsescaperoom" target="_blank">前往 FB 粉絲專頁</a>
+        <a class="cta-btn secondary" href="zhongli.html">返回中壢連合店</a>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
