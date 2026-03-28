@@ -735,8 +735,6 @@
     setTimeout(() => {
       text.classList.remove('fade-out');
       introVideoWrap.classList.add('show');
-
-      // 只嘗試播放，不再反覆 load()
       introVideo.play().catch(() => {});
     }, 3400);
 
@@ -755,15 +753,16 @@
       }, 2800);
 
       // 第三句：出現
-setTimeout(() => {
-  text.innerHTML = "我們！更大了！";
-  text.className = "intro-text final-line show";
-}, 5200);
+      setTimeout(() => {
+        text.innerHTML = "我們！更大了！";
+        text.className = "intro-text final-line show";
+      }, 5200);
 
-// ENTER：浮出（晚一點）
-setTimeout(() => {
-  enterBtn.classList.add('show');
-}, 6200);
+      // ENTER：浮出
+      setTimeout(() => {
+        enterBtn.classList.add('show');
+      }, 6200);
+    }
 
     // 影片出現後等 16 秒
     setTimeout(() => {
