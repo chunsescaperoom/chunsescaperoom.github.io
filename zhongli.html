@@ -708,6 +708,13 @@
     const text = document.getElementById('intro-text');
     const enterBtn = document.getElementById('enter-btn');
     const introVideo = document.getElementById('intro-video');
+   const isMobile = window.innerWidth <= 768;
+
+if (isMobile) {
+  introVideo.src = "intro-mobile.mp4";
+} else {
+  introVideo.src = "intro-desktop.mp4";
+}
     const introVideoWrap = document.getElementById('intro-video-wrap');
     const soundHint = document.getElementById('sound-hint');
 
