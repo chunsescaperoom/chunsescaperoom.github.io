@@ -697,124 +697,135 @@
   </section>
 
   <script>
-    history.scrollRestoration = 'manual';
+  history.scrollRestoration = 'manual';
 
-    function goBack(event) {
-      event.preventDefault();
+  function goBack(event) {
+    event.preventDefault();
 
-      if (window.history.length > 1 && document.referrer) {
-        window.history.back();
+    if (window.history.length > 1 && document.referrer) {
+      window.history.back();
+    } else {
+      window.location.href = 'index.html';
+    }
+  }
+
+  const cards = document.querySelectorAll('.card');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
       } else {
-        window.location.href = 'index.html';
+        entry.target.classList.remove('show');
       }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach((card) => observer.observe(card));
+
+  window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+
+    const intro = document.getElementById('intro-screen');
+    const text = document.getElementById('intro-text');
+    const enterBtn = document.getElementById('enter-btn');
+    const introVideo = document.getElementById('intro-video');
+    const introVideoWrap = document.getElementById('intro-video-wrap');
+    const soundHint = document.getElementById('sound-hint');
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+      introVideo.src = 'intro-mobile.mp4';
+    } else {
+      introVideo.src = 'intro-desktop.mp4';
     }
 
-    const cards = document.querySelectorAll('.card');
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-        } else {
-          entry.target.classList.remove('show');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    cards.forEach((card) => observer.observe(card));
-
-    window.addEventListener('load', () => {
+    // ===== 已經看過開場：直接略過 =====
+    if (sessionStorage.getItem('zhongli_intro_seen') === 'true') {
+      intro.style.display = 'none';
+      document.body.classList.remove('intro-active');
       window.scrollTo(0, 0);
+      return;
+    }
 
-      const intro = document.getElementById('intro-screen');
-      const text = document.getElementById('intro-text');
-      const enterBtn = document.getElementById('enter-btn');
-      const introVideo = document.getElementById('intro-video');
-      const introVideoWrap = document.getElementById('intro-video-wrap');
-      const soundHint = document.getElementById('sound-hint');
-      const isMobile = window.innerWidth <= 768;
+    let soundEnabled = false;
+    let sequenceStarted = false;
 
-      if (isMobile) {
-        introVideo.src = 'intro-mobile.mp4';
-      } else {
-        introVideo.src = 'intro-desktop.mp4';
-      }
+    setTimeout(() => {
+      text.classList.add('show');
+    }, 300);
 
-      let soundEnabled = false;
-      let sequenceStarted = false;
+    setTimeout(() => {
+      text.classList.remove('show');
+      text.classList.add('fade-out');
+    }, 2600);
 
-      setTimeout(() => {
-        text.classList.add('show');
-      }, 300);
+    setTimeout(() => {
+      text.classList.remove('fade-out');
+      introVideoWrap.classList.add('show');
+      introVideo.play().catch(() => {});
+    }, 3400);
+
+    function startAfterVideo() {
+      if (sequenceStarted) return;
+      sequenceStarted = true;
+
+      text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+      text.className = 'intro-text show';
 
       setTimeout(() => {
         text.classList.remove('show');
         text.classList.add('fade-out');
-      }, 2600);
+      }, 2800);
 
       setTimeout(() => {
-        text.classList.remove('fade-out');
-        introVideoWrap.classList.add('show');
+        text.innerHTML = '我們！更大了！';
+        text.className = 'intro-text final-line show';
+      }, 5200);
+
+      setTimeout(() => {
+        enterBtn.classList.add('show');
+      }, 6200);
+    }
+
+    setTimeout(() => {
+      startAfterVideo();
+    }, 19400);
+
+    introVideo.addEventListener('ended', startAfterVideo);
+    introVideo.addEventListener('error', startAfterVideo);
+
+    intro.addEventListener('click', () => {
+      if (!soundEnabled) {
+        introVideo.muted = false;
+        introVideo.volume = 1;
         introVideo.play().catch(() => {});
-      }, 3400);
+        soundEnabled = true;
 
-      function startAfterVideo() {
-        if (sequenceStarted) return;
-        sequenceStarted = true;
-
-        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-        text.className = 'intro-text show';
-
-        setTimeout(() => {
-          text.classList.remove('show');
-          text.classList.add('fade-out');
-        }, 2800);
-
-        setTimeout(() => {
-          text.innerHTML = '我們！更大了！';
-          text.className = 'intro-text final-line show';
-        }, 5200);
-
-        setTimeout(() => {
-          enterBtn.classList.add('show');
-        }, 6200);
+        if (soundHint) {
+          soundHint.classList.add('hide');
+        }
       }
+    });
+
+    enterBtn.addEventListener('click', () => {
+      // 記錄：這個分頁已經看過開場
+      sessionStorage.setItem('zhongli_intro_seen', 'true');
+
+      intro.classList.add('hide');
 
       setTimeout(() => {
-        startAfterVideo();
-      }, 19400);
+        intro.style.display = 'none';
+        introVideo.pause();
+        document.body.classList.remove('intro-active');
 
-      introVideo.addEventListener('ended', startAfterVideo);
-      introVideo.addEventListener('error', startAfterVideo);
-
-      intro.addEventListener('click', () => {
-        if (!soundEnabled) {
-          introVideo.muted = false;
-          introVideo.volume = 1;
-          introVideo.play().catch(() => {});
-          soundEnabled = true;
-
-          if (soundHint) {
-            soundHint.classList.add('hide');
-          }
-        }
-      });
-
-      enterBtn.addEventListener('click', () => {
-        intro.classList.add('hide');
-
-        setTimeout(() => {
-          intro.style.display = 'none';
-          introVideo.pause();
-          document.body.classList.remove('intro-active');
-
-          window.scrollTo({
-            top: 0,
-            behavior: 'auto'
-          });
-        }, 1000);
-      });
+        window.scrollTo({
+          top: 0,
+          behavior: 'auto'
+        });
+      }, 1000);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
