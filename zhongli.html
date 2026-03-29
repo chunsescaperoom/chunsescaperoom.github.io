@@ -62,6 +62,14 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      text-decoration: none;
+      color: inherit;
+      transition: 0.2s ease;
+    }
+
+    .brand:hover {
+      opacity: 0.88;
+      transform: scale(1.02);
     }
 
     .brand img {
@@ -98,7 +106,6 @@
       color: black;
     }
 
-    /* ===== 首頁主視覺 ===== */
     .hero {
       text-align: center;
       padding: 80px 20px 40px;
@@ -343,7 +350,6 @@
       cursor: not-allowed;
     }
 
-    /* ===== 開場演出 ===== */
     #intro-screen {
       position: fixed;
       inset: 0;
@@ -561,14 +567,14 @@
   </div>
 
   <div class="topbar">
-    <div class="brand">
+    <a href="index.html" class="brand">
       <img src="純-白PNG.png" alt="純密室 Logo">
       <div class="brand-text">
         <h1>純密室</h1>
         <p>Chun's Room</p>
       </div>
-    </div>
-    <a class="back-btn" href="index.html" onclick="goBack(event)">返回</a>
+    </a>
+    <a class="back-btn" href="index.html">返回首頁</a>
   </div>
 
   <section class="hero">
@@ -697,135 +703,133 @@
   </section>
 
   <script>
-  history.scrollRestoration = 'manual';
+    history.scrollRestoration = 'manual';
 
-  function goBack(event) {
-    event.preventDefault();
+    const cards = document.querySelectorAll('.card');
 
-    if (window.history.length > 1 && document.referrer) {
-      window.history.back();
-    } else {
-      window.location.href = 'index.html';
-    }
-  }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    }, { threshold: 0.15 });
 
-  const cards = document.querySelectorAll('.card');
+    cards.forEach((card) => observer.observe(card));
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-      } else {
-        entry.target.classList.remove('show');
-      }
-    });
-  }, { threshold: 0.15 });
-
-  cards.forEach((card) => observer.observe(card));
-
-  window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-
-    const intro = document.getElementById('intro-screen');
-    const text = document.getElementById('intro-text');
-    const enterBtn = document.getElementById('enter-btn');
-    const introVideo = document.getElementById('intro-video');
-    const introVideoWrap = document.getElementById('intro-video-wrap');
-    const soundHint = document.getElementById('sound-hint');
-    const isMobile = window.innerWidth <= 768;
-
-    if (isMobile) {
-      introVideo.src = 'intro-mobile.mp4';
-    } else {
-      introVideo.src = 'intro-desktop.mp4';
-    }
-
-    // ===== 已經看過開場：直接略過 =====
-    if (sessionStorage.getItem('zhongli_intro_seen') === 'true') {
-      intro.style.display = 'none';
-      document.body.classList.remove('intro-active');
+    window.addEventListener('load', () => {
       window.scrollTo(0, 0);
-      return;
-    }
 
-    let soundEnabled = false;
-    let sequenceStarted = false;
+      const navEntries = performance.getEntriesByType("navigation");
+      const isReload = navEntries.length > 0 && navEntries[0].type === "reload";
 
-    setTimeout(() => {
-      text.classList.add('show');
-    }, 300);
+      if (isReload) {
+        sessionStorage.removeItem('zhongli_intro_seen');
+      }
 
-    setTimeout(() => {
-      text.classList.remove('show');
-      text.classList.add('fade-out');
-    }, 2600);
+      const intro = document.getElementById('intro-screen');
+      const text = document.getElementById('intro-text');
+      const enterBtn = document.getElementById('enter-btn');
+      const introVideo = document.getElementById('intro-video');
+      const introVideoWrap = document.getElementById('intro-video-wrap');
+      const soundHint = document.getElementById('sound-hint');
+      const isMobile = window.innerWidth <= 768;
 
-    setTimeout(() => {
-      text.classList.remove('fade-out');
-      introVideoWrap.classList.add('show');
-      introVideo.play().catch(() => {});
-    }, 3400);
+      if (isMobile) {
+        introVideo.src = 'intro-mobile.mp4';
+      } else {
+        introVideo.src = 'intro-desktop.mp4';
+      }
 
-    function startAfterVideo() {
-      if (sequenceStarted) return;
-      sequenceStarted = true;
+      if (sessionStorage.getItem('zhongli_intro_seen') === 'true') {
+        intro.style.display = 'none';
+        introVideo.pause();
+        introVideo.currentTime = 0;
+        document.body.classList.remove('intro-active');
+        window.scrollTo(0, 0);
+        return;
+      }
 
-      text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-      text.className = 'intro-text show';
+      let soundEnabled = false;
+      let sequenceStarted = false;
+
+      setTimeout(() => {
+        text.classList.add('show');
+      }, 300);
 
       setTimeout(() => {
         text.classList.remove('show');
         text.classList.add('fade-out');
-      }, 2800);
+      }, 2600);
 
       setTimeout(() => {
-        text.innerHTML = '我們！更大了！';
-        text.className = 'intro-text final-line show';
-      }, 5200);
-
-      setTimeout(() => {
-        enterBtn.classList.add('show');
-      }, 6200);
-    }
-
-    setTimeout(() => {
-      startAfterVideo();
-    }, 19400);
-
-    introVideo.addEventListener('ended', startAfterVideo);
-    introVideo.addEventListener('error', startAfterVideo);
-
-    intro.addEventListener('click', () => {
-      if (!soundEnabled) {
-        introVideo.muted = false;
-        introVideo.volume = 1;
+        text.classList.remove('fade-out');
+        introVideoWrap.classList.add('show');
         introVideo.play().catch(() => {});
-        soundEnabled = true;
+      }, 3400);
 
-        if (soundHint) {
-          soundHint.classList.add('hide');
-        }
+      function startAfterVideo() {
+        if (sequenceStarted) return;
+        sequenceStarted = true;
+
+        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+        text.className = 'intro-text show';
+
+        setTimeout(() => {
+          text.classList.remove('show');
+          text.classList.add('fade-out');
+        }, 2800);
+
+        setTimeout(() => {
+          text.innerHTML = '我們！更大了！';
+          text.className = 'intro-text final-line show';
+        }, 5200);
+
+        setTimeout(() => {
+          enterBtn.classList.add('show');
+        }, 6200);
       }
-    });
-
-    enterBtn.addEventListener('click', () => {
-      // 記錄：這個分頁已經看過開場
-      sessionStorage.setItem('zhongli_intro_seen', 'true');
-
-      intro.classList.add('hide');
 
       setTimeout(() => {
-        intro.style.display = 'none';
-        introVideo.pause();
-        document.body.classList.remove('intro-active');
+        startAfterVideo();
+      }, 19400);
 
-        window.scrollTo({
-          top: 0,
-          behavior: 'auto'
-        });
-      }, 1000);
+      introVideo.addEventListener('ended', startAfterVideo);
+      introVideo.addEventListener('error', startAfterVideo);
+
+      intro.addEventListener('click', () => {
+        if (!soundEnabled) {
+          introVideo.muted = false;
+          introVideo.volume = 1;
+          introVideo.play().catch(() => {});
+          soundEnabled = true;
+
+          if (soundHint) {
+            soundHint.classList.add('hide');
+          }
+        }
+      });
+
+      enterBtn.addEventListener('click', () => {
+        sessionStorage.setItem('zhongli_intro_seen', 'true');
+
+        intro.classList.add('hide');
+
+        setTimeout(() => {
+          intro.style.display = 'none';
+          introVideo.pause();
+          introVideo.currentTime = 0;
+          document.body.classList.remove('intro-active');
+
+          window.scrollTo({
+            top: 0,
+            behavior: 'auto'
+          });
+        }, 1000);
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
