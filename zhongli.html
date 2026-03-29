@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
- 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,535 +13,546 @@
 
   <!-- 共用CSS -->
   <link rel="stylesheet" href="style.css">
-</head>
-<style>
-  * {
-    box-sizing: border-box;
-  }
 
-  body {
-    margin: 0;
-    background:
-      radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
-      radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
-      linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
-    color: white;
-    overflow-x: hidden;
-  }
-
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .topbar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background: rgba(8, 8, 12, 0.85);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 18px 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  .brand img {
-    width: 54px;
-    object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.2));
-  }
-
-  .brand-text h1 {
-    margin: 0;
-    font-size: 22px;
-    letter-spacing: 2px;
-  }
-
-  .brand-text p {
-    margin: 4px 0 0;
-    font-size: 13px;
-    color: rgba(255,255,255,0.65);
-    letter-spacing: 1px;
-  }
-
-  .back-btn {
-    color: white;
-    border: 1px solid rgba(255,255,255,0.18);
-    padding: 10px 18px;
-    border-radius: 999px;
-    transition: 0.25s ease;
-    background: rgba(255,255,255,0.02);
-  }
-
-  .back-btn:hover {
-    background: white;
-    color: black;
-  }
-
-  /* ===== 首頁主視覺 ===== */
-  .hero {
-    text-align: center;
-    padding: 80px 20px 40px;
-  }
-
-  .hero-logo {
-    width: 280px;
-    max-width: 100%;
-    margin-bottom: 10px;
-    filter:
-      drop-shadow(0 0 8px rgba(255, 208, 0, 0.35))
-      drop-shadow(0 0 18px rgba(255, 150, 0, 0.22));
-  }
-
-  .hero h2 {
-    font-size: 42px;
-    margin: 0 0 12px;
-    letter-spacing: 4px;
-  }
-
-  .hero p {
-    font-size: 16px;
-    color: #ddd;
-    letter-spacing: 2px;
-  }
-
-  .lore-block {
-    max-width: 720px;
-    margin: 40px auto 60px;
-    padding: 30px;
-    line-height: 2;
-    font-size: 15px;
-    background: rgba(255,255,255,0.03);
-    border-left: 3px solid #ff00cc;
-    backdrop-filter: blur(8px);
-    box-shadow: 0 0 30px rgba(255, 0, 255, 0.08);
-  }
-
-  .lore-text {
-    color: rgba(255,255,255,0.8);
-    margin: 0;
-  }
-
-  .highlight {
-    color: #00ffff;
-    text-shadow: 0 0 8px rgba(0,255,255,0.5);
-  }
-
-  .neon {
-    color: #ffd54f;
-    font-size: 20px;
-    text-shadow:
-      0 0 10px #ff00cc,
-      0 0 20px #ff00cc,
-      0 0 30px #ff00cc;
-  }
-
-  .info-block {
-    max-width: 720px;
-    margin: 0 auto 50px;
-    padding: 24px 30px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 20px;
-    line-height: 1.9;
-    color: rgba(255,255,255,0.78);
-    box-shadow: 0 10px 24px rgba(0,0,0,0.18);
-  }
-
-  .info-block strong {
-    color: white;
-  }
-
-  .info-link {
-    color: #9fe8ff;
-    text-shadow: 0 0 8px rgba(0,255,255,0.25);
-    word-break: break-all;
-  }
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px 20px 70px;
-  }
-
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
-    justify-content: center;
-    gap: 28px;
-  }
-
-  .card-link {
-    display: block;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .card {
-    background: linear-gradient(180deg, rgba(25,25,35,0.92), rgba(14,14,18,0.96));
-    border: 1px solid rgba(182, 0, 255, 0.22);
-    border-radius: 22px;
-    padding: 24px;
-    min-height: 100%;
-    box-shadow:
-      0 12px 30px rgba(0,0,0,0.35),
-      0 0 0 1px rgba(0,255,255,0.03) inset;
-    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  .card.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .card:hover {
-    transform: translateY(-8px) scale(1.01);
-    border-color: rgba(255, 0, 255, 0.45);
-    box-shadow:
-      0 16px 40px rgba(0,0,0,0.45),
-      0 0 22px rgba(255, 0, 255, 0.18);
-  }
-
-  .card:active {
-    transform: scale(0.98);
-  }
-
-  .card-poster {
-    width: 100%;
-    aspect-ratio: 3 / 4;
-    overflow: hidden;
-    border-radius: 16px;
-    margin-bottom: 16px;
-    background: #0a0a0a;
-    border: 1px solid rgba(255,255,255,0.08);
-  }
-
-  .card-poster img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.4s ease;
-  }
-
-  .card:hover .card-poster img {
-    transform: scale(1.05);
-  }
-
-  .title {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 14px;
-    color: #ffd54f;
-    text-shadow: 0 0 10px rgba(255, 213, 79, 0.22);
-  }
-
-  .sub-en {
-    display: block;
-    margin-top: 6px;
-    font-size: 14px;
-    letter-spacing: 2px;
-    color: #9fe8ff;
-    text-shadow: 0 0 8px rgba(0,255,255,0.25);
-  }
-
-  .desc {
-    line-height: 1.9;
-    color: rgba(255,255,255,0.82);
-    font-size: 16px;
-    margin-bottom: 18px;
-  }
-
-  .btn {
-    display: inline-block;
-    margin-top: 8px;
-    padding: 12px 22px;
-    border-radius: 999px;
-    background: linear-gradient(45deg, #ff00cc, #5b5bff);
-    color: white;
-    font-weight: 700;
-    letter-spacing: 1px;
-    box-shadow: 0 0 14px rgba(255,0,204,0.25);
-    transition: 0.25s ease;
-  }
-
-  .card:hover .btn {
-    transform: translateY(-1px);
-    box-shadow: 0 0 18px rgba(255,0,204,0.35);
-  }
-
-  .coming {
-    border-style: dashed;
-    border-color: rgba(0,255,255,0.2);
-    background: linear-gradient(180deg, rgba(20,20,28,0.9), rgba(10,10,14,0.96));
-  }
-
-  .glitch {
-    position: relative;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(255,0,255,0.3);
-  }
-
-  .glitch::before,
-  .glitch::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .glitch::before {
-    color: #00ffff;
-    z-index: -1;
-    animation: glitch 1.1s infinite;
-  }
-
-  .glitch::after {
-    color: #ff00cc;
-    z-index: -2;
-    animation: glitch 1.4s infinite;
-  }
-
-  @keyframes glitch {
-    0% { transform: translate(0); }
-    20% { transform: translate(-2px, 1px); }
-    40% { transform: translate(2px, -1px); }
-    60% { transform: translate(-1px, -2px); }
-    80% { transform: translate(1px, 2px); }
-    100% { transform: translate(0); }
-  }
-
-  .disabled {
-    background: #2d2d35;
-    color: #888;
-    box-shadow: none;
-    cursor: not-allowed;
-  }
-
-  /* ===== 開場演出 ===== */
-  #intro-screen {
-    position: fixed;
-    inset: 0;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 24px;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 1s ease;
-    padding: 24px;
-    overflow: hidden;
-  }
-
-  #intro-screen.hide {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .intro-text {
-    position: relative;
-    z-index: 2;
-    max-width: 900px;
-    color: white;
-    font-size: 32px;
-    letter-spacing: 4px;
-    text-align: center;
-    padding: 20px;
-    line-height: 1.8;
-    text-shadow: 0 0 10px rgba(255,255,255,0.25);
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .intro-text.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .intro-text.fade-out {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-
-  .intro-text.final-line {
-    font-size: 40px;
-    font-weight: 700;
-    letter-spacing: 6px;
-    text-shadow:
-      0 0 10px rgba(255,255,255,0.22),
-      0 0 18px rgba(255,0,204,0.18);
-  }
-
-  .intro-video-wrap {
-    width: min(78vw, 820px);
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,0.12);
-    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-    background: #000;
-    transform: translateY(12px);
-    transition: opacity 0.8s ease, max-height 0.8s ease, transform 0.8s ease;
-  }
-
-  .intro-video-wrap.show {
-    max-height: 70vh;
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  #intro-video {
-    display: block;
-    width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    background: #000;
-  }
-
-  .enter-btn {
-    opacity: 0;
-    pointer-events: none;
-    padding: 12px 30px;
-    border: 1px solid rgba(255,255,255,0.45);
-    background: rgba(255,255,255,0.04);
-    color: white;
-    border-radius: 999px;
-    font-size: 14px;
-    letter-spacing: 4px;
-    cursor: pointer;
-    text-shadow: 0 0 8px rgba(255,255,255,0.2);
-    box-shadow: 0 0 16px rgba(255,0,255,0.12);
-    transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    transform: translateY(12px);
-  }
-
-  .enter-btn.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-
-  .enter-btn:hover {
-    background: rgba(255,255,255,0.12);
-    transform: translateY(-2px);
-    box-shadow: 0 0 20px rgba(255,0,255,0.22);
-  }
-
-  .sound-hint {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 3;
-    font-size: 12px;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.75);
-    text-shadow: 0 0 6px rgba(0,0,0,0.6);
-    opacity: 0.85;
-    transition: opacity 0.3s ease;
-  }
-
-  .sound-hint.hide {
-    opacity: 0;
-  }
-
-  @media (hover: none) {
-    .card img {
-      transform: scale(1.02);
+  <style>
+    * {
+      box-sizing: border-box;
     }
-  }
 
-  @media (max-width: 768px) {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(130, 40, 255, 0.18), transparent 25%),
+        radial-gradient(circle at right, rgba(0, 255, 255, 0.12), transparent 20%),
+        linear-gradient(to bottom, #050505 0%, #0b0b12 45%, #111111 100%);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body.intro-active {
+      overflow: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 12, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand img {
+      width: 54px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255, 208, 0, 0.2));
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1px;
+    }
+
+    .back-btn {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    /* ===== 首頁主視覺 ===== */
     .hero {
-      padding-top: 50px;
+      text-align: center;
+      padding: 80px 20px 40px;
+    }
+
+    .hero-logo {
+      width: 280px;
+      max-width: 100%;
+      margin-bottom: 10px;
+      filter:
+        drop-shadow(0 0 8px rgba(255, 208, 0, 0.35))
+        drop-shadow(0 0 18px rgba(255, 150, 0, 0.22));
     }
 
     .hero h2 {
-      font-size: 32px;
-    }
-
-    .title {
-      font-size: 24px;
-    }
-
-    .desc {
-      font-size: 15px;
-    }
-
-    .lore-block,
-    .info-block {
-      margin-left: 16px;
-      margin-right: 16px;
-      padding: 24px 20px;
-    }
-
-    .intro-text {
-      font-size: 22px;
-      letter-spacing: 2px;
-      line-height: 1.6;
-      max-width: 92%;
-    }
-
-    .intro-text.final-line {
-      font-size: 28px;
+      font-size: 42px;
+      margin: 0 0 12px;
       letter-spacing: 4px;
     }
 
+    .hero p {
+      font-size: 16px;
+      color: #ddd;
+      letter-spacing: 2px;
+    }
+
+    .lore-block {
+      max-width: 720px;
+      margin: 40px auto 60px;
+      padding: 30px;
+      line-height: 2;
+      font-size: 15px;
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid #ff00cc;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 30px rgba(255, 0, 255, 0.08);
+    }
+
+    .lore-text {
+      color: rgba(255,255,255,0.8);
+      margin: 0;
+    }
+
+    .highlight {
+      color: #00ffff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.5);
+    }
+
+    .neon {
+      color: #ffd54f;
+      font-size: 20px;
+      text-shadow:
+        0 0 10px #ff00cc,
+        0 0 20px #ff00cc,
+        0 0 30px #ff00cc;
+    }
+
+    .info-block {
+      max-width: 720px;
+      margin: 0 auto 50px;
+      padding: 24px 30px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      line-height: 1.9;
+      color: rgba(255,255,255,0.78);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.18);
+    }
+
+    .info-block strong {
+      color: white;
+    }
+
+    .info-link {
+      color: #9fe8ff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.25);
+      word-break: break-all;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 20px 70px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 420px));
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .card-link {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(25,25,35,0.92), rgba(14,14,18,0.96));
+      border: 1px solid rgba(182, 0, 255, 0.22);
+      border-radius: 22px;
+      padding: 24px;
+      min-height: 100%;
+      box-shadow:
+        0 12px 30px rgba(0,0,0,0.35),
+        0 0 0 1px rgba(0,255,255,0.03) inset;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-8px) scale(1.01);
+      border-color: rgba(255, 0, 255, 0.45);
+      box-shadow:
+        0 16px 40px rgba(0,0,0,0.45),
+        0 0 22px rgba(255, 0, 255, 0.18);
+    }
+
+    .card:active {
+      transform: scale(0.98);
+    }
+
+    .card-poster {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-bottom: 16px;
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .card-poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-poster img {
+      transform: scale(1.05);
+    }
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #ffd54f;
+      text-shadow: 0 0 10px rgba(255, 213, 79, 0.22);
+    }
+
+    .sub-en {
+      display: block;
+      margin-top: 6px;
+      font-size: 14px;
+      letter-spacing: 2px;
+      color: #9fe8ff;
+      text-shadow: 0 0 8px rgba(0,255,255,0.25);
+    }
+
+    .desc {
+      line-height: 1.9;
+      color: rgba(255,255,255,0.82);
+      font-size: 16px;
+      margin-bottom: 18px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(45deg, #ff00cc, #5b5bff);
+      color: white;
+      font-weight: 700;
+      letter-spacing: 1px;
+      box-shadow: 0 0 14px rgba(255,0,204,0.25);
+      transition: 0.25s ease;
+    }
+
+    .card:hover .btn {
+      transform: translateY(-1px);
+      box-shadow: 0 0 18px rgba(255,0,204,0.35);
+    }
+
+    .coming {
+      border-style: dashed;
+      border-color: rgba(0,255,255,0.2);
+      background: linear-gradient(180deg, rgba(20,20,28,0.9), rgba(10,10,14,0.96));
+    }
+
+    .glitch {
+      position: relative;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,0,255,0.3);
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .glitch::before {
+      color: #00ffff;
+      z-index: -1;
+      animation: glitch 1.1s infinite;
+    }
+
+    .glitch::after {
+      color: #ff00cc;
+      z-index: -2;
+      animation: glitch 1.4s infinite;
+    }
+
+    @keyframes glitch {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 1px); }
+      40% { transform: translate(2px, -1px); }
+      60% { transform: translate(-1px, -2px); }
+      80% { transform: translate(1px, 2px); }
+      100% { transform: translate(0); }
+    }
+
+    .disabled {
+      background: #2d2d35;
+      color: #888;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    /* ===== 開場演出 ===== */
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 1s ease;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    #intro-screen.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro-text {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      color: white;
+      font-size: 32px;
+      letter-spacing: 4px;
+      text-align: center;
+      padding: 20px;
+      line-height: 1.8;
+      text-shadow: 0 0 10px rgba(255,255,255,0.25);
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .intro-text.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .intro-text.fade-out {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+
+    .intro-text.final-line {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: 6px;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.22),
+        0 0 18px rgba(255,0,204,0.18);
+    }
+
     .intro-video-wrap {
-      width: 92vw;
+      width: min(78vw, 820px);
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+      background: #000;
+      transform: translateY(12px);
+      transition: opacity 0.8s ease, max-height 0.8s ease, transform 0.8s ease;
+    }
+
+    .intro-video-wrap.show {
+      max-height: 70vh;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #intro-video {
+      display: block;
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      background: #000;
     }
 
     .enter-btn {
-      font-size: 13px;
-      letter-spacing: 3px;
-      padding: 11px 24px;
+      opacity: 0;
+      pointer-events: none;
+      padding: 12px 30px;
+      border: 1px solid rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      border-radius: 999px;
+      font-size: 14px;
+      letter-spacing: 4px;
+      cursor: pointer;
+      text-shadow: 0 0 8px rgba(255,255,255,0.2);
+      box-shadow: 0 0 16px rgba(255,0,255,0.12);
+      transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      transform: translateY(12px);
     }
-  }
 
-  .enter-btn,
-  .coming .title,
-  .sub-en,
-  .brand-text p,
-  .info-link {
-    font-family: 'Orbitron', sans-serif;
-  }
-</style>
+    .enter-btn.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .enter-btn:hover {
+      background: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(255,0,255,0.22);
+    }
+
+    .sound-hint {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      z-index: 3;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: rgba(255,255,255,0.75);
+      text-shadow: 0 0 6px rgba(0,0,0,0.6);
+      opacity: 0.85;
+      transition: opacity 0.3s ease;
+    }
+
+    .sound-hint.hide {
+      opacity: 0;
+    }
+
+    @media (hover: none) {
+      .card img {
+        transform: scale(1.02);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero h2 {
+        font-size: 32px;
+      }
+
+      .title {
+        font-size: 24px;
+      }
+
+      .desc {
+        font-size: 15px;
+      }
+
+      .lore-block,
+      .info-block {
+        margin-left: 16px;
+        margin-right: 16px;
+        padding: 24px 20px;
+      }
+
+      .intro-text {
+        font-size: 22px;
+        letter-spacing: 2px;
+        line-height: 1.6;
+        max-width: 92%;
+      }
+
+      .intro-text.final-line {
+        font-size: 28px;
+        letter-spacing: 4px;
+      }
+
+      .intro-video-wrap {
+        width: 92vw;
+      }
+
+      .enter-btn {
+        font-size: 13px;
+        letter-spacing: 3px;
+        padding: 11px 24px;
+      }
+    }
+
+    .enter-btn,
+    .coming .title,
+    .sub-en,
+    .brand-text p,
+    .info-link {
+      font-family: 'Orbitron', sans-serif;
+    }
+  </style>
 </head>
-<body>
+
+<body class="intro-active">
   <div id="intro-screen">
     <div class="intro-text" id="intro-text">
       這個名字，你或許在哪裡聽過。
     </div>
 
     <div class="intro-video-wrap" id="intro-video-wrap">
-     <video
-  id="intro-video"
-  muted
-  playsinline
-  webkit-playsinline
-  preload="auto"
-  poster="中壢連合店.png"
->
-  你的瀏覽器不支援影片播放
-</video>
+      <video
+        id="intro-video"
+        muted
+        playsinline
+        webkit-playsinline
+        preload="auto"
+        poster="中壢連合店.png"
+      >
+        你的瀏覽器不支援影片播放
+      </video>
     </div>
 
     <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
@@ -558,7 +568,7 @@
         <p>Chun's Room</p>
       </div>
     </div>
-    <a class="back-btn" href="index.html">返回首頁</a>
+    <a class="back-btn" href="index.html" onclick="goBack(event)">返回</a>
   </div>
 
   <section class="hero">
@@ -569,7 +579,6 @@
 
   <main class="container">
     <div class="cards">
-
       <a class="card-link" href="overmydeadbody.html">
         <div class="card">
           <div class="card-poster">
@@ -611,7 +620,6 @@
 
         <div class="btn disabled">尚未開放</div>
       </div>
-
     </div>
   </main>
 
@@ -689,117 +697,124 @@
   </section>
 
   <script>
-  const cards = document.querySelectorAll('.card');
+    history.scrollRestoration = 'manual';
 
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
+    function goBack(event) {
+      event.preventDefault();
+
+      if (window.history.length > 1 && document.referrer) {
+        window.history.back();
       } else {
-        entry.target.classList.remove('show');
+        window.location.href = 'index.html';
       }
-    });
-  }, { threshold: 0.15 });
+    }
 
-  cards.forEach(card => observer.observe(card));
+    const cards = document.querySelectorAll('.card');
 
-  window.addEventListener('load', () => {
-    const intro = document.getElementById('intro-screen');
-    const text = document.getElementById('intro-text');
-    const enterBtn = document.getElementById('enter-btn');
-    const introVideo = document.getElementById('intro-video');
-   const isMobile = window.innerWidth <= 768;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    }, { threshold: 0.15 });
 
-if (isMobile) {
-  introVideo.src = "intro-mobile.mp4";
-} else {
-  introVideo.src = "intro-desktop.mp4";
-}
-    const introVideoWrap = document.getElementById('intro-video-wrap');
-    const soundHint = document.getElementById('sound-hint');
+    cards.forEach((card) => observer.observe(card));
 
-    let soundEnabled = false;
-    let sequenceStarted = false;
+    window.addEventListener('load', () => {
+      window.scrollTo(0, 0);
 
-    // 第一句：淡入
-    setTimeout(() => {
-      text.classList.add('show');
-    }, 300);
+      const intro = document.getElementById('intro-screen');
+      const text = document.getElementById('intro-text');
+      const enterBtn = document.getElementById('enter-btn');
+      const introVideo = document.getElementById('intro-video');
+      const introVideoWrap = document.getElementById('intro-video-wrap');
+      const soundHint = document.getElementById('sound-hint');
+      const isMobile = window.innerWidth <= 768;
 
-    // 第一句：消失
-    setTimeout(() => {
-      text.classList.remove('show');
-      text.classList.add('fade-out');
-    }, 2600);
+      if (isMobile) {
+        introVideo.src = 'intro-mobile.mp4';
+      } else {
+        introVideo.src = 'intro-desktop.mp4';
+      }
 
-    // 顯示影片並播放
-    setTimeout(() => {
-      text.classList.remove('fade-out');
-      introVideoWrap.classList.add('show');
-      introVideo.play().catch(() => {});
-    }, 3400);
+      let soundEnabled = false;
+      let sequenceStarted = false;
 
-    function startAfterVideo() {
-      if (sequenceStarted) return;
-      sequenceStarted = true;
+      setTimeout(() => {
+        text.classList.add('show');
+      }, 300);
 
-      // 第二句：出現
-      text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-      text.className = "intro-text show";
-
-      // 第二句：消失
       setTimeout(() => {
         text.classList.remove('show');
         text.classList.add('fade-out');
-      }, 2800);
+      }, 2600);
 
-      // 第三句：出現
       setTimeout(() => {
-        text.innerHTML = "我們！更大了！";
-        text.className = "intro-text final-line show";
-      }, 5200);
-
-      // ENTER：浮出
-      setTimeout(() => {
-        enterBtn.classList.add('show');
-      }, 6200);
-    }
-
-    // 影片出現後等 16 秒
-    setTimeout(() => {
-      startAfterVideo();
-    }, 19400);
-
-    // 如果影片更短，播完就直接進
-    introVideo.addEventListener('ended', startAfterVideo);
-
-    // 如果影片錯誤，也不要卡住
-    introVideo.addEventListener('error', startAfterVideo);
-
-    // 點擊開聲音
-    intro.addEventListener('click', () => {
-      if (!soundEnabled) {
-        introVideo.muted = false;
-        introVideo.volume = 1;
+        text.classList.remove('fade-out');
+        introVideoWrap.classList.add('show');
         introVideo.play().catch(() => {});
-        soundEnabled = true;
+      }, 3400);
 
-        if (soundHint) {
-          soundHint.classList.add('hide');
-        }
+      function startAfterVideo() {
+        if (sequenceStarted) return;
+        sequenceStarted = true;
+
+        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
+        text.className = 'intro-text show';
+
+        setTimeout(() => {
+          text.classList.remove('show');
+          text.classList.add('fade-out');
+        }, 2800);
+
+        setTimeout(() => {
+          text.innerHTML = '我們！更大了！';
+          text.className = 'intro-text final-line show';
+        }, 5200);
+
+        setTimeout(() => {
+          enterBtn.classList.add('show');
+        }, 6200);
       }
-    });
-
-    // 點 ENTER 後關閉開場
-    enterBtn.addEventListener('click', () => {
-      intro.classList.add('hide');
 
       setTimeout(() => {
-        intro.style.display = 'none';
-        introVideo.pause();
-      }, 1000);
+        startAfterVideo();
+      }, 19400);
+
+      introVideo.addEventListener('ended', startAfterVideo);
+      introVideo.addEventListener('error', startAfterVideo);
+
+      intro.addEventListener('click', () => {
+        if (!soundEnabled) {
+          introVideo.muted = false;
+          introVideo.volume = 1;
+          introVideo.play().catch(() => {});
+          soundEnabled = true;
+
+          if (soundHint) {
+            soundHint.classList.add('hide');
+          }
+        }
+      });
+
+      enterBtn.addEventListener('click', () => {
+        intro.classList.add('hide');
+
+        setTimeout(() => {
+          intro.style.display = 'none';
+          introVideo.pause();
+          document.body.classList.remove('intro-active');
+
+          window.scrollTo({
+            top: 0,
+            behavior: 'auto'
+          });
+        }, 1000);
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
