@@ -4,92 +4,190 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>懲戒｜純密室 Chun's Room</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="zhongyuan.css">
-  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="zhongyuan.css">
+
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .booking-card .btn {
+      cursor: pointer;
+      border: none;
+    }
+
+    .booking-note {
+      margin-top: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.55);
+    }
+
+    #booking-system {
+      margin-top: 20px;
+    }
+
+    #sbw_punish {
+      width: 100%;
+      min-height: 900px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .booking-shell {
+      margin-top: 26px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width:768px){
+      #sbw_punish { min-height: 820px; }
+    }
+  </style>
 </head>
+
 <body>
 
-  <div class="topbar">
-    <div class="brand">
-      <img src="純-白PNG.png" alt="純密室 Logo">
-      <div>
-        <h1>純密室</h1>
-        <p>Chun's Room</p>
-      </div>
-    </div>
-    <a class="back-btn" href="zhongyuan.html">返回中原店</a>
-  </div>
-
-  <section class="detail-hero">
-    <div class="poster">
-      <img src="懲戒.jpg" alt="懲戒">
-    </div>
-
-    <div class="content">
-      <h2>懲戒</h2>
-      <div class="subtitle">中原店｜進階挑戰</div>
-
-      <div class="story-box">
-        <div class="box-title">遊戲介紹</div>
-        <div class="story-text">
-          校園怪談，心驚膽顫<br>
-          讓你又怕又愛玩<br>
-          一起來體驗<br>
-          每個校園都有的靈異傳說...<br>
-          死掉的學長乂封鎖的空間乂校園禁地<br>
-          『誒？？！我們出不去了！！！』
-        </div>
-      </div>
-
-      <div class="info-box">
-        <div class="box-title">遊戲資訊</div>
-        <div class="meta-grid">
-          <div class="meta-item">
-            <div class="meta-label">價格</div>
-            <div class="meta-value">350 / 人</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">遊戲時間</div>
-            <div class="meta-value">50分鐘</div>
-          </div>
-          <div class="meta-item">
-            <div class="meta-label">人數限制</div>
-            <div class="meta-value">2～4人</div>
-          </div>
-        </div>
-        <div style="margin-top:12px; color: rgba(255,255,255,0.68);">
-          加講解時間大約為60分鐘
-        </div>
-      </div>
-
-      <div class="notice-box">
-        <div class="box-title">注意事項</div>
-        <ol>
-          <li>請於遊戲開場時間，提前5分鐘到場報到。</li>
-          <li>超過遊戲開場時間10分鐘，將會壓縮遊戲時間。</li>
-          <li>超過遊戲開場時間15分鐘，為顧及其他顧客權益，該場次將無條件取消。</li>
-        </ol>
-      </div>
-
-      <div class="tips-box">
-        <div class="box-title">推薦挑戰順序</div>
-        <ul>
-          <li>若非單日連刷的玩家，建議可以照難度依序挑戰，遊戲體驗會是最好的唷。</li>
-          <li>奶酪及暴走族都是入門款，接下來是懲戒，最難的是人格之戰。</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <div class="bottom-action">
-    <div class="booking-card">
-      <h3>準備好進入懲戒了嗎？</h3>
-      <p>確認好人數與時間後，就可以前往預約頁面。</p>
-      <a class="btn" href="https://chunsroom.simplybook.asia/v2/" target="_blank">立即預約</a>
+<div class="topbar">
+  <div class="brand">
+    <img src="純-白PNG.png" alt="純密室 Logo">
+    <div>
+      <h1>純密室</h1>
+      <p>Chun's Room</p>
     </div>
   </div>
+  <a class="back-btn" href="zhongyuan.html">返回中原店</a>
+</div>
+
+<section class="detail-hero">
+  <div class="poster">
+    <img src="懲戒.jpg" alt="懲戒">
+  </div>
+
+  <div class="content">
+    <h2>懲戒</h2>
+    <div class="subtitle">中原店｜進階挑戰</div>
+
+    <div class="story-box">
+      <div class="box-title">遊戲介紹</div>
+      <div class="story-text">
+        校園怪談，心驚膽顫<br>
+        讓你又怕又愛玩<br>
+        一起來體驗<br>
+        每個校園都有的靈異傳說...<br>
+        死掉的學長乂封鎖的空間乂校園禁地<br>
+        『誒？？！我們出不去了！！！』
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="box-title">遊戲資訊</div>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <div class="meta-label">價格</div>
+          <div class="meta-value">350 / 人</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">遊戲時間</div>
+          <div class="meta-value">50分鐘</div>
+        </div>
+        <div class="meta-item">
+          <div class="meta-label">人數限制</div>
+          <div class="meta-value">2～4人</div>
+        </div>
+      </div>
+      <div style="margin-top:12px; color: rgba(255,255,255,0.68);">
+        加講解時間大約為60分鐘
+      </div>
+    </div>
+
+    <div class="notice-box">
+      <div class="box-title">注意事項</div>
+      <ol>
+        <li>請於遊戲開場時間，提前5分鐘到場報到。</li>
+        <li>超過遊戲開場時間10分鐘，將會壓縮遊戲時間。</li>
+        <li>超過遊戲開場時間15分鐘，為顧及其他顧客權益，該場次將無條件取消。</li>
+      </ol>
+    </div>
+
+    <div class="tips-box">
+      <div class="box-title">推薦挑戰順序</div>
+      <ul>
+        <li>若非單日連刷的玩家，建議可以照難度依序挑戰，遊戲體驗會是最好的唷。</li>
+        <li>奶酪及暴走族都是入門款，接下來是懲戒，最難的是人格之戰。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="bottom-action">
+  <div class="booking-card">
+    <h3>準備好進入懲戒了嗎？</h3>
+    <p>點擊後將直接在本頁完成預約</p>
+
+    <a class="btn" href="#booking-system">立即預約</a>
+
+    <div class="booking-note">
+      不會跳離純密室官網
+    </div>
+  </div>
+</div>
+
+<div class="bottom-action" id="booking-system">
+  <div class="booking-card">
+    <h3>懲戒｜線上預約</h3>
+
+    <div class="booking-shell">
+      <div id="sbw_punish"></div>
+    </div>
+  </div>
+</div>
+
+<script src="//widget.simplybook.asia/v2/widget/widget.js"></script>
+<script>
+var widget = new SimplybookWidget({
+  "widget_type":"iframe",
+  "url":"https://chunsroom.simplybook.asia",
+  "theme":"space",
+  "timeline":"modern",
+  "datepicker":"top_calendar",
+  "is_rtl":false,
+
+  "theme_settings":{
+    "timeline_hide_unavailable":"1",
+    "sb_base_color":"#bf68b1",
+    "hide_past_days":"0",
+    "timeline_show_end_time":"0",
+    "timeline_modern_display":"as_slots",
+    "display_item_mode":"block",
+    "body_bg_color":"#ffffff",
+    "sb_review_image":"",
+    "dark_font_color":"#040846",
+    "light_font_color":"#ffffff",
+    "btn_color_1":"#215268",
+    "sb_company_label_color":"#ffffff",
+    "hide_img_mode":"0",
+    "show_sidebar":"1",
+    "sb_busy":"#c7b3b3",
+    "sb_available":"#d6ebff"
+  },
+
+  "app_config":{
+    "clear_session":1,
+    "allow_switch_to_ada":0,
+    "predefined":{
+      "provider":"2",
+      "service":"5",
+      "location":"1"
+    }
+  },
+
+  "container_id":"sbw_punish"
+});
+</script>
 
 </body>
 </html>
