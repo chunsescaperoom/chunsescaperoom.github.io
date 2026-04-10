@@ -9,96 +9,17 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: linear-gradient(to bottom, #050505 0%, #111 45%, #1a1a1a 100%);
-      color: white;
-      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      overflow-x: hidden;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(10,10,10,0.82);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.25s ease, opacity 0.25s ease;
-    }
-
-    .brand:hover {
-      transform: scale(1.05);
-      opacity: 0.95;
-    }
-
-    .brand img {
-      width: 46px;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-      transition: filter 0.25s ease;
-    }
-
-    .brand:hover img {
-      filter: drop-shadow(0 0 14px rgba(255,255,255,0.45));
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-size: 20px;
-    }
-
-    .brand p {
-      margin: 2px 0 0;
-      font-size: 12px;
-      color: rgba(255,255,255,0.6);
-    }
-
-    .back-btn {
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 8px 14px;
-      border-radius: 999px;
-      color: white;
-      text-decoration: none;
-      transition: 0.25s ease;
-    }
-
-    .back-btn:hover {
-      background: white;
-      color: black;
-    }
-
-    .about-wrap {
+    .about-section {
       max-width: 920px;
-      margin: 0 auto;
-      padding: 70px 20px 80px;
+      margin: 80px auto;
+      padding: 0 20px;
     }
 
     .about-card {
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 35%),
-        rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 24px;
-      padding: 42px 28px;
+      padding: 40px 28px;
       text-align: center;
       box-shadow: 0 10px 30px rgba(0,0,0,0.25);
     }
@@ -143,13 +64,20 @@
       color: black;
     }
 
+    .about-extra {
+      margin-top: 30px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1px;
+      font-size: 14px;
+    }
+
     @media (max-width: 768px) {
-      .about-wrap {
-        padding: 50px 18px 60px;
+      .about-section {
+        margin: 56px auto;
       }
 
       .about-card {
-        padding: 32px 20px;
+        padding: 30px 20px;
       }
 
       .about-card h2 {
@@ -165,18 +93,17 @@
 <body>
 
   <div class="topbar">
-    <a class="brand" href="index.html">
+    <a class="brand logo-link" href="index.html">
       <img src="純-白PNG.png" alt="純密室 Logo">
       <div>
         <h1>純密室</h1>
         <p>Chun's Room</p>
       </div>
     </a>
-
     <a class="back-btn" href="index.html">返回首頁</a>
   </div>
 
-  <section class="about-wrap">
+  <section class="about-section">
     <div class="about-card">
       <h2>關於純密室</h2>
 
@@ -186,7 +113,11 @@
 
       <div class="about-links">
         <a href="https://www.facebook.com/chunsescaperoom" target="_blank" rel="noopener">Facebook</a>
-        <a href="instagram.com/chunsroom/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://instagram.com/chunsroom/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+
+      <div class="about-extra">
+        有些門，不只是被打開，而是被記住。
       </div>
     </div>
   </section>
