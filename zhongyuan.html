@@ -18,7 +18,6 @@
         linear-gradient(to bottom, #050505 0%, #111 50%, #1a1a1a 100%);
     }
 
-    /* 🔥 TOPBAR */
     .topbar {
       position: sticky;
       top: 0;
@@ -29,16 +28,15 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 20;
     }
 
-    /* 🔥 LOGO（可點＋動畫） */
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
       text-decoration: none;
       color: inherit;
-
       transition: transform 0.25s ease, opacity 0.25s ease;
     }
 
@@ -68,7 +66,6 @@
       color: rgba(255,255,255,0.6);
     }
 
-    /* 🔥 卡片連結 */
     .card-link {
       text-decoration: none;
       color: inherit;
@@ -78,7 +75,6 @@
     .card-link:hover {
       text-decoration: none;
     }
-
   </style>
 </head>
 
@@ -102,13 +98,11 @@
 </div>
 
 <div class="container">
-
   <div class="cards">
 
-    <!-- 奶酪 -->
     <a class="card-link" href="cheese.html">
       <div class="card">
-        <img src="奶酪.jpg">
+        <img src="奶酪.jpg" alt="奶酪陷阱">
         <div class="card-content">
           <div class="card-title">奶酪陷阱</div>
           <div class="card-desc">
@@ -120,7 +114,7 @@
           </div>
           <div class="meta">
             價格：300/人<br>
-            遊戲時間：40分鐘<br>
+            遊戲時間：40分鐘 (加前後講解時間大約為55分鐘)<br>
             人數限制：2~4
           </div>
           <span class="btn">選擇</span>
@@ -128,19 +122,22 @@
       </div>
     </a>
 
-    <!-- 暴走 -->
     <a class="card-link" href="summer.html">
       <div class="card">
-        <img src="暴走.jpg">
+        <img src="暴走.jpg" alt="我在暴走族的第一個夏祭">
         <div class="card-content">
           <div class="card-title">我在暴走族的第一個夏祭</div>
           <div class="card-desc">
             想要像日劇一樣熱血又浪漫？<br>
-            一起去夏日祭典收保護費吧！
+            內心的叛逆因子讓你偶爾想使壞？<br>
+            或者只是單純想念日本夏日祭典的熱鬧<br>
+            是時候加入台灣著名的暴走族「中壢連合」<br>
+            一起去夏日祭典收保護費吧！<br>
+            出発して、小さいたち
           </div>
           <div class="meta">
             價格：300/人<br>
-            遊戲時間：40分鐘<br>
+            遊戲時間：40分鐘 (加前後講解時間大約為55分鐘)<br>
             人數限制：2~4
           </div>
           <span class="btn">選擇</span>
@@ -148,19 +145,22 @@
       </div>
     </a>
 
-    <!-- 懲戒 -->
     <a class="card-link" href="punish.html">
       <div class="card">
-        <img src="懲戒.jpg">
+        <img src="懲戒.jpg" alt="懲戒">
         <div class="card-content">
           <div class="card-title">懲戒</div>
           <div class="card-desc">
             校園怪談，心驚膽顫<br>
-            每個校園都有的靈異傳說...
+            讓你又怕又愛玩<br>
+            一起來體驗<br>
+            每個校園都有的靈異傳說...<br>
+            死掉的學長乂封鎖的空間乂校園禁地<br>
+            『誒？？！我們出不去了！！！』
           </div>
           <div class="meta">
             價格：350/人<br>
-            遊戲時間：50分鐘<br>
+            遊戲時間：50分鐘 (加講解時間大約為60分鐘)<br>
             人數限制：2~4
           </div>
           <span class="btn">選擇</span>
@@ -168,19 +168,22 @@
       </div>
     </a>
 
-    <!-- 人格 -->
     <a class="card-link" href="persona.html">
       <div class="card">
-        <img src="人格.jpg">
+        <img src="人格.jpg" alt="人格之戰">
         <div class="card-content">
           <div class="card-title">人格之戰</div>
           <div class="card-desc">
-            為了「自我」而戰<br>
-            誰才是掌控者？
+            特殊題材，視角被轉換<br>
+            多元題型 謎題控的最愛<br>
+            這次你將為了“自我”而戰<br>
+            誰都想要擁有這具軀體的掌控權<br>
+            那麼.....向其他人格證明<br>
+            你才是最有資格的吧！
           </div>
           <div class="meta">
             價格：300/人<br>
-            遊戲時間：40分鐘<br>
+            遊戲時間：40分鐘 (加前後講解時間大約為55分鐘)<br>
             人數限制：2~4
           </div>
           <span class="btn">選擇</span>
@@ -190,7 +193,35 @@
 
   </div>
 
+  <div class="info">
+    <strong>中原店資訊</strong><br>
+    地址、營業時間、預約方式之後放這裡。
+  </div>
 </div>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+cards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 0.1}s`;
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+cards.forEach(card => {
+  observer.observe(card);
+});
+</script>
 
 </body>
 </html>
