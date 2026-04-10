@@ -16,9 +16,9 @@
       margin: 0;
       min-height: 100vh;
       background:
-        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 20%),
-        radial-gradient(circle at center, rgba(255,255,255,0.02), transparent 35%),
-        linear-gradient(to bottom, #050505 0%, #111 45%, #1a1a1a 100%);
+        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 18%),
+        radial-gradient(circle at center, rgba(120, 80, 255, 0.06), transparent 32%),
+        linear-gradient(to bottom, #030303 0%, #0c0c10 42%, #161616 100%);
       color: white;
       font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
       overflow-x: hidden;
@@ -34,7 +34,7 @@
       align-items: center;
       padding: 44px 24px 72px;
       background:
-        radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.78) 100%);
+        radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.82) 100%);
       overflow: hidden;
     }
 
@@ -43,7 +43,7 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 20%),
+        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 16%),
         repeating-linear-gradient(
           to right,
           transparent 0,
@@ -51,23 +51,23 @@
           rgba(255,255,255,0.01) 90px
         );
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.28;
     }
 
     .title {
       position: relative;
       z-index: 2;
       text-align: center;
-      margin-bottom: 56px;
-      animation: fadeIn 2s ease;
+      margin-bottom: 58px;
+      animation: fadeIn 1.8s ease;
     }
 
     .logo {
       width: 150px;
       margin-bottom: 20px;
-      opacity: 0.92;
+      opacity: 0.94;
       filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-      animation: glow 3s infinite alternate;
+      animation: logoGlow 3s ease-in-out infinite alternate;
     }
 
     .title h1 {
@@ -101,14 +101,14 @@
       justify-content: center;
       gap: 40px;
       flex-wrap: wrap;
-      animation: fadeInUp 1.8s ease;
+      animation: fadeInUp 1.4s ease;
     }
 
     .door {
       width: 190px;
       height: 330px;
       background:
-        linear-gradient(to bottom, #2d2d31 0%, #17171b 45%, #0c0c10 100%);
+        linear-gradient(to bottom, #323237 0%, #18181d 45%, #0a0a0d 100%);
       border: 1px solid rgba(255,255,255,0.12);
       position: relative;
       cursor: pointer;
@@ -118,19 +118,20 @@
         border-color 0.35s ease,
         filter 0.35s ease;
       box-shadow:
-        0 0 24px rgba(0,0,0,0.55),
+        0 0 26px rgba(0,0,0,0.58),
         0 0 0 1px rgba(255,255,255,0.03) inset;
       overflow: hidden;
+      transform-origin: center bottom;
     }
 
     .door:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: rgba(255,255,255,0.38);
+      transform: translateY(-12px) scale(1.03) rotateX(2deg);
+      border-color: rgba(255,255,255,0.42);
       box-shadow:
-        0 0 40px rgba(255,255,255,0.12),
-        0 20px 40px rgba(0,0,0,0.6),
-        0 0 0 1px rgba(255,255,255,0.05) inset;
-      filter: brightness(1.05);
+        0 0 48px rgba(255,255,255,0.14),
+        0 24px 42px rgba(0,0,0,0.64),
+        0 0 0 1px rgba(255,255,255,0.06) inset;
+      filter: brightness(1.07);
     }
 
     .door::before {
@@ -150,33 +151,36 @@
       content: "";
       position: absolute;
       left: 50%;
-      top: 60px;
-      bottom: 70px;
-      width: 1px;
+      top: 56px;
+      bottom: 66px;
+      width: 2px;
       transform: translateX(-50%);
       background: linear-gradient(
         to bottom,
-        rgba(255,255,255,0.14),
-        rgba(255,255,255,0.02)
+        rgba(255,255,255,0.18),
+        rgba(255,255,255,0.03)
       );
-      opacity: 0.55;
+      opacity: 0.75;
       transition: all 0.35s ease;
-      z-index: 2;
-      animation: slitBreath 4.2s ease-in-out infinite;
+      z-index: 3;
+      box-shadow: 0 0 10px rgba(255,255,255,0.08);
+      animation: slitBreath 2.8s ease-in-out infinite;
     }
 
     .door:hover::after {
-      width: 2px;
+      width: 3px;
+      opacity: 1;
       background: linear-gradient(
         to bottom,
-        rgba(255,255,255,0.85),
-        rgba(255,255,255,0.08)
+        rgba(255,255,255,0.95),
+        rgba(255,255,255,0.06)
       );
-      opacity: 1;
-      box-shadow: 0 0 10px rgba(255,255,255,0.45);
+      box-shadow:
+        0 0 14px rgba(255,255,255,0.55),
+        0 0 28px rgba(255,255,255,0.16);
     }
 
-    /* 像裡面有人動過 */
+    /* 門內光影 */
     .door-motion {
       position: absolute;
       inset: 0;
@@ -185,42 +189,70 @@
       overflow: hidden;
     }
 
+    /* 像裡面有人站在門後 */
     .door-motion::before {
       content: "";
       position: absolute;
-      top: 52px;
+      top: 54px;
       left: 50%;
-      width: 70px;
-      height: 180px;
+      width: 84px;
+      height: 192px;
       transform: translateX(-50%);
       background: radial-gradient(
         ellipse at center,
-        rgba(255,255,255,0.07) 0%,
-        rgba(255,255,255,0.025) 35%,
-        transparent 72%
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.02) 35%,
+        transparent 74%
       );
       filter: blur(10px);
-      opacity: 0.22;
-      animation: shadowShift 6.8s ease-in-out infinite;
+      opacity: 0.32;
+      animation: figureShift 4.6s ease-in-out infinite;
     }
 
+    /* 偶爾有東西掠過 */
     .door-motion::after {
       content: "";
       position: absolute;
-      top: 80px;
-      left: -40%;
-      width: 70%;
-      height: 120px;
+      top: 72px;
+      left: -46%;
+      width: 78%;
+      height: 142px;
       background: linear-gradient(
         to right,
         transparent,
-        rgba(255,255,255,0.05),
+        rgba(255,255,255,0.08),
         transparent
       );
-      transform: skewX(-12deg);
+      transform: skewX(-14deg);
       filter: blur(8px);
       opacity: 0;
-      animation: insideSweep 9s ease-in-out infinite;
+      animation: shadowPass 6.5s ease-in-out infinite;
+    }
+
+    /* 黑影本人 */
+    .shadow-figure {
+      position: absolute;
+      top: 72px;
+      left: 50%;
+      width: 54px;
+      height: 150px;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.18) 55%,
+        transparent 78%
+      );
+      filter: blur(6px);
+      opacity: 0.18;
+      z-index: 2;
+      animation: entityPulse 5.2s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .door:hover .shadow-figure {
+      opacity: 0.28;
+      filter: blur(5px);
     }
 
     .door-number {
@@ -231,7 +263,7 @@
       font-size: 18px;
       letter-spacing: 4px;
       color: rgba(255,255,255,0.74);
-      z-index: 3;
+      z-index: 4;
     }
 
     .door-label {
@@ -240,11 +272,11 @@
       width: 100%;
       text-align: center;
       font-size: 15px;
-      color: rgba(255,255,255,0.88);
+      color: rgba(255,255,255,0.9);
       letter-spacing: 2px;
       padding: 0 12px;
       line-height: 1.5;
-      z-index: 3;
+      z-index: 4;
     }
 
     .knob {
@@ -254,15 +286,15 @@
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.6);
+      background: rgba(255,255,255,0.62);
       box-shadow: 0 0 8px rgba(255,255,255,0.3);
-      z-index: 3;
+      z-index: 4;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .door:hover .knob {
-      transform: scale(1.15);
-      box-shadow: 0 0 14px rgba(255,255,255,0.45);
+      transform: scale(1.18);
+      box-shadow: 0 0 16px rgba(255,255,255,0.48);
     }
 
     .hint {
@@ -276,12 +308,12 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(24px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
@@ -290,50 +322,69 @@
       50% { opacity: 0.2; }
     }
 
-    @keyframes glow {
+    @keyframes logoGlow {
       from { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
       to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
     }
 
     @keyframes slitBreath {
       0%, 100% {
-        opacity: 0.4;
+        opacity: 0.58;
       }
       50% {
-        opacity: 0.72;
+        opacity: 1;
       }
     }
 
-    @keyframes shadowShift {
+    @keyframes figureShift {
       0%, 100% {
         transform: translateX(-50%) translateY(0) scaleX(0.95);
-        opacity: 0.14;
+        opacity: 0.22;
       }
-      35% {
-        transform: translateX(-46%) translateY(-2px) scaleX(1.05);
-        opacity: 0.28;
+      28% {
+        transform: translateX(-43%) translateY(-2px) scaleX(1.08);
+        opacity: 0.38;
       }
-      65% {
-        transform: translateX(-53%) translateY(1px) scaleX(0.92);
-        opacity: 0.18;
+      55% {
+        transform: translateX(-55%) translateY(1px) scaleX(0.9);
+        opacity: 0.26;
+      }
+      78% {
+        transform: translateX(-48%) translateY(-1px) scaleX(1.02);
+        opacity: 0.34;
       }
     }
 
-    @keyframes insideSweep {
-      0%, 75%, 100% {
-        left: -40%;
+    @keyframes shadowPass {
+      0%, 60%, 100% {
+        left: -46%;
         opacity: 0;
       }
-      78% {
+      65% {
         opacity: 0.05;
       }
-      86% {
-        left: 45%;
-        opacity: 0.12;
+      74% {
+        left: 28%;
+        opacity: 0.18;
       }
-      92% {
-        left: 85%;
+      82% {
+        left: 88%;
         opacity: 0;
+      }
+    }
+
+    @keyframes entityPulse {
+      0%, 100% {
+        transform: translateX(-50%) scaleY(0.96);
+        opacity: 0.14;
+      }
+      45% {
+        transform: translateX(-46%) scaleY(1.03);
+        opacity: 0.24;
+      }
+      70% {
+        transform: translateX(-53%) scaleY(0.98);
+        opacity: 0.18;
       }
     }
 
@@ -378,19 +429,25 @@
       }
 
       .door::after {
-        top: 54px;
-        bottom: 58px;
+        top: 50px;
+        bottom: 54px;
       }
 
       .door-motion::before {
-        top: 48px;
-        width: 56px;
-        height: 130px;
+        top: 44px;
+        width: 62px;
+        height: 126px;
       }
 
       .door-motion::after {
-        top: 70px;
-        height: 92px;
+        top: 64px;
+        height: 88px;
+      }
+
+      .shadow-figure {
+        top: 62px;
+        width: 40px;
+        height: 98px;
       }
 
       .door-label {
@@ -418,6 +475,7 @@
     <div class="hallway">
       <div class="door" onclick="openDoor('door1')">
         <div class="door-motion"></div>
+        <div class="shadow-figure"></div>
         <div class="door-number">101</div>
         <div class="knob"></div>
         <div class="door-label">中原店</div>
@@ -425,6 +483,7 @@
 
       <div class="door" onclick="openDoor('door2')">
         <div class="door-motion"></div>
+        <div class="shadow-figure"></div>
         <div class="door-number">102</div>
         <div class="knob"></div>
         <div class="door-label">中壢連合店</div>
@@ -432,6 +491,7 @@
 
       <div class="door" onclick="openDoor('door3')">
         <div class="door-motion"></div>
+        <div class="shadow-figure"></div>
         <div class="door-number">103</div>
         <div class="knob"></div>
         <div class="door-label">關於純密室</div>
