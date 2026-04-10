@@ -124,13 +124,13 @@
     }
 
     .door:hover {
-      transform: translateY(-10px);
-      border-color: rgba(255,255,255,0.32);
+      transform: translateY(-10px) scale(1.02);
+      border-color: rgba(255,255,255,0.38);
       box-shadow:
-        0 0 34px rgba(255,255,255,0.12),
-        0 18px 36px rgba(0,0,0,0.55),
+        0 0 40px rgba(255,255,255,0.12),
+        0 20px 40px rgba(0,0,0,0.6),
         0 0 0 1px rgba(255,255,255,0.05) inset;
-      filter: brightness(1.04);
+      filter: brightness(1.05);
     }
 
     .door::before {
@@ -141,18 +141,86 @@
       right: 18px;
       bottom: 18px;
       border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+      z-index: 1;
     }
 
+    /* 門縫 */
     .door::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 66px;
-      bottom: 78px;
+      top: 60px;
+      bottom: 70px;
       width: 1px;
       transform: translateX(-50%);
-      background: linear-gradient(to bottom, rgba(255,255,255,0.10), rgba(255,255,255,0.02));
-      opacity: 0.7;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.14),
+        rgba(255,255,255,0.02)
+      );
+      opacity: 0.55;
+      transition: all 0.35s ease;
+      z-index: 2;
+      animation: slitBreath 4.2s ease-in-out infinite;
+    }
+
+    .door:hover::after {
+      width: 2px;
+      background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.85),
+        rgba(255,255,255,0.08)
+      );
+      opacity: 1;
+      box-shadow: 0 0 10px rgba(255,255,255,0.45);
+    }
+
+    /* 像裡面有人動過 */
+    .door-motion {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .door-motion::before {
+      content: "";
+      position: absolute;
+      top: 52px;
+      left: 50%;
+      width: 70px;
+      height: 180px;
+      transform: translateX(-50%);
+      background: radial-gradient(
+        ellipse at center,
+        rgba(255,255,255,0.07) 0%,
+        rgba(255,255,255,0.025) 35%,
+        transparent 72%
+      );
+      filter: blur(10px);
+      opacity: 0.22;
+      animation: shadowShift 6.8s ease-in-out infinite;
+    }
+
+    .door-motion::after {
+      content: "";
+      position: absolute;
+      top: 80px;
+      left: -40%;
+      width: 70%;
+      height: 120px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(255,255,255,0.05),
+        transparent
+      );
+      transform: skewX(-12deg);
+      filter: blur(8px);
+      opacity: 0;
+      animation: insideSweep 9s ease-in-out infinite;
     }
 
     .door-number {
@@ -163,6 +231,7 @@
       font-size: 18px;
       letter-spacing: 4px;
       color: rgba(255,255,255,0.74);
+      z-index: 3;
     }
 
     .door-label {
@@ -175,14 +244,7 @@
       letter-spacing: 2px;
       padding: 0 12px;
       line-height: 1.5;
-    }
-
-    .door-label small {
-      display: block;
-      margin-top: 6px;
-      font-size: 11px;
-      color: rgba(255,255,255,0.42);
-      letter-spacing: 2px;
+      z-index: 3;
     }
 
     .knob {
@@ -194,6 +256,13 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.6);
       box-shadow: 0 0 8px rgba(255,255,255,0.3);
+      z-index: 3;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .door:hover .knob {
+      transform: scale(1.15);
+      box-shadow: 0 0 14px rgba(255,255,255,0.45);
     }
 
     .hint {
@@ -224,6 +293,48 @@
     @keyframes glow {
       from { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
       to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
+    }
+
+    @keyframes slitBreath {
+      0%, 100% {
+        opacity: 0.4;
+      }
+      50% {
+        opacity: 0.72;
+      }
+    }
+
+    @keyframes shadowShift {
+      0%, 100% {
+        transform: translateX(-50%) translateY(0) scaleX(0.95);
+        opacity: 0.14;
+      }
+      35% {
+        transform: translateX(-46%) translateY(-2px) scaleX(1.05);
+        opacity: 0.28;
+      }
+      65% {
+        transform: translateX(-53%) translateY(1px) scaleX(0.92);
+        opacity: 0.18;
+      }
+    }
+
+    @keyframes insideSweep {
+      0%, 75%, 100% {
+        left: -40%;
+        opacity: 0;
+      }
+      78% {
+        opacity: 0.05;
+      }
+      86% {
+        left: 45%;
+        opacity: 0.12;
+      }
+      92% {
+        left: 85%;
+        opacity: 0;
+      }
     }
 
     @media (max-width: 768px) {
@@ -267,8 +378,19 @@
       }
 
       .door::after {
-        top: 56px;
-        bottom: 62px;
+        top: 54px;
+        bottom: 58px;
+      }
+
+      .door-motion::before {
+        top: 48px;
+        width: 56px;
+        height: 130px;
+      }
+
+      .door-motion::after {
+        top: 70px;
+        height: 92px;
       }
 
       .door-label {
@@ -295,30 +417,24 @@
 
     <div class="hallway">
       <div class="door" onclick="openDoor('door1')">
+        <div class="door-motion"></div>
         <div class="door-number">101</div>
         <div class="knob"></div>
-        <div class="door-label">
-          中原店
-          <small>STORIES BEGIN HERE</small>
-        </div>
+        <div class="door-label">中原店</div>
       </div>
 
       <div class="door" onclick="openDoor('door2')">
+        <div class="door-motion"></div>
         <div class="door-number">102</div>
         <div class="knob"></div>
-        <div class="door-label">
-          中壢連合店
-          <small>ENTER THE UNION</small>
-        </div>
+        <div class="door-label">中壢連合店</div>
       </div>
 
       <div class="door" onclick="openDoor('door3')">
+        <div class="door-motion"></div>
         <div class="door-number">103</div>
         <div class="knob"></div>
-        <div class="door-label">
-          關於純密室
-          <small>ABOUT CHUN'S ROOM</small>
-        </div>
+        <div class="door-label">關於純密室</div>
       </div>
     </div>
 
