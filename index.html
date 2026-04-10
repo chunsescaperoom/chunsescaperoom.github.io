@@ -1,546 +1,218 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>純密室 Chun's Room</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>純密室 Chun's Room</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+*{box-sizing:border-box;}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background:
-        radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 18%),
-        radial-gradient(circle at center, rgba(120, 80, 255, 0.06), transparent 32%),
-        linear-gradient(to bottom, #030303 0%, #0c0c10 42%, #161616 100%);
-      color: white;
-      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
-      overflow-x: hidden;
-      overflow-y: auto;
-    }
+body{
+margin:0;
+background:linear-gradient(#050505,#111,#1a1a1a);
+color:white;
+font-family:"Noto Sans TC";
+overflow:hidden;
+}
 
-    .overlay {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 44px 24px 72px;
-      background:
-        radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.82) 100%);
-      overflow: hidden;
-    }
+.overlay{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+padding:40px;
+}
 
-    .overlay::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 16%),
-        repeating-linear-gradient(
-          to right,
-          transparent 0,
-          transparent 89px,
-          rgba(255,255,255,0.01) 90px
-        );
-      pointer-events: none;
-      opacity: 0.28;
-    }
+.title{
+text-align:center;
+margin-bottom:60px;
+}
 
-    .title {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      margin-bottom: 58px;
-      animation: fadeIn 1.8s ease;
-    }
+.logo{
+width:140px;
+filter:drop-shadow(0 0 10px rgba(255,255,255,0.2));
+}
 
-    .logo {
-      width: 150px;
-      margin-bottom: 20px;
-      opacity: 0.94;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
-      animation: logoGlow 3s ease-in-out infinite alternate;
-    }
+.title h1{
+margin:0;
+font-size:48px;
+letter-spacing:6px;
+}
 
-    .title h1 {
-      margin: 0;
-      font-size: clamp(42px, 6vw, 58px);
-      letter-spacing: 6px;
-      font-weight: 700;
-      text-shadow: 0 0 14px rgba(255,255,255,0.12);
-    }
+/* ===== 門 ===== */
 
-    .title .en {
-      margin-top: 10px;
-      font-size: 18px;
-      color: rgba(255,255,255,0.75);
-      letter-spacing: 3px;
-    }
+.hallway{
+display:flex;
+gap:40px;
+}
 
-    .title .tagline {
-      margin-top: 16px;
-      color: rgba(255,255,255,0.68);
-      font-size: 15px;
-      letter-spacing: 3px;
-    }
+.door{
+width:180px;
+height:320px;
+background:linear-gradient(#2c2c2c,#111);
+border:1px solid rgba(255,255,255,0.2);
+position:relative;
+cursor:pointer;
+transition:.3s;
+}
 
-    .hallway {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      max-width: 1040px;
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      flex-wrap: wrap;
-      animation: fadeInUp 1.4s ease;
-    }
+.door:hover{
+transform:translateY(-10px) scale(1.05);
+}
 
-    .door {
-      width: 190px;
-      height: 330px;
-      background:
-        linear-gradient(to bottom, #323237 0%, #18181d 45%, #0a0a0d 100%);
-      border: 1px solid rgba(255,255,255,0.12);
-      position: relative;
-      cursor: pointer;
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease,
-        filter 0.35s ease;
-      box-shadow:
-        0 0 26px rgba(0,0,0,0.58),
-        0 0 0 1px rgba(255,255,255,0.03) inset;
-      overflow: hidden;
-      transform-origin: center bottom;
-    }
+.door-number{
+position:absolute;
+top:20px;
+width:100%;
+text-align:center;
+letter-spacing:4px;
+}
 
-    .door:hover {
-      transform: translateY(-12px) scale(1.03);
-      border-color: rgba(255,255,255,0.42);
-      box-shadow:
-        0 0 48px rgba(255,255,255,0.14),
-        0 24px 42px rgba(0,0,0,0.64),
-        0 0 0 1px rgba(255,255,255,0.06) inset;
-      filter: brightness(1.07);
-    }
+.door-label{
+position:absolute;
+bottom:30px;
+width:100%;
+text-align:center;
+}
 
-    .door::before {
-      content: "";
-      position: absolute;
-      top: 18px;
-      left: 18px;
-      right: 18px;
-      bottom: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      pointer-events: none;
-      z-index: 1;
-    }
+/* 門把 */
+.knob{
+position:absolute;
+right:20px;
+top:50%;
+width:10px;
+height:10px;
+background:white;
+border-radius:50%;
+}
 
-    .door::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 56px;
-      bottom: 66px;
-      width: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.18),
-        rgba(255,255,255,0.03)
-      );
-      opacity: 0.75;
-      transition: all 0.35s ease;
-      z-index: 3;
-      box-shadow: 0 0 10px rgba(255,255,255,0.08);
-      animation: slitBreath 2.8s ease-in-out infinite;
-    }
+/* 門縫 */
+.door::after{
+content:"";
+position:absolute;
+left:50%;
+top:60px;
+bottom:60px;
+width:2px;
+background:rgba(255,255,255,0.2);
+transform:translateX(-50%);
+transition:.2s;
+}
 
-    .door:hover::after {
-      width: 3px;
-      opacity: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.95),
-        rgba(255,255,255,0.06)
-      );
-      box-shadow:
-        0 0 14px rgba(255,255,255,0.55),
-        0 0 28px rgba(255,255,255,0.16);
-    }
+/* 門縫閃光 */
+.door.flash::after{
+background:white;
+box-shadow:0 0 14px white;
+}
 
-    .door.flash::after {
-      width: 4px;
-      opacity: 1;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,1),
-        rgba(255,255,255,0.1)
-      );
-      box-shadow:
-        0 0 20px rgba(255,255,255,0.8),
-        0 0 36px rgba(255,255,255,0.22);
-    }
+/* 被推一下 */
+.door.hit{
+animation:push .18s ease-out;
+}
 
-    .door-motion {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
+@keyframes push{
+0%{transform:translateY(0);}
+50%{transform:translateY(6px);}
+100%{transform:translateY(0);}
+}
 
-    .door-motion::before {
-      content: "";
-      position: absolute;
-      top: 54px;
-      left: 50%;
-      width: 84px;
-      height: 192px;
-      transform: translateX(-50%);
-      background: radial-gradient(
-        ellipse at center,
-        rgba(255,255,255,0.08) 0%,
-        rgba(255,255,255,0.02) 35%,
-        transparent 74%
-      );
-      filter: blur(10px);
-      opacity: 0.32;
-      animation: figureShift 4.6s ease-in-out infinite;
-    }
+/* 門內影子 */
+.shadow{
+position:absolute;
+top:60px;
+left:50%;
+width:50px;
+height:140px;
+background:rgba(0,0,0,0.6);
+filter:blur(8px);
+transform:translateX(-50%);
+opacity:.15;
+animation:move 5s infinite;
+}
 
-    .door-motion::after {
-      content: "";
-      position: absolute;
-      top: 72px;
-      left: -46%;
-      width: 78%;
-      height: 142px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(255,255,255,0.08),
-        transparent
-      );
-      transform: skewX(-14deg);
-      filter: blur(8px);
-      opacity: 0;
-      animation: shadowPass 6.5s ease-in-out infinite;
-    }
+@keyframes move{
+0%{transform:translateX(-50%) scaleY(.9);}
+50%{transform:translateX(-40%) scaleY(1.1);}
+100%{transform:translateX(-50%) scaleY(.9);}
+}
 
-    .shadow-figure {
-      position: absolute;
-      top: 72px;
-      left: 50%;
-      width: 54px;
-      height: 150px;
-      transform: translateX(-50%);
-      background: radial-gradient(
-        ellipse at center,
-        rgba(0,0,0,0.55) 0%,
-        rgba(0,0,0,0.18) 55%,
-        transparent 78%
-      );
-      filter: blur(6px);
-      opacity: 0.18;
-      z-index: 2;
-      animation: entityPulse 5.2s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    .door:hover .shadow-figure {
-      opacity: 0.28;
-      filter: blur(5px);
-    }
-
-    .door.hit {
-      animation: doorPush 0.18s ease-out;
-    }
-
-    .door-number {
-      position: absolute;
-      top: 20px;
-      width: 100%;
-      text-align: center;
-      font-size: 18px;
-      letter-spacing: 4px;
-      color: rgba(255,255,255,0.74);
-      z-index: 4;
-    }
-
-    .door-label {
-      position: absolute;
-      bottom: 34px;
-      width: 100%;
-      text-align: center;
-      font-size: 15px;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 2px;
-      padding: 0 12px;
-      line-height: 1.5;
-      z-index: 4;
-    }
-
-    .knob {
-      position: absolute;
-      right: 24px;
-      top: 52%;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.62);
-      box-shadow: 0 0 8px rgba(255,255,255,0.3);
-      z-index: 4;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .door:hover .knob {
-      transform: scale(1.18);
-      box-shadow: 0 0 16px rgba(255,255,255,0.48);
-    }
-
-    .hint {
-      position: relative;
-      z-index: 2;
-      margin-top: 42px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.42);
-      letter-spacing: 3px;
-      animation: flicker 3s infinite;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes flicker {
-      0%, 100% { opacity: 0.45; }
-      50% { opacity: 0.2; }
-    }
-
-    @keyframes logoGlow {
-      from { filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
-      to { filter: drop-shadow(0 0 20px rgba(255,255,255,0.4)); }
-    }
-
-    @keyframes slitBreath {
-      0%, 100% { opacity: 0.58; }
-      50% { opacity: 1; }
-    }
-
-    @keyframes figureShift {
-      0%, 100% {
-        transform: translateX(-50%) translateY(0) scaleX(0.95);
-        opacity: 0.22;
-      }
-      28% {
-        transform: translateX(-43%) translateY(-2px) scaleX(1.08);
-        opacity: 0.38;
-      }
-      55% {
-        transform: translateX(-55%) translateY(1px) scaleX(0.9);
-        opacity: 0.26;
-      }
-      78% {
-        transform: translateX(-48%) translateY(-1px) scaleX(1.02);
-        opacity: 0.34;
-      }
-    }
-
-    @keyframes shadowPass {
-      0%, 60%, 100% {
-        left: -46%;
-        opacity: 0;
-      }
-      65% {
-        opacity: 0.05;
-      }
-      74% {
-        left: 28%;
-        opacity: 0.18;
-      }
-      82% {
-        left: 88%;
-        opacity: 0;
-      }
-    }
-
-    @keyframes entityPulse {
-      0%, 100% {
-        transform: translateX(-50%) scaleY(0.96);
-        opacity: 0.14;
-      }
-      45% {
-        transform: translateX(-46%) scaleY(1.03);
-        opacity: 0.24;
-      }
-      70% {
-        transform: translateX(-53%) scaleY(0.98);
-        opacity: 0.18;
-      }
-    }
-
-    @keyframes doorPush {
-      0%   { transform: translateY(-12px) scale(1.03); }
-      45%  { transform: translateY(-6px) scale(1.03); }
-      100% { transform: translateY(-12px) scale(1.03); }
-    }
-
-    @media (max-width: 768px) {
-      body {
-        overflow-y: auto;
-      }
-
-      .overlay {
-        justify-content: flex-start;
-        padding: 40px 18px 60px;
-      }
-
-      .title {
-        margin-bottom: 42px;
-      }
-
-      .logo {
-        width: 128px;
-      }
-
-      .title h1 {
-        letter-spacing: 4px;
-      }
-
-      .title .en {
-        font-size: 16px;
-      }
-
-      .title .tagline {
-        font-size: 14px;
-        letter-spacing: 2px;
-      }
-
-      .hallway {
-        gap: 24px;
-      }
-
-      .door {
-        width: 145px;
-        height: 255px;
-      }
-
-      .door::after {
-        top: 50px;
-        bottom: 54px;
-      }
-
-      .door-motion::before {
-        top: 44px;
-        width: 62px;
-        height: 126px;
-      }
-
-      .door-motion::after {
-        top: 64px;
-        height: 88px;
-      }
-
-      .shadow-figure {
-        top: 62px;
-        width: 40px;
-        height: 98px;
-      }
-
-      .door-label {
-        bottom: 26px;
-        font-size: 14px;
-      }
-
-      .hint {
-        margin-top: 34px;
-        letter-spacing: 2px;
-      }
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="overlay">
-    <div class="title">
-      <img src="純-白PNG.png" class="logo" alt="純密室 Logo">
-      <h1>純密室</h1>
-      <p class="en">Chun's Room</p>
-      <p class="tagline">你今天，想要進入哪個房間？</p>
-    </div>
 
-    <div class="hallway">
-      <div class="door" onclick="go('zhongyuan.html')" onmouseenter="effect(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">101</div>
-        <div class="knob"></div>
-        <div class="door-label">中原店</div>
-      </div>
+<div class="overlay">
 
-      <div class="door" onclick="go('zhongli.html')" onmouseenter="effect(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">102</div>
-        <div class="knob"></div>
-        <div class="door-label">中壢連合店</div>
-      </div>
+<div class="title">
+<img src="純-白PNG.png" class="logo">
+<h1>純密室</h1>
+</div>
 
-      <div class="door" onclick="go('about.html')" onmouseenter="effect(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">103</div>
-        <div class="knob"></div>
-        <div class="door-label">關於純密室</div>
-      </div>
-    </div>
+<div class="hallway">
 
-    <div class="hint">請選擇一扇門。</div>
-  </div>
+<div class="door" onclick="enterDoor(this,'zhongyuan.html')">
+<div class="shadow"></div>
+<div class="door-number">101</div>
+<div class="knob"></div>
+<div class="door-label">中原店</div>
+</div>
 
-  <audio id="sound" src="door.mp3" preload="auto"></audio>
+<div class="door" onclick="enterDoor(this,'zhongli.html')">
+<div class="shadow"></div>
+<div class="door-number">102</div>
+<div class="knob"></div>
+<div class="door-label">中壢連合店</div>
+</div>
 
-  <script>
-    function effect(el) {
-      el.classList.remove("flash", "hit");
-      void el.offsetWidth;
-      el.classList.add("flash");
+<div class="door" onclick="enterDoor(this,'about.html')">
+<div class="shadow"></div>
+<div class="door-number">103</div>
+<div class="knob"></div>
+<div class="door-label">關於純密室</div>
+</div>
 
-      setTimeout(() => {
-        el.classList.add("hit");
-      }, 80);
+</div>
 
-      setTimeout(() => {
-        el.classList.remove("flash", "hit");
-      }, 320);
+</div>
 
-      const sound = document.getElementById("sound");
-      if (sound) {
-        sound.currentTime = 0;
-        sound.play().catch(() => {});
-      }
-    }
+<audio id="sound" src="door.mp3" preload="auto"></audio>
 
-    function go(url) {
-      window.location.href = url;
-    }
-  </script>
+<script>
+function playEffect(el){
+
+  el.classList.remove("flash","hit");
+  void el.offsetWidth;
+
+  el.classList.add("flash");
+
+  setTimeout(()=>{
+    el.classList.add("hit");
+  },80);
+
+  setTimeout(()=>{
+    el.classList.remove("flash","hit");
+  },300);
+
+  const sound=document.getElementById("sound");
+  if(sound){
+    sound.currentTime=0;
+    sound.play().catch(()=>{});
+  }
+}
+
+function enterDoor(el,url){
+
+  playEffect(el);
+
+  setTimeout(()=>{
+    window.location.href=url;
+  },220);
+}
+</script>
+
 </body>
 </html>
