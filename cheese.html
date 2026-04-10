@@ -4,10 +4,82 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>奶酪陷阱｜純密室 Chun's Room</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="zhongyuan.css">
-  
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="zhongyuan.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .booking-card .btn {
+      cursor: pointer;
+      border: none;
+    }
+
+    .booking-note {
+      margin-top: 14px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.8;
+    }
+
+    .booking-embed-wrap {
+      margin-top: 26px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    }
+
+    .booking-embed {
+      width: 100%;
+      height: 920px;
+      border: none;
+      border-radius: 14px;
+      background: #000;
+      display: block;
+    }
+
+    .booking-subtitle {
+      margin: 0 0 20px;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.8;
+    }
+
+    .booking-tips {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      text-align: left;
+    }
+
+    .booking-tips .tip-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .booking-tips ul {
+      margin: 0;
+      padding-left: 20px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.9;
+    }
+
+    @media (max-width: 768px) {
+      .booking-embed {
+        height: 820px;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -22,7 +94,7 @@
     <a class="back-btn" href="zhongyuan.html">返回中原店</a>
   </div>
 
- <section class="detail-hero">
+  <section class="detail-hero">
     <div class="poster">
       <img src="奶酪.jpg" alt="奶酪陷阱">
     </div>
@@ -85,8 +157,42 @@
   <div class="bottom-action">
     <div class="booking-card">
       <h3>準備好進入奶酪陷阱了嗎？</h3>
-      <p>確認好人數與時間後，就可以前往預約頁面。</p>
-      <a class="btn" href="https://chunsroom.simplybook.asia/v2/" target="_blank">立即預約</a>
+      <p>確認好人數與時間後，即可直接在下方完成預約。</p>
+
+      <a class="btn" href="#booking-system">立即預約</a>
+
+      <div class="booking-note">
+        點擊後將直接跳至本頁下方的預約區，不會離開純密室官網。
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-action" id="booking-system">
+    <div class="booking-card">
+      <h3>奶酪陷阱｜線上預約</h3>
+      <p class="booking-subtitle">
+        請直接於下方選擇日期與場次。<br>
+        若你是第一次來玩，也很適合從這一款開始唷。
+      </p>
+
+      <div class="booking-embed-wrap">
+        <iframe
+          class="booking-embed"
+          src="https://chunsroom.simplybook.asia/v2/"
+          title="奶酪陷阱預約系統"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <div class="booking-tips">
+        <div class="tip-title">預約提醒</div>
+        <ul>
+          <li>請確認人數符合該主題限制後再進行預約。</li>
+          <li>若 iframe 無法正常顯示，通常是預約平台本身限制嵌入，不是官網壞掉。</li>
+          <li>若之後你拿到 SimplyBook 的專用 widget code，我可以再幫你改成更漂亮、更穩的版本。</li>
+        </ul>
+      </div>
     </div>
   </div>
 
