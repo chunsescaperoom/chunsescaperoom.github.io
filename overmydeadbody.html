@@ -290,9 +290,10 @@
     }
 
     .cta-box p {
-      margin: 0 0 20px;
-      color: rgba(255,255,255,0.78);
-      line-height: 1.9;
+      margin: 0 0 18px;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.8;
+      font-size: 15px;
     }
 
     .cta-actions {
@@ -335,21 +336,46 @@
       box-shadow:
         0 0 0 1px rgba(255,255,255,0.02) inset,
         0 0 18px rgba(0,255,255,0.08);
+      overflow: visible;
     }
 
     .fb-focus::after {
       content: "平日入口";
       position: absolute;
-      top: -10px;
-      right: 14px;
-      padding: 4px 9px;
+      top: -8px;
+      right: 12px;
+      padding: 3px 8px;
       border-radius: 999px;
       background: linear-gradient(45deg, #ff00cc, #5b5bff);
       color: white;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 1px;
-      box-shadow: 0 0 12px rgba(255,0,204,0.22);
+      box-shadow: 0 0 10px rgba(255,0,204,0.2);
+      z-index: 2;
+    }
+
+    .fb-focus::before {
+      content: "平日請從此進入";
+      position: absolute;
+      left: 50%;
+      bottom: calc(100% + 14px);
+      transform: translateX(-50%) translateY(6px);
+      padding: 8px 12px;
+      border-radius: 12px;
+      background: rgba(8, 10, 20, 0.95);
+      border: 1px solid rgba(159,232,255,0.22);
+      box-shadow: 0 0 18px rgba(0,255,255,0.10);
+      color: #9fe8ff;
+      font-size: 12px;
+      line-height: 1.4;
+      letter-spacing: 1px;
+      font-family: 'Orbitron', sans-serif;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease, transform 0.22s ease;
+      z-index: 3;
     }
 
     .fb-focus:hover {
@@ -357,6 +383,11 @@
       box-shadow:
         0 0 0 1px rgba(255,255,255,0.02) inset,
         0 0 22px rgba(0,255,255,0.14);
+    }
+
+    .fb-focus:hover::before {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
 
     .fb-link {
@@ -367,9 +398,9 @@
     }
 
     .booking-alert {
-      max-width: 760px;
-      margin: 0 auto 22px;
-      padding: 14px 18px;
+      max-width: 680px;
+      margin: 0 auto 18px;
+      padding: 12px 16px;
       border-radius: 18px;
       text-align: left;
       background: linear-gradient(90deg, rgba(255,0,204,0.08), rgba(0,255,255,0.05));
@@ -378,7 +409,7 @@
         0 0 0 1px rgba(255,255,255,0.02) inset,
         0 0 18px rgba(255,0,204,0.06);
       color: rgba(255,255,255,0.88);
-      line-height: 1.85;
+      line-height: 1.8;
       font-size: 15px;
     }
 
@@ -482,6 +513,7 @@
       }
 
       .booking-alert {
+        max-width: 100%;
         padding: 14px 14px;
         border-radius: 16px;
         font-size: 14px;
@@ -491,6 +523,10 @@
         top: -8px;
         right: 10px;
         font-size: 10px;
+      }
+
+      .fb-focus::before {
+        display: none;
       }
 
       #booking-system {
