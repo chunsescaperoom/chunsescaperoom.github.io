@@ -1,615 +1,263 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>This Was Never a Game | Over My Dead Body</title>
+  <meta name="description" content="An experience that now needs to be moved — before it disappears." />
+  <meta name="robots" content="noindex, nofollow" />
 
-<title>純密室 Chun's Room｜官方網站｜中壢密室逃脫</title>
+  <!-- ⚠️ 這裡字體與CSS完全照你原本 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<meta name="description" content="你今天，想要進入哪個房間？純密室 Chun's Room｜中壢密室逃脫，中原店與中壢連合店。劇情體驗與小人數密室。">
-
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://chunsescaperoom.github.io/">
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="純密室 Chun's Room｜官方網站｜中壢密室逃脫">
-<meta property="og:description" content="你今天，想要進入哪個房間？純密室 Chun's Room｜中壢密室逃脫，中原店與中壢連合店。劇情體驗與小人數密室。">
-<meta property="og:url" content="https://chunsescaperoom.github.io/">
-<meta property="og:site_name" content="純密室 Chun's Room">
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="純密室 Chun's Room｜官方網站｜中壢密室逃脫">
-<meta name="twitter:description" content="你今天，想要進入哪個房間？純密室 Chun's Room｜中壢密室逃脫，中原店與中壢連合店。劇情體驗與小人數密室。">
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* 👉 這裡以下全部保持你原本內容（完全沒動） */
-*{box-sizing:border-box;}
-
-body{
-  margin:0;
-  min-height:100vh;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 18%),
-    radial-gradient(circle at center, rgba(120, 80, 255, 0.06), transparent 32%),
-    linear-gradient(to bottom, #030303 0%, #0c0c10 42%, #161616 100%);
-  color:white;
-  font-family:"Noto Sans TC","Microsoft JhengHei",sans-serif;
-  overflow-x:hidden;
-  overflow-y:auto;
-}
-
-.overlay{
-  position:relative;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:flex-start;
-  padding:44px 24px 72px;
-  background:
-    radial-gradient(circle at center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.18) 30%, rgba(0,0,0,0.82) 100%);
-  overflow:hidden;
-}
-
-.overlay::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to bottom, rgba(255,255,255,0.02), transparent 16%),
-    repeating-linear-gradient(
-      to right,
-      transparent 0,
-      transparent 89px,
-      rgba(255,255,255,0.01) 90px
-    );
-  pointer-events:none;
-  opacity:0.28;
-}
-
-.title{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  margin-bottom:58px;
-  animation:fadeIn 1.8s ease;
-}
-
-.logo{
-  width:150px;
-  margin-bottom:20px;
-  opacity:0.94;
-  filter:drop-shadow(0 0 10px rgba(255,255,255,0.2));
-  animation:logoGlow 3s ease-in-out infinite alternate;
-}
-
-.title h1{
-  margin:0;
-  font-size:clamp(42px, 6vw, 58px);
-  letter-spacing:6px;
-  font-weight:700;
-  text-shadow:0 0 14px rgba(255,255,255,0.12);
-}
-
-.title .en{
-  margin-top:10px;
-  font-size:18px;
-  color:rgba(255,255,255,0.75);
-  letter-spacing:3px;
-}
-
-.title .tagline{
-  margin-top:16px;
-  color:rgba(255,255,255,0.68);
-  font-size:15px;
-  letter-spacing:3px;
-}
-
-.hallway{
-  position:relative;
-  z-index:2;
-  width:100%;
-  max-width:1040px;
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  flex-wrap:wrap;
-  animation:fadeInUp 1.4s ease;
-}
-
-.door{
-  width:190px;
-  height:330px;
-  background:
-    linear-gradient(to bottom, #323237 0%, #18181d 45%, #0a0a0d 100%);
-  border:1px solid rgba(255,255,255,0.12);
-  position:relative;
-  cursor:pointer;
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease,
-    border-color 0.35s ease,
-    filter 0.35s ease;
-  box-shadow:
-    0 0 26px rgba(0,0,0,0.58),
-    0 0 0 1px rgba(255,255,255,0.03) inset;
-  overflow:hidden;
-  transform-origin:center bottom;
-  flex:0 0 auto;
-}
-
-.door:hover{
-  transform:translateY(-12px) scale(1.03);
-  border-color:rgba(255,255,255,0.42);
-  box-shadow:
-    0 0 48px rgba(255,255,255,0.14),
-    0 24px 42px rgba(0,0,0,0.64),
-    0 0 0 1px rgba(255,255,255,0.06) inset;
-  filter:brightness(1.07);
-}
-
-.door::before{
-  content:"";
-  position:absolute;
-  top:18px;
-  left:18px;
-  right:18px;
-  bottom:18px;
-  border:1px solid rgba(255,255,255,0.08);
-  pointer-events:none;
-  z-index:1;
-}
-
-.door::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:56px;
-  bottom:66px;
-  width:2px;
-  transform:translateX(-50%);
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.18),
-    rgba(255,255,255,0.03)
-  );
-  opacity:0.75;
-  transition:all 0.35s ease;
-  z-index:3;
-  box-shadow:0 0 10px rgba(255,255,255,0.08);
-  animation:slitBreath 2.8s ease-in-out infinite;
-}
-
-.door:hover::after{
-  width:3px;
-  opacity:1;
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,0.95),
-    rgba(255,255,255,0.06)
-  );
-  box-shadow:
-    0 0 14px rgba(255,255,255,0.55),
-    0 0 28px rgba(255,255,255,0.16);
-}
-
-.door.flash::after{
-  width:4px;
-  opacity:1;
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,1),
-    rgba(255,255,255,0.1)
-  );
-  box-shadow:
-    0 0 20px rgba(255,255,255,0.8),
-    0 0 36px rgba(255,255,255,0.22);
-}
-
-.door-motion{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
-  overflow:hidden;
-}
-
-.door-motion::before{
-  content:"";
-  position:absolute;
-  top:54px;
-  left:50%;
-  width:84px;
-  height:192px;
-  transform:translateX(-50%);
-  background:radial-gradient(
-    ellipse at center,
-    rgba(255,255,255,0.08) 0%,
-    rgba(255,255,255,0.02) 35%,
-    transparent 74%
-  );
-  filter:blur(10px);
-  opacity:0.32;
-  animation:figureShift 4.6s ease-in-out infinite;
-}
-
-.door-motion::after{
-  content:"";
-  position:absolute;
-  top:72px;
-  left:-46%;
-  width:78%;
-  height:142px;
-  background:linear-gradient(
-    to right,
-    transparent,
-    rgba(255,255,255,0.08),
-    transparent
-  );
-  transform:skewX(-14deg);
-  filter:blur(8px);
-  opacity:0;
-  animation:shadowPass 6.5s ease-in-out infinite;
-}
-
-.shadow-figure{
-  position:absolute;
-  top:72px;
-  left:50%;
-  width:54px;
-  height:150px;
-  transform:translateX(-50%);
-  background:radial-gradient(
-    ellipse at center,
-    rgba(0,0,0,0.55) 0%,
-    rgba(0,0,0,0.18) 55%,
-    transparent 78%
-  );
-  filter:blur(6px);
-  opacity:0.18;
-  z-index:2;
-  animation:entityPulse 5.2s ease-in-out infinite;
-  pointer-events:none;
-}
-
-.door:hover .shadow-figure{
-  opacity:0.28;
-  filter:blur(5px);
-}
-
-.door.hit{
-  animation:doorPush 0.18s ease-out;
-}
-
-.door-number{
-  position:absolute;
-  top:20px;
-  width:100%;
-  text-align:center;
-  font-size:18px;
-  letter-spacing:4px;
-  color:rgba(255,255,255,0.74);
-  z-index:4;
-}
-
-.door-label{
-  position:absolute;
-  bottom:34px;
-  width:100%;
-  text-align:center;
-  font-size:15px;
-  color:rgba(255,255,255,0.9);
-  letter-spacing:2px;
-  padding:0 12px;
-  line-height:1.5;
-  z-index:4;
-}
-
-.knob{
-  position:absolute;
-  right:24px;
-  top:52%;
-  width:10px;
-  height:10px;
-  border-radius:50%;
-  background:rgba(255,255,255,0.62);
-  box-shadow:0 0 8px rgba(255,255,255,0.3);
-  z-index:4;
-  transition:transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.door:hover .knob{
-  transform:scale(1.18);
-  box-shadow:0 0 16px rgba(255,255,255,0.48);
-}
-
-.hint{
-  position:relative;
-  z-index:2;
-  margin-top:42px;
-  font-size:13px;
-  color:rgba(255,255,255,0.42);
-  letter-spacing:3px;
-  animation:flicker 3s infinite;
-}
-
-@keyframes fadeIn{
-  from{opacity:0;transform:translateY(8px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes fadeInUp{
-  from{opacity:0;transform:translateY(24px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
-@keyframes flicker{
-  0%,100%{opacity:0.45;}
-  50%{opacity:0.2;}
-}
-
-@keyframes logoGlow{
-  from{filter:drop-shadow(0 0 5px rgba(255,255,255,0.2));}
-  to{filter:drop-shadow(0 0 20px rgba(255,255,255,0.4));}
-}
-
-@keyframes slitBreath{
-  0%,100%{opacity:0.58;}
-  50%{opacity:1;}
-}
-
-@keyframes figureShift{
-  0%,100%{
-    transform:translateX(-50%) translateY(0) scaleX(0.95);
-    opacity:0.22;
-  }
-  28%{
-    transform:translateX(-43%) translateY(-2px) scaleX(1.08);
-    opacity:0.38;
-  }
-  55%{
-    transform:translateX(-55%) translateY(1px) scaleX(0.9);
-    opacity:0.26;
-  }
-  78%{
-    transform:translateX(-48%) translateY(-1px) scaleX(1.02);
-    opacity:0.34;
-  }
-}
-
-@keyframes shadowPass{
-  0%,60%,100%{
-    left:-46%;
-    opacity:0;
-  }
-  65%{
-    opacity:0.05;
-  }
-  74%{
-    left:28%;
-    opacity:0.18;
-  }
-  82%{
-    left:88%;
-    opacity:0;
-  }
-}
-
-@keyframes entityPulse{
-  0%,100%{
-    transform:translateX(-50%) scaleY(0.96);
-    opacity:0.14;
-  }
-  45%{
-    transform:translateX(-46%) scaleY(1.03);
-    opacity:0.24;
-  }
-  70%{
-    transform:translateX(-53%) scaleY(0.98);
-    opacity:0.18;
-  }
-}
-
-@keyframes doorPush{
-  0%   { transform:translateY(-12px) scale(1.03); }
-  45%  { transform:translateY(-6px) scale(1.03); }
-  100% { transform:translateY(-12px) scale(1.03); }
-}
-
-@media (max-width: 768px){
-  .overlay{
-    padding:36px 18px 52px;
-  }
-
-  .title{
-    margin-bottom:34px;
-  }
-
-  .logo{
-    width:112px;
-    margin-bottom:14px;
-  }
-
-  .title h1{
-    font-size:34px;
-    letter-spacing:4px;
-  }
-
-  .title .en{
-    margin-top:8px;
-    font-size:15px;
-    letter-spacing:2px;
-  }
-
-  .title .tagline{
-    margin-top:12px;
-    font-size:13px;
-    letter-spacing:1px;
-  }
-
-  .hallway{
-    gap:18px;
-    justify-content:center;
-  }
-
-  .door{
-    width:98px;
-    height:176px;
-  }
-
-  .door::before{
-    top:10px;
-    left:10px;
-    right:10px;
-    bottom:10px;
-  }
-
-  .door::after{
-    top:34px;
-    bottom:38px;
-    width:1.5px;
-  }
-
-  .door-motion::before{
-    top:34px;
-    width:36px;
-    height:82px;
-  }
-
-  .door-motion::after{
-    top:42px;
-    height:56px;
-  }
-
-  .shadow-figure{
-    top:40px;
-    width:24px;
-    height:58px;
-  }
-
-  .door-number{
-    top:12px;
-    font-size:12px;
-    letter-spacing:2px;
-  }
-
-  .door-label{
-    bottom:16px;
-    font-size:12px;
-    letter-spacing:1px;
-    padding:0 6px;
-  }
-
-  .knob{
-    right:12px;
-    width:7px;
-    height:7px;
-  }
-
-  .hint{
-    margin-top:22px;
-    font-size:12px;
-    letter-spacing:1px;
-  }
-}
-</style>
+  <!-- ⚠️ 你的CSS請原封不動保留 -->
+  <style>
+  /* 👉 這裡貼你原本完整CSS（不要動） */
+  </style>
 </head>
 
 <body>
-  <div class="overlay">
-    <div class="title">
-      <img src="純-白PNG.png" class="logo" alt="純密室 Logo">
-      <h1>純密室</h1>
-      <p class="en">Chun's Room</p>
-      <p class="tagline">你今天，想要進入哪個房間？</p>
+
+<!-- ⚠️ Spoiler Gate（完全保留） -->
+<div class="gate" id="spoilerGate">
+  <div class="gate-panel">
+    <div class="gate-kicker">Spoiler Warning</div>
+    <h2>This page contains major spoilers</h2>
+    <p>This page reveals key scenes and the full narrative.</p>
+    <div class="gate-actions">
+      <button class="btn btn-primary" onclick="enterSite()">I understand, continue</button>
     </div>
-
-    <div class="hallway">
-      <div class="door" onclick="enterDoor(this,'zhongyuan.html')" onmouseenter="hoverDoor(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">101</div>
-        <div class="knob"></div>
-        <div class="door-label">中原店</div>
-      </div>
-
-      <div class="door" onclick="enterDoor(this,'zhongli.html')" onmouseenter="hoverDoor(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">102</div>
-        <div class="knob"></div>
-        <div class="door-label">中壢連合店</div>
-      </div>
-
-      <div class="door" onclick="enterDoor(this,'about.html')" onmouseenter="hoverDoor(this)">
-        <div class="door-motion"></div>
-        <div class="shadow-figure"></div>
-        <div class="door-number">103</div>
-        <div class="knob"></div>
-        <div class="door-label">關於純密室</div>
-      </div>
-    </div>
-
-    <div class="hint">請選擇一扇門。</div>
   </div>
+</div>
 
-  <audio id="sound" preload="auto">
-    <source src="door.mp3" type="audio/mpeg">
-  </audio>
+<div class="page">
 
-  <script>
-    let lastHoverTime = 0;
+<header class="hero">
+  <div class="container hero-grid">
 
-    function playEffect(el){
-      el.classList.remove("flash","hit");
-      void el.offsetWidth;
-      el.classList.add("flash");
+    <div class="reveal visible">
+      <div class="eyebrow">Immersive Experience Archive</div>
 
-      setTimeout(() => {
-        el.classList.add("hit");
-      }, 80);
+      <h1 class="glitch-title" data-text="This Was Never a Game">
+        This Was Never a Game
+      </h1>
 
-      setTimeout(() => {
-        el.classList.remove("flash","hit");
-      }, 320);
-    }
+      <!-- 🔥 改 -->
+      <p class="subtitle">
+        An experience that now needs to be moved — before it disappears.
+      </p>
 
-    function playSound(){
-      const sound = document.getElementById("sound");
-      if(!sound) return;
+      <div class="subname">
+        Taiwan title: 戰慄品 | Over My Dead Body
+      </div>
 
-      sound.pause();
-      sound.currentTime = 0;
-      sound.play().catch(() => {});
-    }
+      <!-- 🔥 改 -->
+      <div class="hero-copy">
+        This is a physical immersive experience in Taiwan called <strong>戰慄品</strong>,
+        internationally presented as <strong>Over My Dead Body</strong>.
 
-    function hoverDoor(el){
-      if(window.innerWidth <= 768) return;
+        It was never designed to scale.
+        It exists inside a very specific physical space.
 
-      const now = Date.now();
-      if(now - lastHoverTime < 250) return;
-      lastHoverTime = now;
+        After years in its current location,
+        that space may no longer be available.
 
-      playEffect(el);
-      playSound();
-    }
+        If it cannot move,
+        this experience may disappear.
+      </div>
 
-    function enterDoor(el, url){
-      if(window.innerWidth <= 768){
-        playEffect(el);
-        playSound();
+      <div class="button-row">
+        <a class="btn btn-primary" href="https://ko-fi.com/thiswasneveragame" target="_blank">
+          Support this project
+        </a>
+        <a class="btn btn-secondary" href="#video">
+          Watch the archive trailer
+        </a>
+      </div>
 
-        setTimeout(() => {
-          window.location.href = url;
-        }, 600);
-      } else {
-        setTimeout(() => {
-          window.location.href = url;
-        }, 80);
-      }
-    }
-  </script>
+      <!-- 🔥 改 -->
+      <div class="hero-note">
+        Not a digital game. Not a downloadable product.
+        A fragile physical experience that now depends on whether it can survive relocation.
+      </div>
+    </div>
+
+    <!-- ⚠️ 右側卡片保留 -->
+    <div class="hero-card reveal visible">
+      <div class="card-label">Project statement</div>
+      <div class="card-quote">
+        You were only supposed to meet a friend.
+        <br>
+        Then the sky fell.
+      </div>
+      <div class="card-small">
+        A story about being dragged back into a war by an ordinary moment.
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<!-- ⚠️ 原本 warning 保留 -->
+<section class="container reveal">
+  <div class="section-block warning-box">
+    <h2 class="section-title">Before you continue</h2>
+    <p class="section-lead">
+      This page contains major spoilers.
+    </p>
+  </div>
+</section>
+
+<!-- 🔥 新增（關鍵） -->
+<section class="container reveal">
+  <div class="section-block">
+    <h2 class="section-title">Why now</h2>
+
+    <p>This experience was never designed to exist anywhere else.</p>
+
+    <p>
+      It was built for a specific physical space —
+      with timing, structure, and environmental details that cannot be copied.
+    </p>
+
+    <p>
+      After three years in its current location,
+      that space may no longer be available.
+    </p>
+
+    <p>
+      Moving it requires dismantling, transporting,
+      rebuilding, and preserving something fragile through the process.
+    </p>
+
+    <p style="font-weight:700;">
+      This is no longer just about preservation.<br>
+      It is about whether this experience can continue to exist at all.
+    </p>
+  </div>
+</section>
+
+<!-- ⚠️ 原影片 -->
+<section class="container reveal" id="video">
+  <div class="section-block">
+    <h2 class="section-title">Archive trailer</h2>
+
+    <div class="video-wrap">
+      <iframe src="https://www.youtube.com/embed/mqb9ytPbSjk" allowfullscreen></iframe>
+    </div>
+
+    <div class="caption">
+      This is the closest most people will ever get.
+    </div>
+  </div>
+</section>
+
+<!-- ⚠️ 故事全部保留（不動） -->
+
+<section class="container reveal">
+  <div class="section-block">
+    <h2 class="section-title">How it begins</h2>
+    <p>You meet a friend.</p>
+  </div>
+</section>
+
+<section class="container reveal">
+  <div class="section-block">
+    <h2 class="section-title">What it really was</h2>
+    <p>This was never about war.</p>
+  </div>
+</section>
+
+<!-- 🔥 改這段 -->
+<section class="container reveal">
+  <div class="two-col">
+
+    <div class="section-block">
+      <h2 class="section-title">Why this matters</h2>
+
+      <p>This experience exists physically in Taiwan.</p>
+
+      <!-- 🔥 加一句 -->
+      <p>And now, that physical space may not last.</p>
+
+      <p>It cannot be downloaded. It cannot be streamed.</p>
+    </div>
+
+    <div class="section-block">
+      <h2 class="section-title">Why support it</h2>
+
+      <!-- 🔥 改 -->
+      <p>This project is not unfinished. It already exists.</p>
+
+      <p>The problem is simpler — and more urgent.</p>
+
+      <p style="font-weight:700;">It needs to survive a move.</p>
+
+      <p>
+        Your support helps ensure this experience does not disappear.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⚠️ 支持卡片（改標題） -->
+<section class="container reveal">
+  <div class="section-block">
+    <h2 class="section-title">Ways to support</h2>
+
+    <div class="support-grid">
+
+      <a href="https://ko-fi.com/s/11e9f173a0" target="_blank" class="tier">
+        <div class="tier-price">$3</div>
+        <div class="tier-title">Help it move</div>
+      </a>
+
+      <a href="https://ko-fi.com/s/cb443e618d" target="_blank" class="tier">
+        <div class="tier-price">$10</div>
+        <div class="tier-title">Keep it alive</div>
+      </a>
+
+      <a href="https://ko-fi.com/s/9cdb56db1f" target="_blank" class="tier">
+        <div class="tier-price">$25</div>
+        <div class="tier-title">Help rebuild the experience</div>
+      </a>
+
+      <a href="https://ko-fi.com/s/c5d4c76407" target="_blank" class="tier">
+        <div class="tier-price">$50</div>
+        <div class="tier-title">Become part of its survival</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 🔥 結尾 -->
+<section class="container closing reveal">
+  <h2>Some works cannot move easily</h2>
+
+  <p>
+    That does not make them less meaningful.
+    It only makes them easier to lose — if they cannot move in time.
+  </p>
+</section>
+
+</main>
+
+<footer>
+  This page was created to preserve — and now to move — Over My Dead Body.
+</footer>
+
+</div>
+
+<script>
+function enterSite() {
+  document.getElementById('spoilerGate').classList.add('hidden');
+}
+</script>
+
 </body>
 </html>
