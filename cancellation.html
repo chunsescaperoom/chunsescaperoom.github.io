@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>純密室 取消政策｜Chun's Room</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, rgba(98, 0, 255, 0.12), transparent 26%),
+        radial-gradient(circle at right, rgba(0, 255, 255, 0.08), transparent 20%),
+        linear-gradient(to bottom, #050505 0%, #0d0d12 48%, #141414 100%);
+      color: white;
+      font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(8, 8, 12, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .brand:hover { transform: scale(1.04); opacity: 0.95; }
+
+    .brand img {
+      width: 54px;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 2px;
+    }
+
+    .brand-text p {
+      margin: 4px 0 0;
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 1px;
+    }
+
+    .back-btn {
+      color: white;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .back-btn:hover {
+      background: white;
+      color: black;
+    }
+
+    .legal-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 72px 20px 90px;
+    }
+
+    .legal-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 52px 38px 42px;
+      box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+    }
+
+    .legal-kicker {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    h2 {
+      margin: 0 0 28px;
+      font-size: clamp(34px, 5vw, 52px);
+      letter-spacing: 3px;
+      line-height: 1.15;
+    }
+
+    .notice {
+      margin: 0 0 30px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+      background: rgba(255,255,255,0.035);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.9;
+      font-size: 15px;
+    }
+
+    .section {
+      padding: 26px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .section h3 {
+      margin: 0 0 14px;
+      font-size: 20px;
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .section p,
+    .section li {
+      line-height: 2;
+      color: rgba(255,255,255,0.76);
+      font-size: 15.5px;
+    }
+
+    .section ul,
+    .section ol {
+      margin: 0;
+      padding-left: 1.4em;
+    }
+
+    .bottom-links {
+      margin-top: 30px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,0.36);
+    }
+
+    .bottom-links a {
+      color: rgba(255,255,255,0.45);
+      transition: color 0.25s ease;
+    }
+
+    .bottom-links a:hover {
+      color: rgba(255,255,255,0.82);
+    }
+
+    @media (max-width: 768px) {
+      .topbar { padding: 16px 18px; }
+      .brand img { width: 48px; }
+      .brand-text h1 { font-size: 20px; }
+      .legal-wrap { padding: 50px 18px 60px; }
+      .legal-card { padding: 38px 22px 32px; border-radius: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <a class="brand" href="index.html">
+      <img src="純-白PNG.png" alt="純密室 Logo">
+      <div class="brand-text">
+        <h1>純密室</h1>
+        <p>Chun's Room</p>
+      </div>
+    </a>
+    <a class="back-btn" href="about.html">返回關於</a>
+  </div>
+
+  <section class="legal-wrap">
+    <div class="legal-card">
+      <div class="legal-kicker">CANCELLATION POLICY</div>
+      <h2>取消政策</h2>
+
+      <div class="notice">
+        如需取消或更改場次，請於營業時間直接來電告知場次相關資料及取消原因，服務人員將依下列規定協助辦理。
+      </div>
+
+      <div class="section">
+        <h3>一、取消與退款規定</h3>
+        <ul>
+          <li>出發日 5 天前（不含出發日）通知取消，退回全額款項；如當初選擇 ATM 付款，將扣除手續費 50 元。</li>
+          <li>出發日 0 至 4 天前不接受取消或更改，並不予退回款項。</li>
+          <li>範例：出發日為 1/6，1/1 算出發日 5 天前。</li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h3>二、不可抗力因素</h3>
+        <p>若因颱風、地震等不可抗拒因素時，以當地縣市政府發布狀況為準則。純密室會保留訂金，並於下個營業日協助更改遊戲日期及場次。</p>
+      </div>
+
+      <div class="section">
+        <h3>三、非營業時間告知</h3>
+        <p>非營業時間告知取消或更改需求者，皆以下個營業日計算及辦理。</p>
+      </div>
+
+      <div class="bottom-links">
+        <a href="about.html">關於純密室</a> ｜ 
+        <a href="privacy.html">隱私權政策</a> ｜ 
+        <a href="index.html">返回首頁</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
