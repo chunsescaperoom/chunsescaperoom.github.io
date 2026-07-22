@@ -394,7 +394,7 @@
       z-index: 9999;
       opacity: 1;
       transition: opacity 1s ease;
-      padding: 24px;
+      padding: 0;
       overflow: hidden;
     }
 
@@ -439,35 +439,36 @@
     }
 
     .intro-video-wrap {
-      width: min(96vw, 1440px);
-      height: auto;
+      width: 100vw;
+      height: 100vh;
       max-height: 0;
       opacity: 0;
-      overflow: hidden;
+      overflow: visible;
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+      border-radius: 0;
+      border: 0;
+      box-shadow: none;
       background: #000;
       transform: translateY(12px);
       transition: opacity 0.8s ease, max-height 0.8s ease, transform 0.8s ease;
     }
 
     .intro-video-wrap.show {
-      max-height: calc(100vh - 110px);
+      max-height: 100vh;
       opacity: 1;
       transform: translateY(0);
     }
 
     #intro-video {
       display: block;
-      width: auto;
-      height: auto;
-      max-width: 100%;
-      max-height: calc(100vh - 110px);
+      width: 100vw;
+      height: 100vh;
+      max-width: 100vw;
+      max-height: 100vh;
       object-fit: contain;
+      object-position: center center;
       background: #000;
     }
 
@@ -569,17 +570,17 @@
       }
 
       #intro-screen {
-        padding: 10px;
+        padding: 0;
       }
 
-      .intro-video-wrap {
-        width: 98vw;
-        border-radius: 10px;
-      }
-
+      .intro-video-wrap,
       .intro-video-wrap.show,
       #intro-video {
-        max-height: calc(100vh - 80px);
+        width: 100vw;
+        height: 100vh;
+        max-width: 100vw;
+        max-height: 100vh;
+        border-radius: 0;
       }
 
       .enter-btn {
@@ -854,11 +855,22 @@
         }, 5600);
       }
 
-      // 若影片無法正常結束，仍會進入關店提示
-      setTimeout(() => {
-        startAfterVideo();
-      }, 30000);
+      // 播放到約一半時先顯示 ENTER，讓觀眾可選擇直接進入
+      let earlyEnterShown = false;
 
+      introVideo.addEventListener('timeupdate', () => {
+        if (
+          !earlyEnterShown &&
+          Number.isFinite(introVideo.duration) &&
+          introVideo.duration > 0 &&
+          introVideo.currentTime >= introVideo.duration / 2
+        ) {
+          earlyEnterShown = true;
+          enterBtn.classList.add('show');
+        }
+      });
+
+      // 影片真正播放完畢後，才進入關店提示字幕
       introVideo.addEventListener('ended', startAfterVideo);
       introVideo.addEventListener('error', startAfterVideo);
 
