@@ -476,32 +476,62 @@
     }
 
     .enter-btn {
+      position: absolute;
+      right: 40px;
+      bottom: 40px;
+      z-index: 4;
+
       opacity: 0;
       pointer-events: none;
-      padding: 12px 30px;
-      border: 1px solid rgba(255,255,255,0.45);
+      padding: 12px 26px;
+      border: 1px solid rgba(255,255,255,0.24);
       background: rgba(255,255,255,0.04);
-      color: white;
+      color: rgba(255,255,255,0.48);
       border-radius: 999px;
       font-size: 14px;
       letter-spacing: 4px;
       cursor: pointer;
-      text-shadow: 0 0 8px rgba(255,255,255,0.2);
-      box-shadow: 0 0 16px rgba(255,0,255,0.12);
-      transition: opacity 0.5s ease, transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-      transform: translateY(12px);
+      text-shadow: 0 0 8px rgba(255,255,255,0.16);
+      box-shadow: 0 0 14px rgba(255,0,255,0.08);
+
+      transform: translateY(10px);
+      transition:
+        opacity 0.5s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
     }
 
     .enter-btn.show {
-      opacity: 1;
+      opacity: 0.42;
       pointer-events: auto;
       transform: translateY(0);
+      animation: enter-breathe 4s ease-in-out infinite;
     }
 
     .enter-btn:hover {
+      opacity: 1;
+      color: #fff;
+      border-color: rgba(255,255,255,0.9);
       background: rgba(255,255,255,0.12);
       transform: translateY(-2px);
-      box-shadow: 0 0 20px rgba(255,0,255,0.22);
+      box-shadow:
+        0 0 18px rgba(255,255,255,0.22),
+        0 0 24px rgba(255,0,255,0.16);
+      animation-play-state: paused;
+    }
+
+    @keyframes enter-breathe {
+      0%, 100% {
+        opacity: 0.38;
+        box-shadow: 0 0 12px rgba(255,0,255,0.06);
+      }
+      50% {
+        opacity: 0.52;
+        box-shadow: 0 0 18px rgba(255,0,255,0.13);
+      }
     }
 
     .sound-hint {
@@ -596,9 +626,11 @@
       }
 
       .enter-btn {
+        right: 18px;
+        bottom: 24px;
         font-size: 13px;
         letter-spacing: 3px;
-        padding: 11px 24px;
+        padding: 11px 22px;
       }
     }
 
@@ -632,7 +664,7 @@
       </video>
     </div>
 
-    <button class="enter-btn" id="enter-btn" type="button">ENTER</button>
+    <button class="enter-btn" id="enter-btn" type="button">ENTER →</button>
 
     <div class="sound-hint" id="sound-hint">🔊 點一下開啟聲音</div>
   </div>
