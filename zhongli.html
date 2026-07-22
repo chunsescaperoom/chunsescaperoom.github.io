@@ -683,6 +683,171 @@
     .info-link {
       font-family: 'Orbitron', sans-serif;
     }
+  
+    /* 中壢連合店主題曲播放器 */
+    .music-player {
+      position: fixed;
+      left: 22px;
+      bottom: 22px;
+      z-index: 120;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 250px;
+      padding: 14px 18px;
+      border: 1px solid rgba(0,255,255,0.28);
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, rgba(12,12,20,0.92), rgba(20,8,28,0.88));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 12px 34px rgba(0,0,0,0.42),
+        0 0 22px rgba(255,0,204,0.11),
+        inset 0 0 18px rgba(0,255,255,0.035);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(18px);
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        visibility 0.6s ease,
+        min-width 0.55s ease,
+        padding 0.55s ease,
+        border-radius 0.55s ease;
+    }
+
+    .music-player.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    .music-player.compact {
+      min-width: 0;
+      padding: 10px 13px;
+      border-radius: 999px;
+    }
+
+    .music-toggle {
+      flex: 0 0 auto;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      background: rgba(255,255,255,0.055);
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+      box-shadow: 0 0 14px rgba(0,255,255,0.08);
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.06);
+      background: rgba(255,255,255,0.11);
+      border-color: rgba(0,255,255,0.65);
+      box-shadow:
+        0 0 16px rgba(0,255,255,0.18),
+        0 0 22px rgba(255,0,204,0.12);
+    }
+
+    .music-meta {
+      overflow: hidden;
+      max-width: 210px;
+      opacity: 1;
+      transform: translateX(0);
+      transition:
+        max-width 0.5s ease,
+        opacity 0.4s ease,
+        transform 0.5s ease;
+      white-space: nowrap;
+    }
+
+    .music-player.compact .music-meta {
+      max-width: 0;
+      opacity: 0;
+      transform: translateX(-8px);
+    }
+
+    .music-label {
+      margin-bottom: 4px;
+      color: rgba(159,232,255,0.76);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 9px;
+      letter-spacing: 2.2px;
+      text-transform: uppercase;
+    }
+
+    .music-title {
+      color: rgba(255,255,255,0.95);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 13px;
+      letter-spacing: 1.1px;
+      text-shadow:
+        0 0 8px rgba(255,255,255,0.18),
+        0 0 12px rgba(255,0,204,0.13);
+    }
+
+    .music-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+      margin-left: 2px;
+      opacity: 0.8;
+    }
+
+    .music-bars span {
+      display: block;
+      width: 2px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(0,255,255,0.8);
+      animation: music-bar 0.9s ease-in-out infinite alternate;
+      animation-play-state: paused;
+    }
+
+    .music-player.playing .music-bars span {
+      animation-play-state: running;
+    }
+
+    .music-bars span:nth-child(2) { animation-delay: 0.15s; }
+    .music-bars span:nth-child(3) { animation-delay: 0.3s; }
+    .music-bars span:nth-child(4) { animation-delay: 0.08s; }
+
+    @keyframes music-bar {
+      from { height: 3px; opacity: 0.45; }
+      to { height: 14px; opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .music-player {
+        left: 14px;
+        bottom: 14px;
+        min-width: 220px;
+        padding: 12px 14px;
+      }
+
+      .music-toggle {
+        width: 36px;
+        height: 36px;
+      }
+
+      .music-title {
+        font-size: 12px;
+      }
+    }
+
   </style>
 </head>
 
@@ -709,6 +874,19 @@
     <button class="enter-btn" id="enter-btn" type="button">ENTER →</button>
 
     <div class="sound-hint" id="sound-hint">🔊 點一下開啟聲音</div>
+  </div>
+
+  <audio id="theme-music" src="Chureki-Rengo.mp3" preload="auto" loop></audio>
+
+  <div class="music-player" id="music-player" aria-label="主題曲播放器">
+    <button class="music-toggle" id="music-toggle" type="button" aria-label="暫停主題曲">❚❚</button>
+    <div class="music-meta">
+      <div class="music-label">♫ Now Playing</div>
+      <div class="music-title">Chūreki Rengō</div>
+    </div>
+    <div class="music-bars" aria-hidden="true">
+      <span></span><span></span><span></span><span></span>
+    </div>
   </div>
 
   <div class="topbar">
@@ -852,8 +1030,6 @@
     <strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br>
     <strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br>
     <a class="map-btn" href="https://share.google/qweqyW1lBwYw6ObMk" target="_blank" rel="noopener">📍 在 Google 地圖中查看</a><br><br>
-    <strong>預約網址：</strong>
-    <a class="info-link" href="https://chunsroom.simplybook.asia/" target="_blank">https://chunsroom.simplybook.asia/</a><br>
     <strong>大廳設計：</strong>
     <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
   </section>
@@ -891,6 +1067,9 @@
       const introVideo = document.getElementById('intro-video');
       const introVideoWrap = document.getElementById('intro-video-wrap');
       const soundHint = document.getElementById('sound-hint');
+      const themeMusic = document.getElementById('theme-music');
+      const musicPlayer = document.getElementById('music-player');
+      const musicToggle = document.getElementById('music-toggle');
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
@@ -1009,7 +1188,97 @@
         }
       });
 
+      let musicFadeTimer = null;
+      let musicCompactTimer = null;
+
+      function fadeMusicTo(targetVolume, duration = 1000, pauseAfter = false) {
+        if (!themeMusic) return;
+
+        clearInterval(musicFadeTimer);
+
+        const startVolume = themeMusic.volume;
+        const difference = targetVolume - startVolume;
+        const steps = Math.max(1, Math.round(duration / 50));
+        let currentStep = 0;
+
+        musicFadeTimer = setInterval(() => {
+          currentStep += 1;
+          const progress = Math.min(currentStep / steps, 1);
+          themeMusic.volume = Math.max(
+            0,
+            Math.min(1, startVolume + difference * progress)
+          );
+
+          if (progress >= 1) {
+            clearInterval(musicFadeTimer);
+            musicFadeTimer = null;
+
+            if (pauseAfter && targetVolume === 0) {
+              themeMusic.pause();
+            }
+          }
+        }, 50);
+      }
+
+      function startThemeMusic() {
+        if (!themeMusic || !musicPlayer || !musicToggle) return;
+
+        clearTimeout(musicCompactTimer);
+        musicPlayer.classList.remove('compact');
+        musicPlayer.classList.add('show', 'playing');
+        musicToggle.textContent = '❚❚';
+        musicToggle.setAttribute('aria-label', '暫停主題曲');
+
+        themeMusic.volume = 0;
+        themeMusic.play()
+          .then(() => {
+            fadeMusicTo(0.72, 3000);
+
+            musicCompactTimer = setTimeout(() => {
+              musicPlayer.classList.add('compact');
+            }, 5000);
+          })
+          .catch(() => {
+            musicPlayer.classList.remove('playing');
+            musicToggle.textContent = '▶';
+            musicToggle.setAttribute('aria-label', '播放主題曲');
+          });
+      }
+
+      musicToggle.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        if (themeMusic.paused) {
+          themeMusic.volume = 0;
+          themeMusic.play().then(() => {
+            musicPlayer.classList.add('playing');
+            musicToggle.textContent = '❚❚';
+            musicToggle.setAttribute('aria-label', '暫停主題曲');
+            fadeMusicTo(0.72, 1200);
+          }).catch(() => {});
+        } else {
+          musicPlayer.classList.remove('playing');
+          musicToggle.textContent = '▶';
+          musicToggle.setAttribute('aria-label', '播放主題曲');
+          fadeMusicTo(0, 700, true);
+        }
+      });
+
+      musicPlayer.addEventListener('mouseenter', () => {
+        musicPlayer.classList.remove('compact');
+      });
+
+      musicPlayer.addEventListener('mouseleave', () => {
+        if (!themeMusic.paused) {
+          clearTimeout(musicCompactTimer);
+          musicCompactTimer = setTimeout(() => {
+            musicPlayer.classList.add('compact');
+          }, 1200);
+        }
+      });
+
       enterBtn.addEventListener('click', () => {
+        startThemeMusic();
         sessionStorage.setItem('zhongli_intro_seen', 'true');
 
         intro.classList.add('hide');
