@@ -477,60 +477,98 @@
 
     .enter-btn {
       position: absolute;
-      right: 40px;
-      bottom: 40px;
+      left: 50%;
+      top: 50%;
+      right: auto;
+      bottom: auto;
       z-index: 4;
 
       opacity: 0;
       pointer-events: none;
-      padding: 12px 26px;
-      border: 1px solid rgba(255,255,255,0.24);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.48);
+      padding: 13px 28px;
+      border: 1px solid rgba(255,255,255,0.72);
+      background: rgba(0,0,0,0.5);
+      color: rgba(255,255,255,0.95);
       border-radius: 999px;
-      font-size: 14px;
+      font-size: 15px;
+      font-weight: 700;
       letter-spacing: 4px;
       cursor: pointer;
-      text-shadow: 0 0 8px rgba(255,255,255,0.16);
-      box-shadow: 0 0 14px rgba(255,0,255,0.08);
+      text-shadow: 0 0 10px rgba(255,255,255,0.42);
+      box-shadow:
+        0 0 20px rgba(255,255,255,0.14),
+        0 0 28px rgba(255,0,255,0.18);
 
-      transform: translateY(10px);
+      transform: translate(-50%, -50%) scale(0.72);
       transition:
-        opacity 0.5s ease,
+        left 0.85s cubic-bezier(.22,.8,.25,1),
+        top 0.85s cubic-bezier(.22,.8,.25,1),
+        right 0.85s cubic-bezier(.22,.8,.25,1),
+        bottom 0.85s cubic-bezier(.22,.8,.25,1),
+        opacity 0.45s ease,
         color 0.25s ease,
         border-color 0.25s ease,
         background 0.25s ease,
-        transform 0.25s ease,
+        transform 0.45s cubic-bezier(.22,.8,.25,1),
         box-shadow 0.25s ease;
     }
 
+    /* 先在中央明顯跳出 */
     .enter-btn.show {
-      opacity: 0.42;
+      opacity: 1;
       pointer-events: auto;
-      transform: translateY(0);
+      transform: translate(-50%, -50%) scale(1);
+      animation: enter-pop 0.55s cubic-bezier(.22,.8,.25,1);
+    }
+
+    /* 玩家看見後，再移至右下角 */
+    .enter-btn.show.dock {
+      left: calc(100% - 40px);
+      top: calc(100% - 40px);
+      transform: translate(-100%, -100%) scale(1);
+      opacity: 0.82;
       animation: enter-breathe 4s ease-in-out infinite;
     }
 
-    .enter-btn:hover {
+    .enter-btn:hover,
+    .enter-btn.show.dock:hover {
       opacity: 1;
       color: #fff;
-      border-color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.12);
-      transform: translateY(-2px);
+      border-color: rgba(255,255,255,1);
+      background: rgba(15,15,22,0.82);
       box-shadow:
-        0 0 18px rgba(255,255,255,0.22),
-        0 0 24px rgba(255,0,255,0.16);
+        0 0 20px rgba(255,255,255,0.3),
+        0 0 30px rgba(255,0,255,0.24);
       animation-play-state: paused;
+    }
+
+    @keyframes enter-pop {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.68);
+      }
+      65% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.08);
+      }
+      100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+      }
     }
 
     @keyframes enter-breathe {
       0%, 100% {
-        opacity: 0.38;
-        box-shadow: 0 0 12px rgba(255,0,255,0.06);
+        opacity: 0.78;
+        box-shadow:
+          0 0 14px rgba(255,255,255,0.12),
+          0 0 18px rgba(255,0,255,0.1);
       }
       50% {
-        opacity: 0.52;
-        box-shadow: 0 0 18px rgba(255,0,255,0.13);
+        opacity: 0.94;
+        box-shadow:
+          0 0 20px rgba(255,255,255,0.22),
+          0 0 26px rgba(255,0,255,0.2);
       }
     }
 
@@ -626,11 +664,14 @@
       }
 
       .enter-btn {
-        right: 18px;
-        bottom: 24px;
         font-size: 13px;
         letter-spacing: 3px;
         padding: 11px 22px;
+      }
+
+      .enter-btn.show.dock {
+        left: calc(100% - 18px);
+        top: calc(100% - 24px);
       }
     }
 
@@ -901,6 +942,19 @@
 
       // 播放到約一半時，先顯示關店提示，再淡入 ENTER
       let earlyPromptShown = false;
+      let enterRevealStarted = false;
+
+      function revealEnter() {
+        if (enterRevealStarted) return;
+        enterRevealStarted = true;
+
+        enterBtn.classList.add('show');
+
+        // 先在中央停留，讓玩家一定看見，再滑到右下角
+        setTimeout(() => {
+          enterBtn.classList.add('dock');
+        }, 1500);
+      }
 
       function showEarlyPrompt() {
         if (earlyPromptShown) return;
@@ -915,7 +969,7 @@
         }, 2600);
 
         setTimeout(() => {
-          enterBtn.classList.add('show');
+          revealEnter();
         }, 3400);
       }
 
@@ -935,7 +989,7 @@
         if (!earlyPromptShown) {
           showEarlyPrompt();
         } else {
-          enterBtn.classList.add('show');
+          revealEnter();
         }
       });
 
