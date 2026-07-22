@@ -867,23 +867,46 @@
         }, 5600);
       }
 
-      // 播放到約一半時先顯示 ENTER，讓觀眾可選擇直接進入
-      let earlyEnterShown = false;
+      // 播放到約一半時，先顯示關店提示，再淡入 ENTER
+      let earlyPromptShown = false;
+
+      function showEarlyPrompt() {
+        if (earlyPromptShown) return;
+        earlyPromptShown = true;
+
+        text.innerHTML = "中壢連合店目前已關閉<br>即將進入紀念頁面";
+        text.className = 'intro-text show';
+
+        setTimeout(() => {
+          text.classList.remove('show');
+          text.classList.add('fade-out');
+        }, 2600);
+
+        setTimeout(() => {
+          enterBtn.classList.add('show');
+        }, 3400);
+      }
 
       introVideo.addEventListener('timeupdate', () => {
         if (
-          !earlyEnterShown &&
+          !earlyPromptShown &&
           Number.isFinite(introVideo.duration) &&
           introVideo.duration > 0 &&
           introVideo.currentTime >= introVideo.duration / 2
         ) {
-          earlyEnterShown = true;
+          showEarlyPrompt();
+        }
+      });
+
+      // 若觀眾一路看到影片結束，但提示尚未出現，就補上同一段流程
+      introVideo.addEventListener('ended', () => {
+        if (!earlyPromptShown) {
+          showEarlyPrompt();
+        } else {
           enterBtn.classList.add('show');
         }
       });
 
-      // 影片真正播放完畢後，才進入關店提示字幕
-      introVideo.addEventListener('ended', startAfterVideo);
       introVideo.addEventListener('error', startAfterVideo);
 
       intro.addEventListener('click', () => {
