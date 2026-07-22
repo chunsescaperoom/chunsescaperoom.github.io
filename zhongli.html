@@ -733,8 +733,8 @@
 
     .music-toggle {
       flex: 0 0 auto;
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
       border: 1px solid rgba(255,255,255,0.22);
       border-radius: 50%;
       display: grid;
@@ -873,7 +873,7 @@
     .lyrics-overlay {
       position: fixed;
       inset: 0;
-      z-index: 500;
+      z-index: 20000;
       display: grid;
       place-items: center;
       padding: 20px;
@@ -1178,7 +1178,9 @@
     <div class="music-bars" aria-hidden="true">
       <span></span><span></span><span></span><span></span>
     </div>
-    <button class="lyrics-open lyrics-pill" id="lyrics-open" type="button" aria-label="開啟同步歌詞">詞</button>
+    <button class="lyrics-open lyrics-pill" id="lyrics-open" type="button"
+      aria-label="開啟同步歌詞"
+      onclick="event.stopPropagation();var x=document.getElementById('lyrics-overlay');if(x){x.classList.add('open');x.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}">詞</button>
   </div>
 
   <div class="topbar">
@@ -1326,9 +1328,11 @@
     <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
   </section>
 
-  <div class="lyrics-overlay" id="lyrics-overlay" aria-hidden="true">
+  <div class="lyrics-overlay" id="lyrics-overlay" aria-hidden="true"
+      onclick="if(event.target===this){this.classList.remove('open');this.setAttribute('aria-hidden','true');document.body.style.overflow='';}">
     <section class="lyrics-dialog" role="dialog" aria-modal="true" aria-labelledby="lyrics-title">
-      <button class="lyrics-close" id="lyrics-close" type="button" aria-label="關閉歌詞">×</button>
+      <button class="lyrics-close" id="lyrics-close" type="button" aria-label="關閉歌詞"
+      onclick="var x=document.getElementById('lyrics-overlay');if(x){x.classList.remove('open');x.setAttribute('aria-hidden','true');document.body.style.overflow='';}">×</button>
       <header class="lyrics-header">
         <div class="lyrics-kicker">Now Playing · Synchronized Lyrics</div>
         <h2 class="lyrics-heading" id="lyrics-title">Chūreki Rengō</h2>
@@ -1576,7 +1580,21 @@
     </section>
   </div>
 
+  
   <script>
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        var overlay = document.getElementById('lyrics-overlay');
+        if (overlay) {
+          overlay.classList.remove('open');
+          overlay.setAttribute('aria-hidden', 'true');
+          document.body.style.overflow = '';
+        }
+      }
+    });
+  </script>
+
+<script>
     history.scrollRestoration = 'manual';
 
     const cards = document.querySelectorAll('.card');
