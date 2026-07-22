@@ -586,7 +586,8 @@
 <body class="intro-active">
   <div id="intro-screen">
     <div class="intro-text" id="intro-text">
-      這個名字，你或許在哪裡聽過。
+      中壢連合店目前已關閉<br>
+      即將進入紀念頁面
     </div>
 
     <div class="intro-video-wrap" id="intro-video-wrap">
@@ -790,9 +791,9 @@
       const isMobile = window.innerWidth <= 768;
 
       if (isMobile) {
-        introVideo.src = 'intro-mobile.mp4';
+        introVideo.src = 'memorial-mobile.mp4';
       } else {
-        introVideo.src = 'intro-desktop.mp4';
+        introVideo.src = 'memorial-desktop.mp4';
       }
 
       if (sessionStorage.getItem('zhongli_intro_seen') === 'true') {
@@ -807,46 +808,40 @@
       let soundEnabled = false;
       let sequenceStarted = false;
 
-      setTimeout(() => {
-        text.classList.add('show');
-      }, 300);
-
-      setTimeout(() => {
-        text.classList.remove('show');
-        text.classList.add('fade-out');
-      }, 2600);
-
-      setTimeout(() => {
-        text.classList.remove('fade-out');
-        introVideoWrap.classList.add('show');
-        introVideo.play().catch(() => {});
-      }, 3400);
+      // 頁面開啟後直接顯示並播放影片
+      introVideoWrap.classList.add('show');
+      introVideo.play().catch(() => {});
 
       function startAfterVideo() {
         if (sequenceStarted) return;
         sequenceStarted = true;
 
-        text.innerHTML = "沒錯——<br>那就是你在《我在暴走族的第一個夏祭》中，<br>曾短暫加入過的暴走族。";
-        text.className = 'intro-text show';
+        introVideoWrap.classList.remove('show');
+
+        setTimeout(() => {
+          text.innerHTML = "中壢連合店目前已關閉";
+          text.className = 'intro-text show';
+        }, 700);
 
         setTimeout(() => {
           text.classList.remove('show');
           text.classList.add('fade-out');
-        }, 2800);
+        }, 3000);
 
         setTimeout(() => {
-          text.innerHTML = '我們！更大了！';
+          text.innerHTML = "即將進入紀念頁面";
           text.className = 'intro-text final-line show';
-        }, 5200);
+        }, 4300);
 
         setTimeout(() => {
           enterBtn.classList.add('show');
-        }, 6200);
+        }, 5600);
       }
 
+      // 若影片無法正常結束，仍會進入關店提示
       setTimeout(() => {
         startAfterVideo();
-      }, 19400);
+      }, 30000);
 
       introVideo.addEventListener('ended', startAfterVideo);
       introVideo.addEventListener('error', startAfterVideo);
