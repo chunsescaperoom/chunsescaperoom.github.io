@@ -1,20 +1,17 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>中壢連合店</title>
-
-  <!-- 中文字型 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- 英文字型 -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- 共用CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>中壢連合店</title>
+<!-- 中文字型 -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- 英文字型 -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<!-- 共用CSS -->
+<link href="style.css" rel="stylesheet"/>
+<style>
     * {
       box-sizing: border-box;
     }
@@ -1141,447 +1138,411 @@
 
 </style>
 </head>
-
 <body class="intro-active">
-  <div id="intro-screen">
-    <div class="intro-text" id="intro-text">
-      中壢連合店目前已關閉<br>
+<div id="intro-screen">
+<div class="intro-text" id="intro-text">
+      中壢連合店目前已關閉<br/>
       即將進入紀念頁面
     </div>
-
-    <div class="intro-video-wrap" id="intro-video-wrap">
-      <video
-        id="intro-video"
-        muted
-        playsinline
-        webkit-playsinline
-        preload="auto"
-        poster="中壢連合店.png"
-      >
+<div class="intro-video-wrap" id="intro-video-wrap">
+<video id="intro-video" muted="" playsinline="" poster="中壢連合店.png" preload="auto" webkit-playsinline="">
         你的瀏覽器不支援影片播放
       </video>
-    </div>
-
-    <button class="enter-btn" id="enter-btn" type="button">ENTER →</button>
-
-    <div class="sound-hint" id="sound-hint">🔊 點一下開啟聲音</div>
-  </div>
-
-  <audio id="theme-music" src="Chureki-Rengo.mp3" preload="auto" loop></audio>
-
-  <div class="music-player" id="music-player" aria-label="主題曲播放器">
-    <button class="music-toggle" id="music-toggle" type="button" aria-label="暫停主題曲">❚❚</button>
-    <div class="music-meta">
-      <div class="music-label">♫ Now Playing</div>
-      <div class="music-title">Chūreki Rengō</div>
-    </div>
-    <div class="music-bars" aria-hidden="true">
-      <span></span><span></span><span></span><span></span>
-    </div>
-    <button class="lyrics-open lyrics-pill" id="lyrics-open" type="button"
-      aria-label="開啟同步歌詞"
-      onclick="event.stopPropagation();var x=document.getElementById('lyrics-overlay');if(x){x.classList.add('open');x.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}">詞</button>
-  </div>
-
-  <div class="topbar">
-    <a href="index.html" class="brand">
-      <img src="純-白PNG.png" alt="純密室 Logo">
-      <div class="brand-text">
-        <h1>純密室</h1>
-        <p>Chun's Room</p>
-      </div>
-    </a>
-    <a class="back-btn" href="index.html">返回首頁</a>
-  </div>
-
-  <section class="hero">
-    <img class="hero-logo" src="中壢連合店.png" alt="中壢連合店 Logo">
-    <h2>中壢連合店</h2>
-    <p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
-  </section>
-
-  <main class="container">
-    <div class="cards">
-      <a class="card-link" href="overmydeadbody.html">
-        <div class="card">
-          <div class="card-poster">
-            <img src="縮小戰慄品海報.png" alt="戰慄品海報">
-          </div>
-
-          <div class="title">
+</div>
+<button class="enter-btn" id="enter-btn" type="button">ENTER →</button>
+<div class="sound-hint" id="sound-hint">🔊 點一下開啟聲音</div>
+</div>
+<audio id="theme-music" loop="" preload="auto" src="Chureki-Rengo.mp3"></audio>
+<div aria-label="主題曲播放器" class="music-player" id="music-player">
+<button aria-label="暫停主題曲" class="music-toggle" id="music-toggle" type="button">❚❚</button>
+<div class="music-meta">
+<div class="music-label">♫ Now Playing</div>
+<div class="music-title">Chūreki Rengō</div>
+</div>
+<div aria-hidden="true" class="music-bars">
+<span></span><span></span><span></span><span></span>
+</div>
+<button aria-label="開啟同步歌詞" class="lyrics-open lyrics-pill" id="lyrics-open" onclick="event.stopPropagation();var x=document.getElementById('lyrics-overlay');if(x){x.classList.add('open');x.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}" type="button">詞</button>
+</div>
+<div class="topbar">
+<a class="brand" href="index.html">
+<img alt="純密室 Logo" src="純-白PNG.png"/>
+<div class="brand-text">
+<h1>純密室</h1>
+<p>Chun's Room</p>
+</div>
+</a>
+<a class="back-btn" href="index.html">返回首頁</a>
+</div>
+<section class="hero">
+<img alt="中壢連合店 Logo" class="hero-logo" src="中壢連合店.png"/>
+<h2>中壢連合店</h2>
+<p>霓虹、街頭、任務代號。選擇你即將進入的那一場異常事件。</p>
+</section>
+<main class="container">
+<div class="cards">
+<a class="card-link" href="overmydeadbody.html">
+<div class="card">
+<div class="card-poster">
+<img alt="戰慄品海報" src="縮小戰慄品海報.png"/>
+</div>
+<div class="title">
             戰慄品
             <span class="sub-en">OVER MY DEAD BODY</span>
-          </div>
+</div>
+<div class="desc">
+            哈夫伊貝夏村流傳著關於幽靈的傳說，<br/>
+            渾身是血、面目全非的女孩，<br/>
+            束縛在那罕無人煙的廢墟之中，<br/>
+            聽說見過女孩者，或傷或瘋、不得解脫。<br/><br/>
 
-          <div class="desc">
-            哈夫伊貝夏村流傳著關於幽靈的傳說，<br>
-            渾身是血、面目全非的女孩，<br>
-            束縛在那罕無人煙的廢墟之中，<br>
-            聽說見過女孩者，或傷或瘋、不得解脫。<br><br>
-
-            你們是羅罕國退役的軍人，有勇有謀，<br>
-            誓要親手破解傳說惡咒，<br>
+            你們是羅罕國退役的軍人，有勇有謀，<br/>
+            誓要親手破解傳說惡咒，<br/>
             誰知話音剛落，你們便失去所有......
           </div>
-
-          <div class="btn">進入遊戲</div>
-        </div>
-      </a>
-
-      <div class="card coming">
-        <div class="title glitch" data-text="COMING SOON">
+<div class="btn">進入遊戲</div>
+</div>
+</a>
+<div class="card coming">
+<div class="title glitch" data-text="COMING SOON">
           COMING SOON
           <span class="sub-en">NEW MISSION LOADING...</span>
-        </div>
-
-        <div class="desc">
-          系統載入中……<br>
-          未知任務即將解鎖。<br><br>
-          訊號不穩，資料殘缺。<br>
+</div>
+<div class="desc">
+          系統載入中……<br/>
+          未知任務即將解鎖。<br/><br/>
+          訊號不穩，資料殘缺。<br/>
           下一個故事，尚未對外公開。
         </div>
+<div class="btn disabled">尚未開放</div>
+</div>
+</div>
+</main>
+<section class="lore-block">
+<p class="lore-text">
+      傳說在中原夜市附近的協同街，<br/>
+      有一群叫做中壢連合的暴走族。<br/>
+      他們一天到晚招募新的成員，<br/>
+      直到那個地方再也裝不下更多的人。<br/><br/>
+<span class="highlight">這個名字，你或許在哪裡聽過。</span><br/><br/>
 
-        <div class="btn disabled">尚未開放</div>
-      </div>
-    </div>
-  </main>
+      沒錯——<br/>
+      那就是你在《我在暴走族的第一個夏祭》中，<br/>
+      曾經短暫加入過的暴走族。<br/><br/>
 
-  <section class="lore-block">
-    <p class="lore-text">
-      傳說在中原夜市附近的協同街，<br>
-      有一群叫做中壢連合的暴走族。<br>
-      他們一天到晚招募新的成員，<br>
-      直到那個地方再也裝不下更多的人。<br><br>
+      他們的總長開始想要有更大的地盤，<br/>
+      就這樣尋尋覓覓的，<br/>
+      找到了龍和三街的一處地點，<br/>
+      他有義氣，與衝勁，其他啥都沒有。<br/><br/>
 
-      <span class="highlight">這個名字，你或許在哪裡聽過。</span><br><br>
+      雖然有眾多小弟小妹們，<br/>
+      但他們比總長更加年輕更一無所有。<br/><br/>
 
-      沒錯——<br>
-      那就是你在《我在暴走族的第一個夏祭》中，<br>
-      曾經短暫加入過的暴走族。<br><br>
+      總長：『從今天起，這就是我們的另一處地盤了！！！！』<br/><br/>
 
-      他們的總長開始想要有更大的地盤，<br>
-      就這樣尋尋覓覓的，<br>
-      找到了龍和三街的一處地點，<br>
-      他有義氣，與衝勁，其他啥都沒有。<br><br>
+      總長對著空蕩蕩的空間這樣吼著，<br/>
+      幻想著地盤未來的樣子，<br/>
+      但是現實讓他對於這個空間一籌莫展，<br/>
+      正在此時……<br/><br/>
 
-      雖然有眾多小弟小妹們，<br>
-      但他們比總長更加年輕更一無所有。<br><br>
+      特攻隊長：「我想要有雲！！」<br/><br/>
 
-      總長：『從今天起，這就是我們的另一處地盤了！！！！』<br><br>
+      總長：『蛤？』<br/><br/>
 
-      總長對著空蕩蕩的空間這樣吼著，<br>
-      幻想著地盤未來的樣子，<br>
-      但是現實讓他對於這個空間一籌莫展，<br>
-      正在此時……<br><br>
+      特攻隊長：「一個酷酷的有閃電的雲」<br/><br/>
 
-      特攻隊長：「我想要有雲！！」<br><br>
+      突然那一瞬間，<br/>
+      總長知道他們的地盤最適合怎樣的風格了！<br/><br/>
 
-      總長：『蛤？』<br><br>
+      他聯絡起了他生命中第一個收的小弟，<br/>
+      我們姑且叫他 “康” 吧，<br/><br/>
 
-      特攻隊長：「一個酷酷的有閃電的雲」<br><br>
+      總長：『康！我的地盤需要你，我的地盤風格是，要科技又要落魄，重點是佈置起來要便宜！！我們是一群很酷但還沒闖出頭的暴走族，能不能給我Cyberpunk? 這個最適合我們的理念了？』<br/><br/>
 
-      突然那一瞬間，<br>
-      總長知道他們的地盤最適合怎樣的風格了！<br><br>
+      康雖然不知道總長在說什麼，<br/>
+      但依然使命必達！<br/><br/>
 
-      他聯絡起了他生命中第一個收的小弟，<br>
-      我們姑且叫他 “康” 吧，<br><br>
+      康：「大概就是......低階生活與高等科技的結合的概念對嗎？」<br/><br/>
 
-      總長：『康！我的地盤需要你，我的地盤風格是，要科技又要落魄，重點是佈置起來要便宜！！我們是一群很酷但還沒闖出頭的暴走族，能不能給我Cyberpunk? 這個最適合我們的理念了？』<br><br>
+      總長：『對對對對！』<br/><br/>
 
-      康雖然不知道總長在說什麼，<br>
-      但依然使命必達！<br><br>
+      康：「要省錢就需要很多手做喔？」<br/><br/>
 
-      康：「大概就是......低階生活與高等科技的結合的概念對嗎？」<br><br>
+      總長：『做！都做！』<br/><br/>
 
-      總長：『對對對對！』<br><br>
+      於是一點瘋狂，一點中二，<br/>
+      一些酷酷的東西，<br/>
+      再加上一點長久的幻想。<br/><br/>
 
-      康：「要省錢就需要很多手做喔？」<br><br>
+      成為了現在的——<br/><br/>
+<strong class="neon">純密室・中壢連合店</strong>
+</p>
+</section>
+<section class="extra-copy">
+    這不是一間普通的密室。<br/>
+    這裡，是中壢連合。<br/><br/>
 
-      總長：『做！都做！』<br><br>
-
-      於是一點瘋狂，一點中二，<br>
-      一些酷酷的東西，<br>
-      再加上一點長久的幻想。<br><br>
-
-      成為了現在的——<br><br>
-
-      <strong class="neon">純密室・中壢連合店</strong>
-    </p>
-  </section>
-
-  <section class="extra-copy">
-    這不是一間普通的密室。<br>
-    這裡，是中壢連合。<br><br>
-
-    你或許聽過這個名字，<br>
-    但從沒真正理解過它。<br><br>
+    你或許聽過這個名字，<br/>
+    但從沒真正理解過它。<br/><br/>
 
     直到你走進來。
   </section>
+<section class="info-block">
+<strong>聯絡電話：</strong>03-4163349<br/>
+<strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br/>
+<strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br/>
+<a class="map-btn" href="https://share.google/qweqyW1lBwYw6ObMk" rel="noopener" target="_blank">📍 在 Google 地圖中查看</a><br/><br/>
+<strong>大廳設計：</strong>
+<a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
+</section>
+<div aria-hidden="true" class="lyrics-overlay" id="lyrics-overlay" onclick="if(event.target===this){this.classList.remove('open');this.setAttribute('aria-hidden','true');document.body.style.overflow='';}">
+<section aria-labelledby="lyrics-title" aria-modal="true" class="lyrics-dialog" role="dialog">
+<button aria-label="關閉歌詞" class="lyrics-close" id="lyrics-close" onclick="var x=document.getElementById('lyrics-overlay');if(x){x.classList.remove('open');x.setAttribute('aria-hidden','true');document.body.style.overflow='';}" type="button">×</button>
+<header class="lyrics-header">
+<div class="lyrics-kicker">Now Playing · Synchronized Lyrics</div>
+<h2 class="lyrics-heading" id="lyrics-title">Chūreki Rengō</h2>
+<div class="lyrics-subtitle">中壢連合店主題曲</div>
+</header>
 
-  <section class="info-block">
-    <strong>聯絡電話：</strong>03-4163349<br>
-    <strong>營業資訊：</strong>下午12:00～晚上10:00（週二公休）<br>
-    <strong>地址：</strong>桃園市中壢區龍和三街63號1樓（全預約制）<br>
-    <a class="map-btn" href="https://share.google/qweqyW1lBwYw6ObMk" target="_blank" rel="noopener">📍 在 Google 地圖中查看</a><br><br>
-    <strong>大廳設計：</strong>
-    <a class="info-link" href="https://www.behance.net/comstudiodesign" target="_blank">康 / COM Studio Design</a>
-  </section>
-
-  <div class="lyrics-overlay" id="lyrics-overlay" aria-hidden="true"
-      onclick="if(event.target===this){this.classList.remove('open');this.setAttribute('aria-hidden','true');document.body.style.overflow='';}">
-    <section class="lyrics-dialog" role="dialog" aria-modal="true" aria-labelledby="lyrics-title">
-      <button class="lyrics-close" id="lyrics-close" type="button" aria-label="關閉歌詞"
-      onclick="var x=document.getElementById('lyrics-overlay');if(x){x.classList.remove('open');x.setAttribute('aria-hidden','true');document.body.style.overflow='';}">×</button>
-      <header class="lyrics-header">
-        <div class="lyrics-kicker">Now Playing · Synchronized Lyrics</div>
-        <h2 class="lyrics-heading" id="lyrics-title">Chūreki Rengō</h2>
-        <div class="lyrics-subtitle">中壢連合店主題曲</div>
-      </header>
-      <div class="lyrics-scroll" id="lyrics-scroll">
-        <div class="lyrics-section">Intro</div><div class="lyric-pair" data-index="0" data-start="34.5" data-end="40.5" tabindex="0">
-          <div class="lyric-original">Rain on chrome, another midnight glow</div>
-          <div class="lyric-translation">雨落鍍鉻，又一夜微光</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="1" data-start="40.5" data-end="46.5" tabindex="0">
-          <div class="lyric-original">Engines singing where the lost kids go</div>
-          <div class="lyric-translation">引擎轟鳴，唱著迷途孩子的方向</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="2" data-start="46.5" data-end="52.5" tabindex="0">
-          <div class="lyric-original">Broken signals, broken dreams</div>
-          <div class="lyric-translation">破碎的訊號，破碎的夢</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="3" data-start="52.5" data-end="58.5" tabindex="0">
-          <div class="lyric-original">Still alive inside the screens</div>
-          <div class="lyric-translation">仍在螢幕裡殘存</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="4" data-start="58.5" data-end="63.5" tabindex="0">
-          <div class="lyric-original">誰も知らない</div>
-          <div class="lyric-translation">沒有人知道</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="5" data-start="63.5" data-end="68.5" tabindex="0">
-          <div class="lyric-original">この夜の理由</div>
-          <div class="lyric-translation">這夜晚的理由</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="6" data-start="68.5" data-end="73.5" tabindex="0">
-          <div class="lyric-original">One more spark</div>
-          <div class="lyric-translation">再點一次火光</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="7" data-start="73.5" data-end="78.5" tabindex="0">
-          <div class="lyric-original">Before we disappear</div>
-          <div class="lyric-translation">趁我們未消失之前</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Pre-Chorus</div><div class="lyric-pair" data-index="8" data-start="78.5" data-end="83.5" tabindex="0">
-          <div class="lyric-original">Turn the headlights off</div>
-          <div class="lyric-translation">熄掉車頭燈</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="9" data-start="83.5" data-end="88.5" tabindex="0">
-          <div class="lyric-original">Listen to the static</div>
-          <div class="lyric-translation">聆聽那雜訊</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="10" data-start="88.5" data-end="93.5" tabindex="0">
-          <div class="lyric-original">Every heartbeat</div>
-          <div class="lyric-translation">每一次心跳</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="11" data-start="93.5" data-end="98.5" tabindex="0">
-          <div class="lyric-original">Echoes in the dark</div>
-          <div class="lyric-translation">都在黑暗中回響</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="12" data-start="98.5" data-end="102.5" tabindex="0">
-          <div class="lyric-original">まだ終わらない</div>
-          <div class="lyric-translation">還沒有結束</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Chorus</div><div class="lyric-pair" data-index="13" data-start="102.5" data-end="106.5" tabindex="0">
-          <div class="lyric-original">Tonight we ride</div>
-          <div class="lyric-translation">今夜我們奔馳</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="14" data-start="106.5" data-end="110.5" tabindex="0">
-          <div class="lyric-original">Tonight we burn</div>
-          <div class="lyric-translation">今夜我們燃燒</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="15" data-start="110.5" data-end="115.5" tabindex="0">
-          <div class="lyric-original">Chūreki Rengō</div>
-          <div class="lyric-translation">中壢連合</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="16" data-start="115.5" data-end="119.5" tabindex="0">
-          <div class="lyric-original">Neon hearts</div>
-          <div class="lyric-translation">霓虹之心</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="17" data-start="119.5" data-end="123.5" tabindex="0">
-          <div class="lyric-original">We'll never run</div>
-          <div class="lyric-translation">永不退卻</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="18" data-start="123.5" data-end="128.5" tabindex="0">
-          <div class="lyric-original">Over My Dead Body</div>
-          <div class="lyric-translation">戰慄品</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="19" data-start="128.5" data-end="132.5" tabindex="0">
-          <div class="lyric-original">Raise your eyes</div>
-          <div class="lyric-translation">抬頭仰望</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="20" data-start="132.5" data-end="136.5" tabindex="0">
-          <div class="lyric-original">Don't look down</div>
-          <div class="lyric-translation">別低下頭</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="21" data-start="136.5" data-end="141.5" tabindex="0">
-          <div class="lyric-original">If tomorrow never comes</div>
-          <div class="lyric-translation">若明日不再來</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="22" data-start="141.5" data-end="147.5" tabindex="0">
-          <div class="lyric-original">Our story goes on</div>
-          <div class="lyric-translation">我們的故事仍會延續</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Verse 2</div><div class="lyric-pair" data-index="23" data-start="147.5" data-end="153.5" tabindex="0">
-          <div class="lyric-original">Empty streets still know our names</div>
-          <div class="lyric-translation">空蕩的街道仍記得我們的名字</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="24" data-start="153.5" data-end="159.5" tabindex="0">
-          <div class="lyric-original">Every scar still feels the same</div>
-          <div class="lyric-translation">每一道傷疤仍是同樣的痛</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="25" data-start="159.5" data-end="164.5" tabindex="0">
-          <div class="lyric-original">Every corner keeps the sound</div>
-          <div class="lyric-translation">每個轉角</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="26" data-start="164.5" data-end="170.5" tabindex="0">
-          <div class="lyric-original">Of the ones who stayed around</div>
-          <div class="lyric-translation">仍留著那些人的迴音</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="27" data-start="170.5" data-end="175.5" tabindex="0">
-          <div class="lyric-original">また会おう</div>
-          <div class="lyric-translation">我們會再相見</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="28" data-start="175.5" data-end="180.5" tabindex="0">
-          <div class="lyric-original">その日まで</div>
-          <div class="lyric-translation">直到那一天</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="29" data-start="180.5" data-end="186.5" tabindex="0">
-          <div class="lyric-original">No one owns the night</div>
-          <div class="lyric-translation">沒有人能擁有這夜晚</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="30" data-start="186.5" data-end="192.5" tabindex="0">
-          <div class="lyric-original">But the memories do</div>
-          <div class="lyric-translation">唯有回憶留存</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Bridge</div><div class="lyric-pair" data-index="31" data-start="192.5" data-end="197.5" tabindex="0">
-          <div class="lyric-original">If the city falls asleep</div>
-          <div class="lyric-translation">如果城市沉沉睡去</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="32" data-start="197.5" data-end="202.5" tabindex="0">
-          <div class="lyric-original">Don't erase us</div>
-          <div class="lyric-translation">別把我們抹去</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="33" data-start="202.5" data-end="208.5" tabindex="0">
-          <div class="lyric-original">If the lights all fade away</div>
-          <div class="lyric-translation">如果所有的光都漸漸熄滅</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="34" data-start="208.5" data-end="213.5" tabindex="0">
-          <div class="lyric-original">Don't erase us</div>
-          <div class="lyric-translation">別把我們抹去</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="35" data-start="213.5" data-end="218.5" tabindex="0">
-          <div class="lyric-original">They can take our place</div>
-          <div class="lyric-translation">他們能奪走我們的位置</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="36" data-start="218.5" data-end="223.5" tabindex="0">
-          <div class="lyric-original">Not our story</div>
-          <div class="lyric-translation">奪不走我們的故事</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="37" data-start="223.5" data-end="228.5" tabindex="0">
-          <div class="lyric-original">This territory ends here</div>
-          <div class="lyric-translation">這片地盤在此終結</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="38" data-start="228.5" data-end="232.5" tabindex="0">
-          <div class="lyric-original">Our story doesn't</div>
-          <div class="lyric-translation">我們的故事不會</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="39" data-start="232.5" data-end="236.5" tabindex="0">
-          <div class="lyric-original">Over My Dead Body</div>
-          <div class="lyric-translation">戰慄品</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="40" data-start="236.5" data-end="240.5" tabindex="0">
-          <div class="lyric-original">まだ終わらない</div>
-          <div class="lyric-translation">還沒有結束</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="41" data-start="240.5" data-end="244.5" tabindex="0">
-          <div class="lyric-original">Chūreki Rengō</div>
-          <div class="lyric-translation">中壢連合</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Final Chorus</div><div class="lyric-pair" data-index="42" data-start="244.5" data-end="248.0" tabindex="0">
-          <div class="lyric-original">Tonight we ride</div>
-          <div class="lyric-translation">今夜我們奔馳</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="43" data-start="248.0" data-end="251.5" tabindex="0">
-          <div class="lyric-original">Tonight we burn</div>
-          <div class="lyric-translation">今夜我們燃燒</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="44" data-start="251.5" data-end="255.5" tabindex="0">
-          <div class="lyric-original">Chūreki Rengō</div>
-          <div class="lyric-translation">中壢連合</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="45" data-start="255.5" data-end="258.5" tabindex="0">
-          <div class="lyric-original">Neon hearts</div>
-          <div class="lyric-translation">霓虹之心</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="46" data-start="258.5" data-end="261.5" tabindex="0">
-          <div class="lyric-original">We'll never run</div>
-          <div class="lyric-translation">絕不退卻</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="47" data-start="261.5" data-end="264.5" tabindex="0">
-          <div class="lyric-original">Over My Dead Body</div>
-          <div class="lyric-translation">戰慄品</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="48" data-start="264.5" data-end="267.0" tabindex="0">
-          <div class="lyric-original">Raise your eyes</div>
-          <div class="lyric-translation">抬頭仰望</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="49" data-start="267.0" data-end="269.5" tabindex="0">
-          <div class="lyric-original">Don't look down</div>
-          <div class="lyric-translation">別低下頭</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="50" data-start="269.5" data-end="272.0" tabindex="0">
-          <div class="lyric-original">Dua Lang Tso</div>
-          <div class="lyric-translation">兌榔造</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="51" data-start="272.0" data-end="274.5" tabindex="0">
-          <div class="lyric-original">Our story goes on</div>
-          <div class="lyric-translation">故事依然繼續</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="52" data-start="274.5" data-end="277.0" tabindex="0">
-          <div class="lyric-original">One last ride</div>
-          <div class="lyric-translation">最後一趟旅程</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="53" data-start="277.0" data-end="279.5" tabindex="0">
-          <div class="lyric-original">また会おう</div>
-          <div class="lyric-translation">我們會再相見</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="54" data-start="279.5" data-end="282.5" tabindex="0">
-          <div class="lyric-original">Keep the neon alive</div>
-          <div class="lyric-translation">讓霓虹燈永遠亮著</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyrics-section">Outro</div><div class="lyric-pair" data-index="55" data-start="282.5" data-end="283.5" tabindex="0">
-          <div class="lyric-original">Tonight we ride</div>
-          <div class="lyric-translation">今夜我們奔馳</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="56" data-start="283.5" data-end="284.5" tabindex="0">
-          <div class="lyric-original">Tonight we burn</div>
-          <div class="lyric-translation">今夜我們燃燒</div>
-          <div class="lyric-progress"><span></span></div>
-        </div><div class="lyric-pair" data-index="57" data-start="284.5" data-end="285.5" tabindex="0">
-          <div class="lyric-original">Chūreki Rengō...</div>
-          <div class="lyric-translation">中壢連合……</div>
-          <div class="lyric-progress"><span></span></div>
-        </div>
-      </div>
-      <footer class="lyrics-footer">
-        <div class="lyrics-dedication">為中壢連合店閉店而創作。</div>
-        <div class="lyrics-credit">Lyrics by 小北 × ChatGPT<br>Music generated with Suno</div>
-      </footer>
-    </section>
-  </div>
-
-  
-  <script>
+&lt;!-- Karaoke timings rebuilt from the user-verified lead-vocal timestamps on 2026-07-23. Background harmonies are intentionally excluded. --&gt;
+<div class="lyrics-scroll" id="lyrics-scroll">
+<div class="lyrics-section">Intro</div><div class="lyric-pair" data-end="38.771" data-index="0" data-start="34.662" tabindex="0">
+<div class="lyric-original">Rain on chrome, another midnight glow</div>
+<div class="lyric-translation">雨落鍍鉻，又一夜微光</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="42.935" data-index="1" data-start="38.771" tabindex="0">
+<div class="lyric-original">Engines singing where the lost kids go</div>
+<div class="lyric-translation">引擎轟鳴，唱著迷途孩子的方向</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="47.308" data-index="2" data-start="42.935" tabindex="0">
+<div class="lyric-original">Broken signals, broken dreams</div>
+<div class="lyric-translation">破碎的訊號，破碎的夢</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="50.916" data-index="3" data-start="47.308" tabindex="0">
+<div class="lyric-original">Still alive inside the screens</div>
+<div class="lyric-translation">仍在螢幕裡殘存</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="54.462" data-index="4" data-start="50.916" tabindex="0">
+<div class="lyric-original">誰も知らない</div>
+<div class="lyric-translation">沒有人知道</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="59.390" data-index="5" data-start="54.462" tabindex="0">
+<div class="lyric-original">この夜の理由</div>
+<div class="lyric-translation">這夜晚的理由</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="62.762" data-index="6" data-start="59.390" tabindex="0">
+<div class="lyric-original">One more spark</div>
+<div class="lyric-translation">再點一次火光</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="67.964" data-index="7" data-start="62.762" tabindex="0">
+<div class="lyric-original">Before we disappear</div>
+<div class="lyric-translation">趁我們未消失之前</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Pre-Chorus</div><div class="lyric-pair" data-end="70.527" data-index="8" data-start="67.964" tabindex="0">
+<div class="lyric-original">Turn the headlights off</div>
+<div class="lyric-translation">熄掉車頭燈</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="72.638" data-index="9" data-start="70.527" tabindex="0">
+<div class="lyric-original">Listen to the static</div>
+<div class="lyric-translation">聆聽那雜訊</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="74.723" data-index="10" data-start="72.638" tabindex="0">
+<div class="lyric-original">Every heartbeat</div>
+<div class="lyric-translation">每一次心跳</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="78.863" data-index="11" data-start="74.723" tabindex="0">
+<div class="lyric-original">Echoes in the dark</div>
+<div class="lyric-translation">都在黑暗中回響</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="83.794" data-index="12" data-start="78.863" tabindex="0">
+<div class="lyric-original">まだ終わらない</div>
+<div class="lyric-translation">還沒有結束</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Chorus</div><div class="lyric-pair" data-end="85.680" data-index="13" data-start="83.794" tabindex="0">
+<div class="lyric-original">Tonight we ride</div>
+<div class="lyric-translation">今夜我們奔馳</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="87.978" data-index="14" data-start="85.680" tabindex="0">
+<div class="lyric-original">Tonight we burn</div>
+<div class="lyric-translation">今夜我們燃燒</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="92.696" data-index="15" data-start="87.978" tabindex="0">
+<div class="lyric-original">Chūreki Rengō</div>
+<div class="lyric-translation">中壢連合</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="94.265" data-index="16" data-start="92.696" tabindex="0">
+<div class="lyric-original">Neon hearts</div>
+<div class="lyric-translation">霓虹之心</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="96.025" data-index="17" data-start="94.265" tabindex="0">
+<div class="lyric-original">We'll never run</div>
+<div class="lyric-translation">永不退卻</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="100.727" data-index="18" data-start="96.025" tabindex="0">
+<div class="lyric-original">Over My Dead Body</div>
+<div class="lyric-translation">戰慄品</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="102.694" data-index="19" data-start="100.727" tabindex="0">
+<div class="lyric-original">Raise your eyes</div>
+<div class="lyric-translation">抬頭仰望</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="104.964" data-index="20" data-start="102.694" tabindex="0">
+<div class="lyric-original">Don't look down</div>
+<div class="lyric-translation">別低下頭</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="110.890" data-index="21" data-start="104.964" tabindex="0">
+<div class="lyric-original">If tomorrow never comes</div>
+<div class="lyric-translation">若明日不再來</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="121.322" data-index="22" data-start="110.890" tabindex="0">
+<div class="lyric-original">Our story goes on</div>
+<div class="lyric-translation">我們的故事仍會延續</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Verse 2</div><div class="lyric-pair" data-end="124.946" data-index="23" data-start="121.322" tabindex="0">
+<div class="lyric-original">Empty streets still know our names</div>
+<div class="lyric-translation">空蕩的街道仍記得我們的名字</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="129.037" data-index="24" data-start="124.946" tabindex="0">
+<div class="lyric-original">Every scar still feels the same</div>
+<div class="lyric-translation">每一道傷疤仍是同樣的痛</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="132.787" data-index="25" data-start="129.037" tabindex="0">
+<div class="lyric-original">Every corner keeps the sound</div>
+<div class="lyric-translation">每個轉角</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="137.015" data-index="26" data-start="132.787" tabindex="0">
+<div class="lyric-original">Of the ones who stayed around</div>
+<div class="lyric-translation">仍留著那些人的迴音</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="139.973" data-index="27" data-start="137.015" tabindex="0">
+<div class="lyric-original">また会おう</div>
+<div class="lyric-translation">我們會再相見</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="144.333" data-index="28" data-start="139.973" tabindex="0">
+<div class="lyric-original">その日まで</div>
+<div class="lyric-translation">直到那一天</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="148.297" data-index="29" data-start="144.333" tabindex="0">
+<div class="lyric-original">No one owns the night</div>
+<div class="lyric-translation">沒有人能擁有這夜晚</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="154.540" data-index="30" data-start="148.297" tabindex="0">
+<div class="lyric-original">But the memories do</div>
+<div class="lyric-translation">唯有回憶留存</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Bridge</div><div class="lyric-pair" data-end="162.528" data-index="31" data-start="154.540" tabindex="0">
+<div class="lyric-original">If the city falls asleep</div>
+<div class="lyric-translation">如果城市沉沉睡去</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="166.726" data-index="32" data-start="162.528" tabindex="0">
+<div class="lyric-original">Don't erase us</div>
+<div class="lyric-translation">別把我們抹去</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="169.962" data-index="33" data-start="166.726" tabindex="0">
+<div class="lyric-original">If the lights all fade away</div>
+<div class="lyric-translation">如果所有的光都漸漸熄滅</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="172.510" data-index="34" data-start="169.962" tabindex="0">
+<div class="lyric-original">Don't erase us</div>
+<div class="lyric-translation">別把我們抹去</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="174.593" data-index="35" data-start="172.510" tabindex="0">
+<div class="lyric-original">They can take our place</div>
+<div class="lyric-translation">他們能奪走我們的位置</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="178.546" data-index="36" data-start="174.593" tabindex="0">
+<div class="lyric-original">Not our story</div>
+<div class="lyric-translation">奪不走我們的故事</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="182.449" data-index="37" data-start="178.546" tabindex="0">
+<div class="lyric-original">This territory ends here</div>
+<div class="lyric-translation">這片地盤在此終結</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="192.397" data-index="38" data-start="182.449" tabindex="0">
+<div class="lyric-original">Our story doesn't</div>
+<div class="lyric-translation">我們的故事不會</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="198.552" data-index="39" data-start="192.397" tabindex="0">
+<div class="lyric-original">Over My Dead Body</div>
+<div class="lyric-translation">戰慄品</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="201.006" data-index="40" data-start="198.552" tabindex="0">
+<div class="lyric-original">まだ終わらない</div>
+<div class="lyric-translation">還沒有結束</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="202.976" data-index="41" data-start="201.006" tabindex="0">
+<div class="lyric-original">Chūreki Rengō</div>
+<div class="lyric-translation">中壢連合</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Final Chorus</div><div class="lyric-pair" data-end="205.262" data-index="42" data-start="202.976" tabindex="0">
+<div class="lyric-original">Tonight we ride</div>
+<div class="lyric-translation">今夜我們奔馳</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="209.393" data-index="43" data-start="205.262" tabindex="0">
+<div class="lyric-original">Tonight we burn</div>
+<div class="lyric-translation">今夜我們燃燒</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="211.079" data-index="44" data-start="209.393" tabindex="0">
+<div class="lyric-original">Chūreki Rengō</div>
+<div class="lyric-translation">中壢連合</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="212.895" data-index="45" data-start="211.079" tabindex="0">
+<div class="lyric-original">Neon hearts</div>
+<div class="lyric-translation">霓虹之心</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="217.439" data-index="46" data-start="212.895" tabindex="0">
+<div class="lyric-original">We'll never run</div>
+<div class="lyric-translation">絕不退卻</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="219.493" data-index="47" data-start="217.439" tabindex="0">
+<div class="lyric-original">Over My Dead Body</div>
+<div class="lyric-translation">戰慄品</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="221.935" data-index="48" data-start="219.493" tabindex="0">
+<div class="lyric-original">Raise your eyes</div>
+<div class="lyric-translation">抬頭仰望</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="224.459" data-index="49" data-start="221.935" tabindex="0">
+<div class="lyric-original">Don't look down</div>
+<div class="lyric-translation">別低下頭</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="229.122" data-index="50" data-start="224.459" tabindex="0">
+<div class="lyric-original">Dua Lang Tso</div>
+<div class="lyric-translation">兌榔造</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="231.574" data-index="51" data-start="229.122" tabindex="0">
+<div class="lyric-original">Our story goes on</div>
+<div class="lyric-translation">故事依然繼續</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="240.213" data-index="52" data-start="231.574" tabindex="0">
+<div class="lyric-original">One last ride</div>
+<div class="lyric-translation">最後一趟旅程</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="248.678" data-index="53" data-start="240.213" tabindex="0">
+<div class="lyric-original">また会おう</div>
+<div class="lyric-translation">我們會再相見</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="250.674" data-index="54" data-start="248.678" tabindex="0">
+<div class="lyric-original">Keep the neon alive</div>
+<div class="lyric-translation">讓霓虹燈永遠亮著</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyrics-section">Outro</div><div class="lyric-pair" data-end="253.077" data-index="55" data-start="250.674" tabindex="0">
+<div class="lyric-original">Tonight we ride</div>
+<div class="lyric-translation">今夜我們奔馳</div>
+<div class="lyric-progress"><span></span></div>
+</div><div class="lyric-pair" data-end="257.950" data-index="56" data-start="253.077" tabindex="0">
+<div class="lyric-original">Tonight we burn</div>
+<div class="lyric-translation">今夜我們燃燒</div>
+<div class="lyric-progress"><span></span></div>
+</div>
+</div>
+<footer class="lyrics-footer">
+<div class="lyrics-dedication">為中壢連合店閉店而創作。</div>
+<div class="lyrics-credit">Lyrics by 小北 × ChatGPT<br/>Music generated with Suno</div>
+</footer>
+</section>
+</div>
+<script>
     window.addEventListener('keydown', function (event) {
       if (event.key === 'Escape') {
         var overlay = document.getElementById('lyrics-overlay');
@@ -1593,7 +1554,6 @@
       }
     });
   </script>
-
 <script>
     history.scrollRestoration = 'manual';
 
@@ -2006,8 +1966,5 @@
       requestAnimationFrame(lyricsAnimationLoop);
 
     </script>
-
-  
-
 </body>
 </html>
