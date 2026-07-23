@@ -1858,6 +1858,11 @@
     });
   
       // ===== 同步歌詞 =====
+      // 重新取得播放器元素。這一區在 window.load 外面，
+      // 不能直接使用上方 load 區塊內宣告的區域變數。
+      const lyricsThemeMusic = document.getElementById('theme-music');
+      const lyricsMusicPlayer = document.getElementById('music-player');
+      const lyricsMusicToggle = document.getElementById('music-toggle');
       const lyricsOpen = document.getElementById('lyrics-open');
       const lyricsOverlay = document.getElementById('lyrics-overlay');
       const lyricsClose = document.getElementById('lyrics-close');
@@ -1890,8 +1895,8 @@
       }
 
       function syncLyrics(forceCenter = false) {
-        if (!themeMusic || !lyricPairs.length) return;
-        const current = themeMusic.currentTime || 0;
+        if (!lyricsThemeMusic || !lyricPairs.length) return;
+        const current = lyricsThemeMusic.currentTime || 0;
         let nextIndex = lyricPairs.findIndex(pair => {
           const start = Number(pair.dataset.start);
           const end = Number(pair.dataset.end);
@@ -1925,7 +1930,7 @@
       if (lyricsOpen && lyricsOverlay && lyricsClose && lyricsScroll) {
         lyricsOpen.addEventListener('click', (event) => {
           event.stopPropagation();
-          musicPlayer.classList.remove('compact');
+          if (lyricsMusicPlayer) lyricsMusicPlayer.classList.remove('compact');
           openLyrics();
         });
 
@@ -1945,13 +1950,15 @@
       lyricPairs.forEach(pair => {
         const seek = () => {
           const start = Number(pair.dataset.start);
-          themeMusic.currentTime = start;
-          if (themeMusic.paused) {
-            themeMusic.volume = 0.72;
-            themeMusic.play().then(() => {
-              musicPlayer.classList.add('playing');
-              musicToggle.textContent = '❚❚';
-              musicToggle.setAttribute('aria-label', '暫停主題曲');
+          lyricsThemeMusic.currentTime = start;
+          if (lyricsThemeMusic.paused) {
+            lyricsThemeMusic.volume = 0.72;
+            lyricsThemeMusic.play().then(() => {
+              if (lyricsMusicPlayer) lyricsMusicPlayer.classList.add('playing');
+              if (lyricsMusicToggle) {
+                lyricsMusicToggle.textContent = '❚❚';
+                lyricsMusicToggle.setAttribute('aria-label', '暫停主題曲');
+              }
             }).catch(() => {});
           }
           autoScrollLyrics = true;
@@ -1984,9 +1991,19 @@
         }, 3500);
       }, { passive: true });
 
-      themeMusic.addEventListener('timeupdate', () => syncLyrics(false));
-      themeMusic.addEventListener('seeked', () => syncLyrics(true));
-      themeMusic.addEventListener('play', () => syncLyrics(true));
+      lyricsThemeMusic.addEventListener('timeupdate', () => syncLyrics(false));
+      lyricsThemeMusic.addEventListener('seeked', () => syncLyrics(true));
+      lyricsThemeMusic.addEventListener('play', () => syncLyrics(true));
+      lyricsThemeMusic.addEventListener('loadedmetadata', () => syncLyrics(true));
+
+      // 用動畫幀持續更新進度線，比只靠 timeupdate 更平滑。
+      function lyricsAnimationLoop() {
+        if (lyricsThemeMusic && !lyricsThemeMusic.paused) {
+          syncLyrics(false);
+        }
+        requestAnimationFrame(lyricsAnimationLoop);
+      }
+      requestAnimationFrame(lyricsAnimationLoop);
 
     </script>
 
